@@ -37,14 +37,6 @@ body {
   border-radius: 10px;
 }
 
-/* Header */
-header {
-  background-color: var(--bg-tertiary);
-  border-bottom: 2px solid #666;
-  padding: 15px;
-  text-align: center;
-}
-
 /* Enlaces */
 a {
   color: var(--accent-color);
@@ -53,14 +45,6 @@ a {
   transition: color 0.2s ease;
 }
 
-a:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
-}
-
-a:visited {
-  color: #8db3d9;
-}
 
 /* Encabezados */
 h1, h2, h3, h4, h5, h6 {
@@ -95,19 +79,6 @@ li {
   margin: 10px 0;
 }
 
-/* Tablas */
-table {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  width: 100%;
-  margin: 15px 0;
-  border-collapse: collapse;
-}
-
-th, td {
-  border: 1px solid var(--border-color);
-  padding: 10px;
-}
 
 th {
   background-color: var(--bg-tertiary);
