@@ -34,15 +34,8 @@ Además, me encuentro trabajando y profundizando activamente en el área de cien
 
 
 
-[Mira mis otras redes](./another-page.html).
+[Aquí les iré compartiendo diferentes historias](./another-page.html).
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
 
 ![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
 
