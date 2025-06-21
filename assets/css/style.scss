@@ -1,39 +1,153 @@
 ---
 ---
+@import "jekyll-theme-minimal";
 
-@import "{{ site.theme }}";
+/* Variables CSS para consistencia */
+:root {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #333;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --border-color: #444;
+  --accent-color: #66b3ff;
+  --accent-hover: #99ccff;
+  --code-bg: #1e1e1e;
+  --code-text: #f8f8f2;
+}
 
-/* Fondo oscuro personalizado */
+/* Fondo principal oscuro */
 body {
-  background-color: #1a1a1a;
-  color: #e0e0e0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
 }
 
+/* Contenedor principal */
 .wrapper {
-  background-color: #2d2d2d;
-  border: 1px solid #444;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+/* Header */
 header {
-  background-color: #333;
+  background-color: var(--bg-tertiary);
   border-bottom: 1px solid #555;
 }
 
-/* Enlaces */
+/* Enlaces mejorados */
 a {
-  color: #66b3ff;
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  color: #99ccff;
+  color: var(--accent-hover);
+  text-decoration: underline;
 }
 
-/* Código */
+a:visited {
+  color: #8db3d9;
+}
+
+/* Bloques de código mejorados */
 pre, code {
-  background-color: #1e1e1e;
-  color: #f8f8f2;
+  background-color: var(--code-bg);
+  color: var(--code-text);
+  border: 1px solid #333;
+  border-radius: 4px;
 }
----
----
 
-@import "jekyll-theme-minimal";
+pre {
+  padding: 16px;
+  overflow-x: auto;
+  line-height: 1.4;
+}
+
+code {
+  padding: 2px 6px;
+  font-size: 0.9em;
+}
+
+/* Encabezados */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+/* Párrafos y texto */
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Listas */
+ul, ol {
+  color: var(--text-secondary);
+}
+
+/* Tablas */
+table {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+th {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 8px;
+}
+
+td {
+  border: 1px solid var(--border-color);
+  padding: 8px;
+  color: var(--text-secondary);
+}
+
+/* Blockquotes */
+blockquote {
+  background-color: var(--bg-tertiary);
+  border-left: 4px solid var(--accent-color);
+  color: var(--text-secondary);
+  padding: 16px;
+  margin: 16px 0;
+}
+
+/* Botones si los hay */
+button, .btn {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Footer */
+footer {
+  background-color: var(--bg-tertiary);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+/* Mejoras para dispositivos móviles */
+@media (max-width: 768px) {
+  .wrapper {
+    margin: 0;
+    border-radius: 0;
+  }
+  
+  pre {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
