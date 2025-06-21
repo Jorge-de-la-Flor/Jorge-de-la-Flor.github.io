@@ -1,8 +1,8 @@
 ---
 ---
 @import "jekyll-theme-minimal";
-
-/* Variables CSS para consistencia */
+/**/
+/* Variables CSS para consistencia 
 :root {
   --bg-primary: #2d2d2d;
   --bg-secondary: #2d2d2d;
@@ -14,7 +14,7 @@
   --accent-hover: #3399cc;
 }
 
-/* Fuente general */
+/* Fuente general 
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -26,18 +26,8 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Contenedor principal */
-.wrapper {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  max-width: 1000px;
-  margin: 50px auto;
-  padding: 40px;
-  border-radius: 10px;
-}
 
-/* Enlaces */
+/* Enlaces 
 a {
   color: var(--accent-color);
   text-decoration: none;
@@ -45,31 +35,14 @@ a {
   transition: color 0.2s ease;
 }
 
-
-/* Encabezados */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-primary);
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 10px;
-  margin-top: 25px;
-}
-
-h1 {
-  font-size: 2.5em;
-}
-
-h2 {
-  font-size: 1.8em;
-}
-
-/* Texto */
+/* Texto 
 p {
   color: var(--text-secondary);
   margin: 15px 0;
   max-width: 100%;
 }
 
-/* Listas */
+/* Listas 
 ul, ol {
   color: var(--text-secondary);
   padding-left: 25px;
@@ -101,7 +74,7 @@ code {
   padding: 3px 8px;
 }
 
-/* Blockquotes */
+/* Blockquotes 
 blockquote {
   background-color: var(--bg-tertiary);
   border-left: 5px solid var(--accent-color);
@@ -111,7 +84,7 @@ blockquote {
   font-style: italic;
 }
 
-/* Botones */
+/* Botones 
 button, .btn {
   background-color: var(--accent-color);
   color: white;
@@ -126,7 +99,7 @@ button:hover, .btn:hover {
   background-color: var(--accent-hover);
 }
 
-/* Footer */
+/* Footer 
 footer {
   background-color: var(--bg-tertiary);
   border-top: 2px solid var(--border-color);
@@ -136,7 +109,7 @@ footer {
   margin-top: 25px;
 }
 
-/* Responsive */
+/* Responsive 
 @media (max-width: 768px) {
   .wrapper {
     margin: 10px;
@@ -161,3 +134,4 @@ footer {
     font-size: 16px;
   }
 }
+*/
