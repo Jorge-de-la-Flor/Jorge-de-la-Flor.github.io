@@ -3,8 +3,9 @@
 @import "jekyll-theme-minimal";
 
 /* Variables CSS para consistencia */
+/* Variables CSS para consistencia */
 :root {
-  --bg-primary: #1a1a1a;
+  --bg-primary: #2d2d2d;
   --bg-secondary: #2d2d2d;
   --bg-tertiary: #333;
   --text-primary: #e0e0e0;
@@ -41,15 +42,15 @@ a {
   color: var(--accent-color);
   text-decoration: none;
   transition: color 0.2s ease;
-}
 
-a:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
-}
+  &:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
 
-a:visited {
-  color: #8db3d9;
+  &:visited {
+    color: #8db3d9;
+  }
 }
 
 /* Bloques de código mejorados */
@@ -126,10 +127,10 @@ button, .btn {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-}
 
-button:hover, .btn:hover {
-  background-color: var(--accent-hover);
+  &:hover {
+    background-color: var(--accent-hover);
+  }
 }
 
 /* Footer */
