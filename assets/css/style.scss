@@ -144,3 +144,20 @@ body.dark-mode {
   background: #181818;
   color: #f0f0f0;
 }
+:root {
+  --bg-primary: #2d2d2d;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #333;
+  --text-primary: #ffffff;
+  --text-secondary: #267CB9;
+  --border-color: #99ccff;
+  --accent-color: #66b3ff;
+  --accent-hover: #3399cc;
+} 
+ul, ol {
+  color: var(--text-secondary);
+  padding-left: 25px;
+}
+h1, h2 {
+  color: var(--text-secondary);
+}
