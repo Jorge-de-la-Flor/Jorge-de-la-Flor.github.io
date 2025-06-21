@@ -7,21 +7,22 @@
   --bg-primary: #2d2d2d;
   --bg-secondary: #2d2d2d;
   --bg-tertiary: #333;
-  --text-primary: #ffffff; /* Blanco puro para máximo contraste */
-  --text-secondary: #e0e0e0; /* Gris muy claro */
-  --border-color: #555;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --border-color: #99ccff;
   --accent-color: #66b3ff;
-  --accent-hover: #99ccff;
+  --accent-hover: #3399cc;
   --code-bg: #1e1e1e;
-  --code-text: #f8f8f2;
+  --code-text: #fffbf1;
 }
 
-/* Fondo principal oscuro */
+/* Fuente general */
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-size: 18px; /* Tamaño de fuente base más grande */
-  line-height: 1.8; /* Mayor interlineado para legibilidad */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
   margin: 0;
   padding: 0;
   transition: all 0.3s ease;
@@ -32,44 +33,102 @@ body {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  max-width: 900px; /* Ancho un poco mayor para mejor distribución */
-  margin: 30px auto; /* Más margen para centrar */
-  padding: 30px;
-  border-radius: 5px; /* Bordes redondeados suaves */
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 40px;
+  border-radius: 10px;
 }
 
 /* Header */
 header {
   background-color: var(--bg-tertiary);
-  border-bottom: 2px solid #666; /* Borde más grueso */
+  border-bottom: 2px solid #666;
   padding: 15px;
   text-align: center;
 }
 
-/* Enlaces mejorados */
+/* Enlaces */
 a {
   color: var(--accent-color);
   text-decoration: none;
-  font-weight: bold; /* Enlaces más destacados */
+  font-weight: bold;
   transition: color 0.2s ease;
-
-  &:hover {
-    color: var(--accent-hover);
-    text-decoration: underline;
-  }
-
-  &:visited {
-    color: #8db3d9;
-  }
 }
 
-/* Bloques de código mejorados */
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #8db3d9;
+}
+
+/* Encabezados */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+  margin-top: 25px;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+/* Texto */
+p {
+  color: var(--text-secondary);
+  margin: 15px 0;
+  max-width: 100%;
+}
+
+/* Listas */
+ul, ol {
+  color: var(--text-secondary);
+  padding-left: 25px;
+}
+
+li {
+  margin: 10px 0;
+}
+
+/* Tablas */
+table {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  width: 100%;
+  margin: 15px 0;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid var(--border-color);
+  padding: 10px;
+}
+
+th {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+td {
+  color: var(--text-secondary);
+}
+
+/* Bloques de código */
 pre, code {
   background-color: var(--code-bg);
   color: var(--code-text);
   border: 1px solid #444;
-  border-radius: 5px;
-  font-size: 16px; /* Fuente más grande para código */
+  border-radius: 8px;
+  font-family: 'Fira Code', monospace;
+  font-size: 16px;
 }
 
 pre {
@@ -83,63 +142,6 @@ code {
   padding: 3px 8px;
 }
 
-/* Encabezados */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-primary);
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 10px;
-  margin-top: 25px;
-}
-
-h1 {
-  font-size: 2.5em; /* Título más grande */
-}
-
-h2 {
-  font-size: 1.8em;
-}
-
-/* Párrafos y texto */
-p {
-  color: var(--text-secondary);
-  line-height: 1.8;
-  margin: 15px 0;
-  max-width: 100%; /* Evitar que se desborde */
-}
-
-/* Listas */
-ul, ol {
-  color: var(--text-secondary);
-  padding-left: 25px;
-}
-
-li {
-  margin: 10px 0;
-  padding-left: 5px;
-}
-
-/* Tablas */
-table {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  width: 100%;
-  margin: 15px 0;
-}
-
-th {
-  background-color: var(--bg-tertiary);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-  padding: 10px;
-  font-weight: bold;
-}
-
-td {
-  border: 1px solid var(--border-color);
-  padding: 10px;
-  color: var(--text-secondary);
-}
-
 /* Blockquotes */
 blockquote {
   background-color: var(--bg-tertiary);
@@ -150,7 +152,7 @@ blockquote {
   font-style: italic;
 }
 
-/* Botones si los hay */
+/* Botones */
 button, .btn {
   background-color: var(--accent-color);
   color: white;
@@ -159,10 +161,10 @@ button, .btn {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+}
 
-  &:hover {
-    background-color: var(--accent-hover);
-  }
+button:hover, .btn:hover {
+  background-color: var(--accent-hover);
 }
 
 /* Footer */
@@ -175,14 +177,14 @@ footer {
   margin-top: 25px;
 }
 
-/* Mejoras para dispositivos móviles */
+/* Responsive */
 @media (max-width: 768px) {
   .wrapper {
     margin: 10px;
     padding: 15px;
     border-radius: 0;
   }
-  
+
   pre {
     padding: 15px;
     font-size: 14px;
