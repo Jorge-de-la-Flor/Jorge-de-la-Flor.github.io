@@ -135,3 +135,12 @@ footer {
   }
 }
 */
+body {
+  background: #fff;
+  color: #222;
+  transition: background 0.3s, color 0.3s;
+}
+body.dark-mode {
+  background: #181818;
+  color: #f0f0f0;
+}
