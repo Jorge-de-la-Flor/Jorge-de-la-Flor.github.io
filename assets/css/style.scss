@@ -1,4 +1,39 @@
 ---
 ---
 
+@import "{{ site.theme }}";
+
+/* Fondo oscuro personalizado */
+body {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.wrapper {
+  background-color: #2d2d2d;
+  border: 1px solid #444;
+}
+
+header {
+  background-color: #333;
+  border-bottom: 1px solid #555;
+}
+
+/* Enlaces */
+a {
+  color: #66b3ff;
+}
+
+a:hover {
+  color: #99ccff;
+}
+
+/* Código */
+pre, code {
+  background-color: #1e1e1e;
+  color: #f8f8f2;
+}
+---
+---
+
 @import "jekyll-theme-minimal";
