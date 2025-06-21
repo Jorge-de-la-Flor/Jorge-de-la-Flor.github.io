@@ -7,9 +7,9 @@
   --bg-primary: #2d2d2d;
   --bg-secondary: #2d2d2d;
   --bg-tertiary: #333;
-  --text-primary: #ffffff; /* Texto más claro para mejor legibilidad */
-  --text-secondary: #d0d0d0; /* Gris claro para texto secundario */
-  --border-color: #444;
+  --text-primary: #ffffff; /* Blanco puro para máximo contraste */
+  --text-secondary: #e0e0e0; /* Gris muy claro */
+  --border-color: #555;
   --accent-color: #66b3ff;
   --accent-hover: #99ccff;
   --code-bg: #1e1e1e;
@@ -20,8 +20,8 @@
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-size: 16px; /* Tamaño de fuente base */
-  line-height: 1.6;
+  font-size: 18px; /* Tamaño de fuente base más grande */
+  line-height: 1.8; /* Mayor interlineado para legibilidad */
   margin: 0;
   padding: 0;
   transition: all 0.3s ease;
@@ -31,23 +31,26 @@ body {
 .wrapper {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  max-width: 800px; /* Limitar ancho para mejor lectura */
-  margin: 20px auto; /* Centrar el contenido */
-  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  max-width: 900px; /* Ancho un poco mayor para mejor distribución */
+  margin: 30px auto; /* Más margen para centrar */
+  padding: 30px;
+  border-radius: 5px; /* Bordes redondeados suaves */
 }
 
 /* Header */
 header {
   background-color: var(--bg-tertiary);
-  border-bottom: 1px solid #555;
-  padding: 10px;
+  border-bottom: 2px solid #666; /* Borde más grueso */
+  padding: 15px;
+  text-align: center;
 }
 
 /* Enlaces mejorados */
 a {
   color: var(--accent-color);
   text-decoration: none;
+  font-weight: bold; /* Enlaces más destacados */
   transition: color 0.2s ease;
 
   &:hover {
@@ -64,53 +67,55 @@ a {
 pre, code {
   background-color: var(--code-bg);
   color: var(--code-text);
-  border: 1px solid #333;
-  border-radius: 4px;
-  font-size: 14px; /* Ajuste de tamaño para legibilidad */
+  border: 1px solid #444;
+  border-radius: 5px;
+  font-size: 16px; /* Fuente más grande para código */
 }
 
 pre {
-  padding: 15px;
+  padding: 20px;
   overflow-x: auto;
-  line-height: 1.5;
-  margin: 10px 0;
+  line-height: 1.6;
+  margin: 15px 0;
 }
 
 code {
-  padding: 2px 6px;
+  padding: 3px 8px;
 }
 
 /* Encabezados */
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 8px;
-  margin-top: 20px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+  margin-top: 25px;
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 2.5em; /* Título más grande */
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 
 /* Párrafos y texto */
 p {
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 10px 0;
+  line-height: 1.8;
+  margin: 15px 0;
+  max-width: 100%; /* Evitar que se desborde */
 }
 
 /* Listas */
 ul, ol {
   color: var(--text-secondary);
-  padding-left: 20px;
+  padding-left: 25px;
 }
 
 li {
-  margin: 5px 0;
+  margin: 10px 0;
+  padding-left: 5px;
 }
 
 /* Tablas */
@@ -118,29 +123,30 @@ table {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   width: 100%;
-  margin: 10px 0;
+  margin: 15px 0;
 }
 
 th {
   background-color: var(--bg-tertiary);
   color: var(--text-primary);
   border: 1px solid var(--border-color);
-  padding: 8px;
+  padding: 10px;
+  font-weight: bold;
 }
 
 td {
   border: 1px solid var(--border-color);
-  padding: 8px;
+  padding: 10px;
   color: var(--text-secondary);
 }
 
 /* Blockquotes */
 blockquote {
   background-color: var(--bg-tertiary);
-  border-left: 4px solid var(--accent-color);
+  border-left: 5px solid var(--accent-color);
   color: var(--text-secondary);
-  padding: 15px;
-  margin: 15px 0;
+  padding: 20px;
+  margin: 20px 0;
   font-style: italic;
 }
 
@@ -149,8 +155,8 @@ button, .btn {
   background-color: var(--accent-color);
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 
@@ -162,31 +168,35 @@ button, .btn {
 /* Footer */
 footer {
   background-color: var(--bg-tertiary);
-  border-top: 1px solid var(--border-color);
+  border-top: 2px solid var(--border-color);
   color: var(--text-secondary);
   text-align: center;
-  padding: 10px;
-  margin-top: 20px;
+  padding: 15px;
+  margin-top: 25px;
 }
 
 /* Mejoras para dispositivos móviles */
 @media (max-width: 768px) {
   .wrapper {
-    margin: 0;
+    margin: 10px;
+    padding: 15px;
     border-radius: 0;
-    padding: 10px;
   }
   
   pre {
-    padding: 10px;
-    font-size: 12px;
+    padding: 15px;
+    font-size: 14px;
   }
 
   h1 {
-    font-size: 1.5em;
+    font-size: 2em;
   }
 
   h2 {
-    font-size: 1.2em;
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 16px;
   }
 }
