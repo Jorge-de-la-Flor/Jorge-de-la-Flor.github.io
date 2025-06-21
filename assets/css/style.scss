@@ -3,13 +3,12 @@
 @import "jekyll-theme-minimal";
 
 /* Variables CSS para consistencia */
-/* Variables CSS para consistencia */
 :root {
   --bg-primary: #2d2d2d;
   --bg-secondary: #2d2d2d;
   --bg-tertiary: #333;
-  --text-primary: #e0e0e0;
-  --text-secondary: #b0b0b0;
+  --text-primary: #ffffff; /* Texto más claro para mejor legibilidad */
+  --text-secondary: #d0d0d0; /* Gris claro para texto secundario */
   --border-color: #444;
   --accent-color: #66b3ff;
   --accent-hover: #99ccff;
@@ -21,6 +20,10 @@
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  font-size: 16px; /* Tamaño de fuente base */
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
   transition: all 0.3s ease;
 }
 
@@ -29,12 +32,16 @@ body {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  max-width: 800px; /* Limitar ancho para mejor lectura */
+  margin: 20px auto; /* Centrar el contenido */
+  padding: 20px;
 }
 
 /* Header */
 header {
   background-color: var(--bg-tertiary);
   border-bottom: 1px solid #555;
+  padding: 10px;
 }
 
 /* Enlaces mejorados */
@@ -59,17 +66,18 @@ pre, code {
   color: var(--code-text);
   border: 1px solid #333;
   border-radius: 4px;
+  font-size: 14px; /* Ajuste de tamaño para legibilidad */
 }
 
 pre {
-  padding: 16px;
+  padding: 15px;
   overflow-x: auto;
-  line-height: 1.4;
+  line-height: 1.5;
+  margin: 10px 0;
 }
 
 code {
   padding: 2px 6px;
-  font-size: 0.9em;
 }
 
 /* Encabezados */
@@ -77,23 +85,40 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 8px;
+  margin-top: 20px;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
 }
 
 /* Párrafos y texto */
 p {
   color: var(--text-secondary);
   line-height: 1.6;
+  margin: 10px 0;
 }
 
 /* Listas */
 ul, ol {
   color: var(--text-secondary);
+  padding-left: 20px;
+}
+
+li {
+  margin: 5px 0;
 }
 
 /* Tablas */
 table {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
+  width: 100%;
+  margin: 10px 0;
 }
 
 th {
@@ -114,8 +139,9 @@ blockquote {
   background-color: var(--bg-tertiary);
   border-left: 4px solid var(--accent-color);
   color: var(--text-secondary);
-  padding: 16px;
-  margin: 16px 0;
+  padding: 15px;
+  margin: 15px 0;
+  font-style: italic;
 }
 
 /* Botones si los hay */
@@ -138,6 +164,9 @@ footer {
   background-color: var(--bg-tertiary);
   border-top: 1px solid var(--border-color);
   color: var(--text-secondary);
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
 }
 
 /* Mejoras para dispositivos móviles */
@@ -145,10 +174,19 @@ footer {
   .wrapper {
     margin: 0;
     border-radius: 0;
+    padding: 10px;
   }
   
   pre {
-    padding: 12px;
-    font-size: 14px;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
   }
 }
