@@ -25,9 +25,7 @@ La responsabilidad, honestidad, proactividad, limpieza, puntualidad, fe, confian
 
 # 🚀 En este momento...
 
-Estoy profundizando en el desarrollo con diversas tecnologías, aprendiendo sobre todo aquello que me pueda servir en un futuro, mientras construyo sistemas que combinan la electrónica, IA, robótica y automatización de procesos.
-
-Además, me encuentro trabajando y profundizando activamente en el área de ciencia e datos y todo lo relacionado al área de inteligencia. 
+Me encuentro trabajando y profundizando activamente en el área de ciencia e datos y todo lo relacionado al área de inteligencia. 
 
 
 
