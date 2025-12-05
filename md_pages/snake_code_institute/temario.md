@@ -171,4 +171,4 @@ title: "Curso Python Vanilla PRO – Temario Completo"
   - Manejo de errores en el flujo principal.
   - Pruebas básicas del proyecto con unittest/pytest.
 
-[back](./)
+<!-- [back](./) -->
