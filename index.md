@@ -2,6 +2,14 @@
 layout: default
 ---
 
+## Menú
+
+- [Sobre mí](#-about-me)
+- [Experiencia y logros](#-recognition--background)
+- [Tech Stack](#-tech-stack)
+- [Projects / Collaborations](#projects--colaborations)
+- [Knowledge Sharing](#-knowledge-sharing)
+
 # 👨‍💻 About Me
 
 I'm Jorge de la Flor, a **cross-industry embedded systems engineer and integrator** from Peru, specializing in bridging business strategy with technical execution. With a dual-degree background in International Business and advanced technical training across multiple domains, I build solutions that transform complex business requirements into efficient, scalable technology.
@@ -107,6 +115,10 @@ I'm always interested in collaborating on challenging projects that combine **em
 I believe in making technology accessible and sharing what I learn. Stay tuned for technical articles, project showcases, and insights from my journey bridging hardware, software, and business strategy.
 
 [Explore my technical journey and project stories here](./md_pages/menu.md)
+
+## Projects / Collaborations
+
+- Snake Code Institute: [Ver sitio del curso](./md_pages/snake_code_institute/sci_index.md)
 
 ---
 
