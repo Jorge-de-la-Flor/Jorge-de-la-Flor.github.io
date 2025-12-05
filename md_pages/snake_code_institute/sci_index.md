@@ -33,7 +33,7 @@ Un bootcamp orientado a dominar Python de forma sólida, moderna y con enfoque p
 - De cero a escribir código limpio y mantenible.  
 - Pensado para que entiendas bien el lenguaje antes de saltar a frameworks y “hype”.  
 
-[Ver temario completo de Python Vanilla PRO](./temario.md)
+[Haz click aquí para ver temario completo de Python Vanilla PRO](./temario.md)
 
 ---
 
