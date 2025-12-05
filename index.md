@@ -78,7 +78,7 @@ I'm currently deepening my expertise in:
 
 **Primary Languages:**
 - Python (Advanced) - Automation, web, data processing, computer vision
-- Rust (Active Learning) - Systems programming, embedded development
+- Rust - Systems programming, embedded development
 - C/C++ - Embedded systems (Arduino, ESP-IDF, STM32Cube)
 - SQL - Database design and analytics
 
