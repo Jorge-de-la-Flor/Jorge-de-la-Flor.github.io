@@ -2,772 +2,795 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{ page.title }} | Snake Code Institute</title>
-  <meta name="description" content="{{ site.description | default: 'Snake Code Institute - Formando a los desarrolladores del futuro' }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}Snake Code Institute</title>
+  <meta name="description" content="{{ page.description | default: 'Domina Python desde cero hasta nivel profesional. El único curso que realmente necesitas para convertirte en desarrollador Python.' }}">
   
-  <!-- Fonts -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{{ '/assets/images/sci/logo-sci.png' | relative_url }}">
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
-  <!-- Favicon - reemplaza con tu logo -->
-  <link rel="icon" type="image/png" href="{{ '/assets/images/logo-sci.png' | relative_url }}">
+  <!-- Highlight.js para código -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
   
   <style>
-    /* =====================================================
-       SNAKE CODE INSTITUTE - Professional Jekyll Theme
-       Color Scheme: Blue (matching brand logo)
-       ===================================================== */
-    
+    /* ========================================
+       CSS Variables - Tema Snake Code Institute
+       ======================================== */
     :root {
-      /* Primary Blues */
-      --primary: #1e4b8e;
-      --primary-light: #3b82f6;
-      --primary-dark: #1e3a5f;
+      /* Colores principales - Azul del logo */
+      --sci-primary: #1a73e8;
+      --sci-primary-dark: #1557b0;
+      --sci-primary-light: #4a9eff;
       
-      /* Background & Surface */
-      --bg-dark: #0f172a;
-      --bg-card: #1e293b;
-      --bg-elevated: #334155;
+      /* Fondos */
+      --sci-bg-dark: #0a0f1a;
+      --sci-bg-card: #111827;
+      --sci-bg-card-hover: #1a2332;
+      --sci-bg-code: #0d1117;
       
-      /* Text Colors */
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
+      /* Textos */
+      --sci-text-primary: #f8fafc;
+      --sci-text-secondary: #94a3b8;
+      --sci-text-muted: #64748b;
       
-      /* Accent & Borders */
-      --accent: #60a5fa;
-      --border: #334155;
-      --border-light: #475569;
+      /* Bordes */
+      --sci-border: #1e293b;
+      --sci-border-light: #334155;
       
-      /* Code Block */
-      --code-bg: #1e293b;
-      --code-border: #3b82f6;
+      /* Acentos */
+      --sci-accent-green: #10b981;
+      --sci-accent-yellow: #f59e0b;
+      --sci-accent-red: #ef4444;
+      --sci-accent-purple: #8b5cf6;
       
-      /* Shadows */
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
-      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+      /* Gradientes */
+      --sci-gradient-primary: linear-gradient(135deg, var(--sci-primary) 0%, var(--sci-primary-light) 100%);
+      --sci-gradient-dark: linear-gradient(180deg, var(--sci-bg-dark) 0%, #0f172a 100%);
+      
+      /* Sombras */
+      --sci-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --sci-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+      --sci-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+      --sci-shadow-glow: 0 0 40px rgba(26, 115, 232, 0.3);
+      
+      /* Espaciado */
+      --sci-spacing-xs: 0.25rem;
+      --sci-spacing-sm: 0.5rem;
+      --sci-spacing-md: 1rem;
+      --sci-spacing-lg: 1.5rem;
+      --sci-spacing-xl: 2rem;
+      --sci-spacing-2xl: 3rem;
+      --sci-spacing-3xl: 4rem;
+      
+      /* Border radius */
+      --sci-radius-sm: 0.375rem;
+      --sci-radius-md: 0.5rem;
+      --sci-radius-lg: 0.75rem;
+      --sci-radius-xl: 1rem;
+      --sci-radius-full: 9999px;
+      
+      /* Transiciones */
+      --sci-transition-fast: 150ms ease;
+      --sci-transition-base: 200ms ease;
+      --sci-transition-slow: 300ms ease;
     }
-    
-    /* Light Mode Variables */
-    .light-mode {
-      --bg-dark: #f8fafc;
-      --bg-card: #ffffff;
-      --bg-elevated: #f1f5f9;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --border-light: #cbd5e1;
-      --code-bg: #f1f5f9;
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
-    }
-    
-    /* Reset & Base */
+
+    /* ========================================
+       Reset y Base
+       ======================================== */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    
+
     html {
       scroll-behavior: smooth;
+      font-size: 16px;
     }
-    
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-primary);
+      background: var(--sci-bg-dark);
+      color: var(--sci-text-primary);
       line-height: 1.6;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    
-    /* =====================================================
-       HEADER & NAVIGATION
-       ===================================================== */
-    
-    .site-header {
+
+    /* ========================================
+       Tipografía
+       ======================================== */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--sci-text-primary);
+      margin-bottom: var(--sci-spacing-md);
+    }
+
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+    h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+    h4 { font-size: 1.25rem; }
+
+    p {
+      color: var(--sci-text-secondary);
+      margin-bottom: var(--sci-spacing-md);
+    }
+
+    a {
+      color: var(--sci-primary-light);
+      text-decoration: none;
+      transition: color var(--sci-transition-fast);
+    }
+
+    a:hover {
+      color: var(--sci-primary);
+    }
+
+    /* ========================================
+       Navbar
+       ======================================== */
+    .sci-navbar {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 100;
-      background: rgba(15, 23, 42, 0.85);
+      z-index: 1000;
+      background: rgba(10, 15, 26, 0.85);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--sci-border);
+      padding: var(--sci-spacing-md) 0;
     }
-    
-    .light-mode .site-header {
-      background: rgba(248, 250, 252, 0.85);
-    }
-    
-    .header-container {
+
+    .sci-navbar-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 var(--sci-spacing-lg);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    
-    .logo-link {
+
+    .sci-navbar-brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--text-primary);
-    }
-    
-    .logo-link img {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-    }
-    
-    .logo-text {
+      gap: var(--sci-spacing-sm);
       font-weight: 700;
-      font-size: 1.125rem;
-      letter-spacing: -0.025em;
+      font-size: 1.25rem;
+      color: var(--sci-text-primary);
     }
-    
-    .logo-text .highlight {
-      color: var(--primary-light);
+
+    .sci-navbar-brand img {
+      height: 40px;
+      width: auto;
     }
-    
-    .nav-links {
+
+    .sci-navbar-nav {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: var(--sci-spacing-xl);
       list-style: none;
     }
-    
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.875rem;
+
+    .sci-navbar-nav a {
+      color: var(--sci-text-secondary);
       font-weight: 500;
-      transition: color 0.2s ease;
+      font-size: 0.9rem;
+      transition: color var(--sci-transition-fast);
     }
-    
-    .nav-links a:hover {
-      color: var(--primary-light);
+
+    .sci-navbar-nav a:hover {
+      color: var(--sci-text-primary);
     }
-    
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    
-    .theme-toggle {
-      background: none;
-      border: none;
-      color: var(--text-secondary);
-      cursor: pointer;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      transition: all 0.2s ease;
-    }
-    
-    .theme-toggle:hover {
-      background: var(--bg-elevated);
-      color: var(--text-primary);
-    }
-    
-    .btn {
+
+    .sci-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      gap: var(--sci-spacing-sm);
+      padding: var(--sci-spacing-sm) var(--sci-spacing-lg);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: var(--sci-radius-md);
       border: none;
+      cursor: pointer;
+      transition: all var(--sci-transition-base);
+      text-decoration: none;
     }
-    
-    .btn-primary {
-      background: var(--primary);
+
+    .sci-btn-primary {
+      background: var(--sci-gradient-primary);
+      color: white;
+      box-shadow: var(--sci-shadow-md);
+    }
+
+    .sci-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--sci-shadow-lg), var(--sci-shadow-glow);
       color: white;
     }
-    
-    .btn-primary:hover {
-      background: var(--primary-light);
-    }
-    
-    .btn-ghost {
+
+    .sci-btn-outline {
       background: transparent;
-      color: var(--text-secondary);
+      color: var(--sci-text-primary);
+      border: 1px solid var(--sci-border-light);
     }
-    
-    .btn-ghost:hover {
-      background: var(--bg-elevated);
-      color: var(--text-primary);
+
+    .sci-btn-outline:hover {
+      background: var(--sci-bg-card);
+      border-color: var(--sci-primary);
+      color: var(--sci-primary-light);
     }
-    
-    /* Mobile Menu */
-    .mobile-menu-btn {
+
+    /* Mobile menu toggle */
+    .sci-menu-toggle {
       display: none;
+      flex-direction: column;
+      gap: 5px;
       background: none;
       border: none;
-      color: var(--text-primary);
       cursor: pointer;
-      padding: 0.5rem;
+      padding: var(--sci-spacing-sm);
     }
-    
+
+    .sci-menu-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--sci-text-primary);
+      transition: var(--sci-transition-base);
+    }
+
     @media (max-width: 768px) {
-      .nav-links, .header-actions .btn {
+      .sci-navbar-nav {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--sci-bg-dark);
+        border-bottom: 1px solid var(--sci-border);
+        padding: var(--sci-spacing-lg);
+        gap: var(--sci-spacing-md);
       }
-      
-      .mobile-menu-btn {
-        display: block;
+
+      .sci-navbar-nav.active {
+        display: flex;
+      }
+
+      .sci-menu-toggle {
+        display: flex;
       }
     }
-    
-    /* =====================================================
-       MAIN CONTENT WRAPPER
-       ===================================================== */
-    
-    .site-wrapper {
-      display: flex;
-      flex-direction: column;
+
+    /* ========================================
+       Main Content Area
+       ======================================== */
+    .sci-main {
+      padding-top: 80px;
       min-height: 100vh;
     }
-    
-    .main-content {
-      flex: 1;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 6rem 1.5rem 4rem;
-      width: 100%;
-    }
-    
-    /* =====================================================
-       SIDEBAR LAYOUT (Optional)
-       ===================================================== */
-    
-    .layout-with-sidebar {
-      display: grid;
-      grid-template-columns: 250px 1fr;
-      gap: 2rem;
+
+    .sci-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 6rem 1.5rem 4rem;
+      padding: 0 var(--sci-spacing-lg);
     }
-    
-    .sidebar {
-      position: sticky;
-      top: 5rem;
-      height: fit-content;
-      padding: 1.5rem;
-      background: var(--bg-card);
-      border-radius: 0.75rem;
-      border: 1px solid var(--border);
+
+    .sci-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: var(--sci-spacing-3xl) var(--sci-spacing-lg);
     }
-    
-    .sidebar-title {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
+
+    /* ========================================
+       Cards
+       ======================================== */
+    .sci-card {
+      background: var(--sci-bg-card);
+      border: 1px solid var(--sci-border);
+      border-radius: var(--sci-radius-lg);
+      padding: var(--sci-spacing-xl);
+      transition: all var(--sci-transition-base);
     }
-    
-    .sidebar-nav {
-      list-style: none;
+
+    .sci-card:hover {
+      border-color: var(--sci-border-light);
+      background: var(--sci-bg-card-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--sci-shadow-lg);
     }
-    
-    .sidebar-nav li {
-      margin-bottom: 0.25rem;
+
+    /* ========================================
+       Code Blocks
+       ======================================== */
+    pre, code {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
     }
-    
-    .sidebar-nav a {
-      display: block;
-      padding: 0.5rem 0.75rem;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.875rem;
-      border-radius: 0.375rem;
-      transition: all 0.2s ease;
-    }
-    
-    .sidebar-nav a:hover,
-    .sidebar-nav a.active {
-      background: var(--bg-elevated);
-      color: var(--primary-light);
-    }
-    
-    @media (max-width: 900px) {
-      .layout-with-sidebar {
-        grid-template-columns: 1fr;
-      }
-      
-      .sidebar {
-        position: relative;
-        top: 0;
-      }
-    }
-    
-    /* =====================================================
-       TYPOGRAPHY
-       ===================================================== */
-    
-    h1, h2, h3, h4, h5, h6 {
-      color: var(--text-primary);
-      font-weight: 600;
-      line-height: 1.3;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-    
-    h1 {
-      font-size: 2.25rem;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      margin-top: 0;
-      background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-light) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    h2 {
-      font-size: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-    
-    h3 { font-size: 1.25rem; }
-    h4 { font-size: 1.125rem; }
-    h5 { font-size: 1rem; }
-    h6 { font-size: 0.875rem; color: var(--text-secondary); }
-    
-    p {
-      margin-bottom: 1rem;
-      color: var(--text-secondary);
-    }
-    
-    a {
-      color: var(--primary-light);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    
-    a:hover {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-    
-    strong {
-      color: var(--text-primary);
-      font-weight: 600;
-    }
-    
-    /* =====================================================
-       CODE BLOCKS
-       ===================================================== */
-    
+
     code {
-      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-      font-size: 0.875em;
-    }
-    
-    /* Inline code */
-    :not(pre) > code {
-      background: var(--bg-elevated);
+      background: var(--sci-bg-code);
+      color: var(--sci-primary-light);
       padding: 0.2em 0.4em;
-      border-radius: 0.25rem;
-      color: var(--primary-light);
+      border-radius: var(--sci-radius-sm);
+      font-size: 0.9em;
     }
-    
-    /* Code blocks */
+
     pre {
-      background: var(--code-bg);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--code-border);
-      border-radius: 0.5rem;
-      padding: 1rem 1.25rem;
+      background: var(--sci-bg-code);
+      border: 1px solid var(--sci-border);
+      border-radius: var(--sci-radius-lg);
+      padding: var(--sci-spacing-lg);
       overflow-x: auto;
-      margin: 1.5rem 0;
+      margin: var(--sci-spacing-lg) 0;
       position: relative;
     }
-    
+
     pre code {
-      background: none;
+      background: transparent;
       padding: 0;
-      color: var(--text-primary);
       font-size: 0.875rem;
       line-height: 1.7;
     }
-    
-    /* Syntax highlighting (basic) */
-    .highlight .k, .highlight .kd, .highlight .kn { color: #c792ea; } /* keywords */
-    .highlight .s, .highlight .s1, .highlight .s2 { color: #c3e88d; } /* strings */
-    .highlight .c, .highlight .c1, .highlight .cm { color: #546e7a; } /* comments */
-    .highlight .n, .highlight .nf { color: #82aaff; } /* functions */
-    .highlight .mi, .highlight .mf { color: #f78c6c; } /* numbers */
-    
-    /* =====================================================
-       LISTS
-       ===================================================== */
-    
-    ul, ol {
-      margin: 1rem 0;
-      padding-left: 1.5rem;
-      color: var(--text-secondary);
+
+    /* Code block header */
+    pre::before {
+      content: attr(data-lang);
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--sci-border);
+      color: var(--sci-text-muted);
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      border-radius: 0 var(--sci-radius-lg) 0 var(--sci-radius-sm);
+      text-transform: uppercase;
+      font-weight: 600;
     }
-    
-    li {
-      margin-bottom: 0.5rem;
+
+    /* Terminal style code */
+    pre.terminal {
+      background: #000;
+      border-color: #333;
     }
-    
-    li::marker {
-      color: var(--primary-light);
+
+    pre.terminal::before {
+      content: 'terminal';
+      background: #333;
     }
-    
-    /* Task lists */
-    ul.task-list {
-      list-style: none;
-      padding-left: 0;
-    }
-    
-    .task-list-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-    
-    .task-list-item input[type="checkbox"] {
-      margin-top: 0.25rem;
-      accent-color: var(--primary-light);
-    }
-    
-    /* =====================================================
-       TABLES
-       ===================================================== */
-    
+
+    /* ========================================
+       Tables
+       ======================================== */
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 1.5rem 0;
-      font-size: 0.875rem;
+      margin: var(--sci-spacing-lg) 0;
+      background: var(--sci-bg-card);
+      border-radius: var(--sci-radius-lg);
+      overflow: hidden;
     }
-    
+
     th, td {
-      padding: 0.75rem 1rem;
+      padding: var(--sci-spacing-md) var(--sci-spacing-lg);
       text-align: left;
-      border: 1px solid var(--border);
+      border-bottom: 1px solid var(--sci-border);
     }
-    
+
     th {
-      background: var(--bg-elevated);
-      color: var(--text-primary);
+      background: var(--sci-bg-code);
       font-weight: 600;
+      color: var(--sci-text-primary);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
     }
-    
-    tr:nth-child(even) {
-      background: var(--bg-card);
+
+    tr:hover {
+      background: var(--sci-bg-card-hover);
     }
-    
-    /* =====================================================
-       BLOCKQUOTES & CALLOUTS
-       ===================================================== */
-    
+
+    /* ========================================
+       Lists
+       ======================================== */
+    ul, ol {
+      margin: var(--sci-spacing-md) 0;
+      padding-left: var(--sci-spacing-xl);
+      color: var(--sci-text-secondary);
+    }
+
+    li {
+      margin-bottom: var(--sci-spacing-sm);
+    }
+
+    li::marker {
+      color: var(--sci-primary);
+    }
+
+    /* ========================================
+       Blockquotes
+       ======================================== */
     blockquote {
-      margin: 1.5rem 0;
-      padding: 1rem 1.25rem;
-      background: var(--bg-card);
-      border-left: 4px solid var(--primary-light);
-      border-radius: 0 0.5rem 0.5rem 0;
-      color: var(--text-secondary);
+      border-left: 4px solid var(--sci-primary);
+      background: var(--sci-bg-card);
+      padding: var(--sci-spacing-lg);
+      margin: var(--sci-spacing-lg) 0;
+      border-radius: 0 var(--sci-radius-md) var(--sci-radius-md) 0;
     }
-    
-    blockquote p:last-child {
-      margin-bottom: 0;
+
+    blockquote p {
+      margin: 0;
+      font-style: italic;
     }
-    
-    /* Info callout */
-    .callout-info {
-      border-left-color: #3b82f6;
-      background: rgba(59, 130, 246, 0.1);
+
+    /* Callouts / Alerts */
+    .sci-callout {
+      padding: var(--sci-spacing-lg);
+      border-radius: var(--sci-radius-md);
+      margin: var(--sci-spacing-lg) 0;
+      border-left: 4px solid;
     }
-    
-    /* Warning callout */
-    .callout-warning {
-      border-left-color: #f59e0b;
-      background: rgba(245, 158, 11, 0.1);
+
+    .sci-callout-info {
+      background: rgba(26, 115, 232, 0.1);
+      border-color: var(--sci-primary);
     }
-    
-    /* Success callout */
-    .callout-success {
-      border-left-color: #10b981;
+
+    .sci-callout-success {
       background: rgba(16, 185, 129, 0.1);
+      border-color: var(--sci-accent-green);
     }
-    
-    /* =====================================================
-       IMAGES
-       ===================================================== */
-    
-    img {
+
+    .sci-callout-warning {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: var(--sci-accent-yellow);
+    }
+
+    .sci-callout-danger {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: var(--sci-accent-red);
+    }
+
+    /* ========================================
+       Images
+       ======================================== */
+    .sci-content img {
       max-width: 100%;
       height: auto;
-      border-radius: 0.5rem;
-      margin: 1rem 0;
+      border-radius: var(--sci-radius-lg);
+      border: 1px solid var(--sci-border);
+      margin: var(--sci-spacing-lg) 0;
     }
-    
-    figure {
-      margin: 1.5rem 0;
+
+    /* ========================================
+       Badges
+       ======================================== */
+    .sci-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sci-spacing-xs);
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: var(--sci-radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
-    
-    figcaption {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      text-align: center;
-      margin-top: 0.5rem;
+
+    .sci-badge-primary {
+      background: rgba(26, 115, 232, 0.2);
+      color: var(--sci-primary-light);
     }
-    
-    /* =====================================================
-       HORIZONTAL RULE
-       ===================================================== */
-    
-    hr {
-      border: none;
-      height: 1px;
-      background: var(--border);
-      margin: 2rem 0;
+
+    .sci-badge-success {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--sci-accent-green);
     }
-    
-    /* =====================================================
-       FOOTER
-       ===================================================== */
-    
-    .site-footer {
-      background: var(--bg-card);
-      border-top: 1px solid var(--border);
-      padding: 3rem 1.5rem;
-      margin-top: 4rem;
+
+    /* ========================================
+       Footer
+       ======================================== */
+    .sci-footer {
+      background: var(--sci-bg-code);
+      border-top: 1px solid var(--sci-border);
+      padding: var(--sci-spacing-3xl) 0 var(--sci-spacing-xl);
+      margin-top: var(--sci-spacing-3xl);
     }
-    
-    .footer-container {
+
+    .sci-footer-content {
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 var(--sci-spacing-lg);
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
+      gap: var(--sci-spacing-2xl);
     }
-    
-    .footer-section h4 {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 1rem;
-      margin-top: 0;
+
+    .sci-footer-brand {
+      display: flex;
+      align-items: center;
+      gap: var(--sci-spacing-sm);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--sci-text-primary);
+      margin-bottom: var(--sci-spacing-md);
     }
-    
-    .footer-section ul {
+
+    .sci-footer-brand img {
+      height: 36px;
+      width: auto;
+    }
+
+    .sci-footer h4 {
+      color: var(--sci-text-primary);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--sci-spacing-md);
+    }
+
+    .sci-footer ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-    
-    .footer-section li {
-      margin-bottom: 0.5rem;
+
+    .sci-footer li {
+      margin-bottom: var(--sci-spacing-sm);
     }
-    
-    .footer-section a {
-      color: var(--text-muted);
-      font-size: 0.875rem;
+
+    .sci-footer a {
+      color: var(--sci-text-muted);
+      font-size: 0.9rem;
     }
-    
-    .footer-section a:hover {
-      color: var(--primary-light);
-      text-decoration: none;
+
+    .sci-footer a:hover {
+      color: var(--sci-primary-light);
     }
-    
-    .footer-bottom {
+
+    .sci-footer-bottom {
       max-width: 1200px;
-      margin: 2rem auto 0;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
+      margin: var(--sci-spacing-2xl) auto 0;
+      padding: var(--sci-spacing-lg) var(--sci-spacing-lg) 0;
+      border-top: 1px solid var(--sci-border);
       text-align: center;
-      color: var(--text-muted);
+      color: var(--sci-text-muted);
       font-size: 0.875rem;
     }
-    
-    /* =====================================================
-       UTILITIES
-       ===================================================== */
-    
-    .text-center { text-align: center; }
-    .text-muted { color: var(--text-muted); }
-    .mt-0 { margin-top: 0; }
-    .mb-0 { margin-bottom: 0; }
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
+
+    /* ========================================
+       Utilities
+       ======================================== */
+    .sci-text-center { text-align: center; }
+    .sci-text-primary { color: var(--sci-primary-light); }
+    .sci-text-muted { color: var(--sci-text-muted); }
+    .sci-mt-0 { margin-top: 0; }
+    .sci-mb-0 { margin-bottom: 0; }
+    .sci-mb-lg { margin-bottom: var(--sci-spacing-lg); }
+    .sci-mb-xl { margin-bottom: var(--sci-spacing-xl); }
+
+    /* ========================================
+       Page Header
+       ======================================== */
+    .sci-page-header {
+      text-align: center;
+      padding: var(--sci-spacing-3xl) 0;
+      border-bottom: 1px solid var(--sci-border);
+      margin-bottom: var(--sci-spacing-2xl);
     }
-    
-    /* =====================================================
-       ANIMATIONS
-       ===================================================== */
-    
+
+    .sci-page-header h1 {
+      margin-bottom: var(--sci-spacing-md);
+    }
+
+    .sci-page-header p {
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ========================================
+       TOC (Table of Contents)
+       ======================================== */
+    .sci-toc {
+      background: var(--sci-bg-card);
+      border: 1px solid var(--sci-border);
+      border-radius: var(--sci-radius-lg);
+      padding: var(--sci-spacing-lg);
+      margin-bottom: var(--sci-spacing-2xl);
+    }
+
+    .sci-toc h4 {
+      margin-bottom: var(--sci-spacing-md);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .sci-toc ul {
+      margin: 0;
+      padding-left: var(--sci-spacing-lg);
+    }
+
+    .sci-toc a {
+      color: var(--sci-text-secondary);
+    }
+
+    .sci-toc a:hover {
+      color: var(--sci-primary-light);
+    }
+
+    /* ========================================
+       Responsive
+       ======================================== */
+    @media (max-width: 640px) {
+      .sci-content {
+        padding: var(--sci-spacing-xl) var(--sci-spacing-md);
+      }
+
+      pre {
+        padding: var(--sci-spacing-md);
+        font-size: 0.8rem;
+      }
+
+      .sci-page-header {
+        padding: var(--sci-spacing-2xl) var(--sci-spacing-md);
+      }
+    }
+
+    /* ========================================
+       Animations
+       ======================================== */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
-    .main-content {
+
+    .sci-content {
       animation: fadeIn 0.4s ease-out;
     }
+
+    /* ========================================
+       Scrollbar
+       ======================================== */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--sci-bg-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--sci-border-light);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--sci-text-muted);
+    }
+
+    /* ========================================
+       Selection
+       ======================================== */
+    ::selection {
+      background: var(--sci-primary);
+      color: white;
+    }
   </style>
-  
-  {% include head-custom.html %}
 </head>
 <body>
-  <div class="site-wrapper">
-    <!-- Header -->
-    <header class="site-header">
-      <div class="header-container">
-        <a href="{{ '/' | relative_url }}" class="logo-link">
-          {% if site.logo %}
-            <img src="{{ site.logo | relative_url }}" alt="Snake Code Institute Logo">
-          {% endif %}
-          <span class="logo-text">Snake Code <span class="highlight">Institute</span></span>
-        </a>
-        
-        <nav>
-          <ul class="nav-links">
-            <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
-            <li><a href="{{ '/cursos' | relative_url }}">Cursos</a></li>
-            <li><a href="{{ '/recursos' | relative_url }}">Recursos</a></li>
-            <li><a href="{{ '/contacto' | relative_url }}">Contacto</a></li>
-          </ul>
-        </nav>
-        
-        <div class="header-actions">
-          <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
-            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-          </button>
-          <a href="{{ site.github.repository_url }}" class="btn btn-ghost">GitHub</a>
-          <a href="{{ '/inscripcion' | relative_url }}" class="btn btn-primary">Inscríbete</a>
-          <button class="mobile-menu-btn" aria-label="Menú">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </header>
-    
-    <!-- Main Content -->
-    <main class="main-content">
-      {{ content }}
-    </main>
-    
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="footer-container">
-        <div class="footer-section">
-          <h4>Snake Code Institute</h4>
-          <p class="text-muted" style="font-size: 0.875rem;">
-            Formando a los desarrolladores del futuro con educación de calidad en programación y tecnología.
-          </p>
-        </div>
-        
-        <div class="footer-section">
-          <h4>Cursos</h4>
-          <ul>
-            <li><a href="#">Python Fundamentals</a></li>
-            <li><a href="#">Desarrollo Web</a></li>
-            <li><a href="#">Data Science</a></li>
-            <li><a href="#">Machine Learning</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-section">
-          <h4>Recursos</h4>
-          <ul>
-            <li><a href="#">Documentación</a></li>
-            <li><a href="#">Tutoriales</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-section">
-          <h4>Contacto</h4>
-          <ul>
-            <li><a href="mailto:info@snakecode.edu">info@snakecode.edu</a></li>
-            <li><a href="{{ site.github.repository_url }}">GitHub</a></li>
-            <li><a href="https://linktr.ee/frostalo">Redes Sociales</a></li>
-          </ul>
-        </div>
-      </div>
+  <!-- Navbar -->
+  <nav class="sci-navbar">
+    <div class="sci-navbar-container">
+      <a href="{{ '/' | relative_url }}" class="sci-navbar-brand">
+        <img src="{{ '/assets/images/sci/logo-sci.png' | relative_url }}" alt="Snake Code Institute">
+        <span>Snake Code Institute</span>
+      </a>
       
-      <div class="footer-bottom">
-        <p>&copy; {{ site.time | date: '%Y' }} Snake Code Institute. Todos los derechos reservados.</p>
-        {% if site.github.is_project_page %}
-        <p style="margin-top: 0.5rem;">
-          Mantenido por <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>
-        </p>
+      <button class="sci-menu-toggle" onclick="document.querySelector('.sci-navbar-nav').classList.toggle('active')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <ul class="sci-navbar-nav">
+        <li><a href="{{ '/md_pages/sci/' | relative_url }}">Curso</a></li>
+        <li><a href="{{ '/md_pages/sci/temario' | relative_url }}">Temario</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="{{ site.sci_enroll_url | default: '#' }}" class="sci-btn sci-btn-primary">Inscribirme</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="sci-main">
+    {% if page.show_header != false %}
+    <header class="sci-page-header">
+      <div class="sci-container">
+        {% if page.badge %}
+        <span class="sci-badge sci-badge-primary">{{ page.badge }}</span>
+        {% endif %}
+        <h1>{{ page.title }}</h1>
+        {% if page.description %}
+        <p>{{ page.description }}</p>
         {% endif %}
       </div>
-    </footer>
-  </div>
-  
+    </header>
+    {% endif %}
+
+    <article class="sci-content">
+      {{ content }}
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="sci-footer" id="contacto">
+    <div class="sci-footer-content">
+      <div>
+        <a href="{{ '/' | relative_url }}" class="sci-footer-brand">
+          <img src="{{ '/assets/images/sci/logo-sci.png' | relative_url }}" alt="Snake Code Institute">
+          <span>Snake Code</span>
+        </a>
+        <p class="sci-text-muted">El lugar donde Python se domina de verdad.</p>
+      </div>
+      
+      <div>
+        <h4>Curso</h4>
+        <ul>
+          <li><a href="{{ '/md_pages/sci/temario' | relative_url }}">Temario Completo</a></li>
+          <li><a href="{{ '/md_pages/sci/modulo-1' | relative_url }}">Fundamentos</a></li>
+          <li><a href="{{ '/md_pages/sci/poo' | relative_url }}">POO</a></li>
+          <li><a href="{{ '/md_pages/sci/solid' | relative_url }}">SOLID</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="{{ '/md_pages/sci/ejercicios' | relative_url }}">Ejercicios</a></li>
+          <li><a href="{{ '/md_pages/sci/proyectos' | relative_url }}">Proyectos</a></li>
+          <li><a href="{{ '/md_pages/sci/faq' | relative_url }}">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:{{ site.sci_email | default: 'contacto@snakecode.com' }}">Email</a></li>
+          <li><a href="{{ site.sci_github | default: '#' }}">GitHub</a></li>
+          <li><a href="{{ site.sci_linkedin | default: '#' }}">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="sci-footer-bottom">
+      <p>&copy; {{ 'now' | date: "%Y" }} Snake Code Institute. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Highlight.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
   <script>
-    // Theme Toggle
-    function toggleTheme() {
-      document.body.classList.toggle('light-mode');
-      const isLight = document.body.classList.contains('light-mode');
-      localStorage.setItem('sci-theme', isLight ? 'light' : 'dark');
-    }
+    // Inicializar syntax highlighting
+    hljs.highlightAll();
     
-    // Apply saved theme on load
-    (function() {
-      const savedTheme = localStorage.getItem('sci-theme');
-      if (savedTheme === 'light') {
-        document.body.classList.add('light-mode');
+    // Agregar label de lenguaje a los bloques de código
+    document.querySelectorAll('pre code').forEach((block) => {
+      const lang = block.className.match(/language-(\w+)/);
+      if (lang) {
+        block.parentElement.setAttribute('data-lang', lang[1]);
       }
-    })();
-    
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
     });
   </script>
 </body>

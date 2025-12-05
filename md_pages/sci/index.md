@@ -66,5 +66,3 @@ class DataProcessor:
 No pierdas más tiempo con tutoriales que no te llevan a ningún lado.
 
 [Inscribirme Ahora](#inscripcion){: .sci-btn .sci-btn-primary}
-
-
