@@ -118,7 +118,7 @@ I believe in making technology accessible and sharing what I learn. Stay tuned f
 
 ## Projects / Collaborations
 
-- Snake Code Institute: [Ver sitio del curso](./md_pages/snake_code_institute/sci_index.md)
+- Snake Code Institute: [Ver sitio del curso](./md_pages/sci/index.md)
 
 ---
 
