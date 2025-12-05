@@ -106,7 +106,7 @@ I'm always interested in collaborating on challenging projects that combine **em
 
 I believe in making technology accessible and sharing what I learn. Stay tuned for technical articles, project showcases, and insights from my journey bridging hardware, software, and business strategy.
 
-[Explore my technical journey and project stories here](./md_pages/menu.html)
+[Explore my technical journey and project stories here](./md_pages/menu.md)
 
 ---
 
