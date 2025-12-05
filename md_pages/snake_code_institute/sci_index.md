@@ -87,5 +87,5 @@ Si te interesa formarte con Snake Code Institute:
 ## 📩 Inscripción y contacto {#inscripcion}
 
 - Correo: jafdelaflor@gmail.com  
-- Formulario / landing comercial: [Ir a la página de inscripción](./inscripcion.md)
+- Formulario / landing comercial: [Haz click aquí para ir a la página de inscripción](./inscripcion.md)
 
