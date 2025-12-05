@@ -1,91 +1,70 @@
 ---
-layout: default
-title: "Snake Code Institute · Bootcamps de Programación"
+layout: sci
+title: Python Vanilla PRO
+description: El único curso que realmente necesitas para dominar Python desde cero hasta nivel profesional
+badge: Curso Completo
+permalink: /sci/
 ---
 
-# 🐍 Snake Code Institute
+## Donde otros enseñan lo básico, nosotros te convertimos en profesional
 
-Aprende programación desde cero hasta profesional con bootcamps intensivos, prácticos y enfocados en el mundo real.
-
-[Quiero más información](#inscripcion)
-
----
-
-## 🎯 Qué es Snake Code Institute
-
-Snake Code Institute es una iniciativa educativa enfocada en formar desarrolladores que realmente saben construir, no solo ver teoría.  
-Todo está diseñado alrededor de práctica guiada, proyectos reales y acompañamiento cercano.
+Snake Code Institute es el lugar donde Python se aprende de verdad. No tutoriales superficiales, no copy-paste sin entender. Aquí dominas el lenguaje desde sus fundamentos hasta arquitectura profesional.
 
 ---
 
-## 🧠 Metodología
+## ¿Por qué somos diferentes?
 
-- Aprendizaje basado en proyectos, no en diapositivas eternas.  
-- Explicaciones claras, ejemplos modernos y buenas prácticas desde el inicio.  
-- Feedback directo, correcciones y mejora continua sobre tu propio código.
-
----
-
-## 📚 Bootcamp principal: Python Vanilla PRO
-
-Un bootcamp orientado a dominar Python de forma sólida, moderna y con enfoque profesional.
-
-- De cero a escribir código limpio y mantenible.  
-- Pensado para que entiendas bien el lenguaje antes de saltar a frameworks y “hype”.  
-
-[Haz click aquí para ver temario completo de Python Vanilla PRO](./temario.md)
+| Otros cursos | Snake Code Institute |
+|--------------|---------------------|
+| Copiar código sin entender | Entender cada línea que escribes |
+| Solo sintaxis básica | POO, SOLID, Testing, Arquitectura |
+| Ejercicios genéricos | Proyectos del mundo real |
+| Sin soporte | Comunidad activa |
 
 ---
 
-## 🧱 Qué vas a aprender en el bootcamp
+## Lo que dominarás
 
-Al terminar el bootcamp podrás:
+\`\`\`python
+# No solo aprenderás esto...
+print("Hola Mundo")
 
-- Entender bien cómo funciona Python “por dentro” a nivel de tipos, memoria y estructuras.  
-- Escribir scripts y herramientas de automatización útiles para trabajo o proyectos personales.  
-- Diseñar y organizar proyectos reales usando funciones, POO, SOLID “light” y buenas prácticas.  
-- Leer y mantener código de otras personas con mayor confianza.
-
----
-
-## 🧩 Para quién es este bootcamp
-
-- Personas que quieren entrar al mundo de la programación desde cero, con una base sólida.  
-- Desarrolladores autodidactas que sienten “huecos” en sus fundamentos de Python.  
-- Profesionales de otras áreas (datos, negocios, ingeniería) que necesitan usar Python de forma seria.
-
----
-
-## 👨‍🏫 Sobre la enseñanza
-
-El contenido está diseñado y dictado por Jorge de la Flor, desarrollador y formador en programación, especializado en sistemas embebidos, Python y Rust.  
-La idea es enseñarte como si trabajaras en un proyecto real: código claro, criterios profesionales y foco en que entiendas el “por qué” detrás de cada tema.
+# Aprenderás a construir esto:
+class DataProcessor:
+    """Procesador de datos siguiendo principios SOLID."""
+    
+    def __init__(self, strategy: ProcessingStrategy):
+        self._strategy = strategy
+        self._validators: list[Validator] = []
+    
+    def process(self, data: DataFrame) -> Result:
+        validated = self._validate(data)
+        return self._strategy.execute(validated)
+\`\`\`
 
 ---
 
-## ❓ Preguntas frecuentes
+## Módulos del curso
 
-**¿Necesito experiencia previa?**  
-No es obligatorio; se empieza desde fundamentos, pero con ritmo serio y enfoque profesional.
+1. **Bienvenida e Introducción** - Metodología y roadmap
+2. **Conceptos Básicos** - Variables, operadores, estructuras
+3. **Funciones** - Parámetros, scope, decoradores
+4. **Estructuras de Datos** - Listas, diccionarios, sets, comprehensions
+5. **POO Fundamentos** - Clases, herencia, polimorfismo
+6. **POO Avanzado** - Métodos especiales, dataclasses
+7. **Manejo de Errores** - Excepciones, debugging
+8. **Módulos y Paquetes** - Organización de código
+9. **Archivos y Datos** - I/O, JSON, CSV
+10. **Proyecto Final** - Aplicación completa con SOLID
 
-**¿Voy a ver solo teoría?**  
-No. Cada módulo tiene laboratorio y ejercicios pensados para que apliques lo que estás viendo.
-
-**¿Tendré acceso al contenido luego?**  
-Sí, tendrás acceso al material del curso y podrás revisarlo a tu ritmo.
+[Ver Temario Detallado](/sci/temario/){: .sci-btn .sci-btn-primary}
 
 ---
 
-## ✅ Próximos pasos
+## ¿Listo para dominar Python?
 
-Si te interesa formarte con Snake Code Institute:
+No pierdas más tiempo con tutoriales que no te llevan a ningún lado.
 
-- Revisa el temario detallado de Python Vanilla PRO.  
-- Evalúa si se alinea con tus objetivos profesionales.  
-- Escríbenos para resolver dudas o conocer próximas fechas.
+[Inscribirme Ahora](#inscripcion){: .sci-btn .sci-btn-primary}
 
-## 📩 Inscripción y contacto {#inscripcion}
-
-- Correo: jafdelaflor@gmail.com  
-- Formulario / landing comercial: [Haz click aquí para ir a la página de inscripción](./inscripcion.md)
 
