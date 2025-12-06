@@ -25,7 +25,7 @@ Snake Code Institute es el lugar donde Python se aprende de verdad. No tutoriale
 
 ## Lo que dominarás
 
-\`\`\`python
+```python
 # No solo aprenderás esto...
 print("Hola Mundo")
 
@@ -40,7 +40,7 @@ class DataProcessor:
     def process(self, data: DataFrame) -> Result:
         validated = self._validate(data)
         return self._strategy.execute(validated)
-\`\`\`
+```
 
 ---
 
