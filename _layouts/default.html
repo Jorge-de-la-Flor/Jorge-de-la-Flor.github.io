@@ -1,711 +1,623 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'es-ES' }}" class="scroll-smooth">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  {% seo %}
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  {% include head-custom.html %}
-  
-  <style>
-    /* ========== VARIABLES ========== */
-    :root {
-      /* Light Mode */
-      --bg-primary: #fafafa;
-      --bg-secondary: #ffffff;
-      --bg-tertiary: #f4f4f5;
-      --bg-code: #18181b;
-      --text-primary: #18181b;
-      --text-secondary: #52525b;
-      --text-muted: #a1a1aa;
-      --border: #e4e4e7;
-      --accent-python: #3776ab;
-      --accent-rust: #ce422b;
-      --accent-cpp: #00599c;
-      --accent-gradient: linear-gradient(135deg, #3776ab 0%, #ce422b 50%, #00599c 100%);
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-    }
-    
-    .dark-mode {
-      --bg-primary: #09090b;
-      --bg-secondary: #18181b;
-      --bg-tertiary: #27272a;
-      --bg-code: #09090b;
-      --text-primary: #fafafa;
-      --text-secondary: #a1a1aa;
-      --text-muted: #71717a;
-      --border: #27272a;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
-      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.3);
-      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.5), 0 4px 6px -2px rgba(0,0,0,0.4);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }} - Jorge de la Flor</title>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           VARIABLES Y RESET
+        ============================================ */
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --bg-card-hover: #22222e;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6b6b7b;
+            --border-color: #2a2a3a;
+            --accent-blue: #3b82f6;
+            --accent-blue-light: #60a5fa;
+            --accent-orange: #f97316;
+            --accent-cyan: #06b6d4;
+            --gradient-text: linear-gradient(135deg, #3b82f6, #06b6d4, #f97316);
+            --shadow-glow: 0 0 60px rgba(59, 130, 246, 0.15);
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --max-width: 1100px;
+            --header-height: 70px;
+        }
 
-    /* ========== RESET & BASE ========== */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    html {
-      font-size: 16px;
-      scroll-behavior: smooth;
-    }
-    
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.7;
-      min-height: 100vh;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-    
-    /* ========== LAYOUT ========== */
-    .site-wrapper {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg-secondary);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo-section {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--text-primary);
-    }
-    
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--accent-gradient);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: white;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.1rem;
-    }
-    
-    .logo-text {
-      font-weight: 700;
-      font-size: 1.25rem;
-      letter-spacing: -0.02em;
-    }
-    
-    .logo-text span {
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-    
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 0.5rem;
-      list-style: none;
-    }
-    
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-    
-    .nav-links a:hover {
-      color: var(--text-primary);
-      background: var(--bg-tertiary);
-    }
-    
-    .theme-toggle {
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.5rem 0.75rem;
-      cursor: pointer;
-      color: var(--text-secondary);
-      font-size: 1rem;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .theme-toggle:hover {
-      background: var(--bg-secondary);
-      border-color: var(--text-muted);
-    }
-    
-    /* ========== MAIN CONTENT ========== */
-    .site-main {
-      flex: 1;
-      max-width: 900px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 3rem 2rem;
-    }
-    
-    /* ========== PROFILE HERO (para index) ========== */
-    .profile-hero {
-      text-align: center;
-      padding: 2rem 0 3rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 3rem;
-    }
-    
-    .profile-avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      border: 4px solid var(--border);
-      margin-bottom: 1.5rem;
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .profile-name {
-      font-size: 2.5rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.5rem;
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .profile-title {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-    }
-    
-    .tech-badges {
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-    }
-    
-    .tech-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      font-family: 'JetBrains Mono', monospace;
-      transition: all 0.2s ease;
-    }
-    
-    .tech-badge.python {
-      color: var(--accent-python);
-    }
-    
-    .tech-badge.rust {
-      color: var(--accent-rust);
-    }
-    
-    .tech-badge.cpp {
-      color: var(--accent-cpp);
-    }
-    
-    .tech-badge:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-    
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-    
-    .social-link {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-secondary);
-      font-size: 1.2rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    
-    .social-link:hover {
-      background: var(--text-primary);
-      color: var(--bg-primary);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    /* ========== CONTENT STYLES ========== */
-    .content-section {
-      margin-bottom: 3rem;
-    }
-    
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 2px solid var(--border);
-    }
-    
-    .section-icon {
-      font-size: 1.25rem;
-      color: var(--accent-python);
-    }
-    
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
+        [data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --shadow-glow: 0 0 60px rgba(59, 130, 246, 0.1);
+        }
 
-    /* ========== TYPOGRAPHY ========== */
-    .site-main h1 {
-      font-size: 2.25rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-    
-    .site-main h2 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin: 2.5rem 0 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--border);
-    }
-    
-    .site-main h3 {
-      font-size: 1.35rem;
-      font-weight: 600;
-      margin: 2rem 0 0.75rem;
-      color: var(--text-primary);
-    }
-    
-    .site-main h4 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin: 1.5rem 0 0.5rem;
-      color: var(--text-secondary);
-    }
-    
-    .site-main p {
-      margin-bottom: 1.25rem;
-      color: var(--text-secondary);
-    }
-    
-    .site-main a {
-      color: var(--accent-python);
-      text-decoration: none;
-      font-weight: 500;
-      border-bottom: 1px solid transparent;
-      transition: all 0.2s ease;
-    }
-    
-    .site-main a:hover {
-      border-bottom-color: var(--accent-python);
-    }
-    
-    .site-main strong {
-      color: var(--text-primary);
-      font-weight: 600;
-    }
-    
-    .site-main ul, .site-main ol {
-      margin: 1rem 0 1.5rem 1.5rem;
-      color: var(--text-secondary);
-    }
-    
-    .site-main li {
-      margin-bottom: 0.5rem;
-    }
-    
-    .site-main li::marker {
-      color: var(--accent-python);
-    }
-    
-    .site-main blockquote {
-      border-left: 4px solid var(--accent-python);
-      padding: 1rem 1.5rem;
-      margin: 1.5rem 0;
-      background: var(--bg-tertiary);
-      border-radius: 0 12px 12px 0;
-      font-style: italic;
-      color: var(--text-secondary);
-    }
-    
-    .site-main hr {
-      border: none;
-      height: 1px;
-      background: var(--border);
-      margin: 2.5rem 0;
-    }
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* ========== CODE BLOCKS ========== */
-    .site-main code {
-      font-family: 'JetBrains Mono', 'Fira Code', monospace;
-      font-size: 0.875em;
-      background: var(--bg-code);
-      color: #e4e4e7;
-      padding: 0.2em 0.5em;
-      border-radius: 6px;
-    }
-    
-    .site-main pre {
-      background: var(--bg-code);
-      border-radius: 12px;
-      padding: 1.5rem;
-      overflow-x: auto;
-      margin: 1.5rem 0;
-      border: 1px solid var(--border);
-      position: relative;
-    }
-    
-    .site-main pre::before {
-      content: attr(data-lang);
-      position: absolute;
-      top: 0.75rem;
-      right: 0.75rem;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      font-family: 'JetBrains Mono', monospace;
-      background: var(--bg-tertiary);
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-    }
-    
-    .site-main pre code {
-      background: none;
-      padding: 0;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: #e4e4e7;
-    }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
 
-    /* Syntax Highlighting */
-    .highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, 
-    .highlight .kr, .highlight .kt { color: #c084fc; } /* Keywords - purple */
-    .highlight .s, .highlight .s1, .highlight .s2, .highlight .sb,
-    .highlight .sc, .highlight .sd, .highlight .se, .highlight .sh,
-    .highlight .sx { color: #86efac; } /* Strings - green */
-    .highlight .c, .highlight .c1, .highlight .cm, .highlight .cp,
-    .highlight .cs { color: #6b7280; font-style: italic; } /* Comments - gray */
-    .highlight .nf, .highlight .fm { color: #60a5fa; } /* Functions - blue */
-    .highlight .nc, .highlight .nn { color: #fbbf24; } /* Classes - yellow */
-    .highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo { color: #f472b6; } /* Numbers - pink */
-    .highlight .nb, .highlight .bp { color: #22d3ee; } /* Builtins - cyan */
-    .highlight .o, .highlight .ow { color: #f87171; } /* Operators - red */
-    .highlight .p { color: #e4e4e7; } /* Punctuation */
-    .highlight .n, .highlight .na, .highlight .nv { color: #e4e4e7; } /* Names */
+        body {
+            font-family: var(--font-main);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
 
-    /* ========== TABLES ========== */
-    .site-main table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
-      font-size: 0.9rem;
-    }
-    
-    .site-main th, .site-main td {
-      padding: 0.75rem 1rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
-    
-    .site-main th {
-      background: var(--bg-tertiary);
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    
-    .site-main tr:hover td {
-      background: var(--bg-tertiary);
-    }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-    /* ========== CARDS ========== */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin: 1.5rem 0;
-    }
-    
-    .card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.5rem;
-      transition: all 0.3s ease;
-    }
-    
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--text-muted);
-    }
-    
-    .card-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    
-    .card-desc {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
+        /* ============================================
+           HEADER / NAVBAR
+        ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: background 0.3s;
+        }
 
-    /* ========== FOOTER ========== */
-    .site-footer {
-      background: var(--bg-secondary);
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
-    }
-    
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-    
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.2s ease;
-    }
-    
-    .footer-links a:hover {
-      color: var(--text-primary);
-    }
-    
-    .footer-copy {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-    
-    .footer-copy a {
-      color: var(--accent-python);
-      text-decoration: none;
-    }
+        [data-theme="light"] .header {
+            background: rgba(248, 250, 252, 0.9);
+        }
 
-    /* ========== MOBILE RESPONSIVE ========== */
-    @media (max-width: 768px) {
-      .header-inner {
-        padding: 1rem;
-      }
-      
-      .nav-links {
-        display: none;
-      }
-      
-      .site-main {
-        padding: 2rem 1rem;
-      }
-      
-      .profile-name {
-        font-size: 2rem;
-      }
-      
-      .profile-title {
-        font-size: 1.1rem;
-      }
-      
-      .site-main h1 {
-        font-size: 1.75rem;
-      }
-      
-      .site-main h2 {
-        font-size: 1.5rem;
-      }
-      
-      .site-main pre {
-        padding: 1rem;
-        border-radius: 8px;
-      }
-      
-      .tech-badges {
-        gap: 0.5rem;
-      }
-      
-      .tech-badge {
-        padding: 0.4rem 0.75rem;
-        font-size: 0.8rem;
-      }
-    }
+        .header-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    /* ========== ANIMATIONS ========== */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .site-main {
-      animation: fadeIn 0.5s ease-out;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
 
-    /* ========== SCROLLBAR ========== */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    
-    ::-webkit-scrollbar-track {
-      background: var(--bg-primary);
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background: var(--border);
-      border-radius: 4px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--text-muted);
-    }
-  </style>
-</head>
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            color: white;
+        }
 
-<body>
-  <div class="site-wrapper">
-    <!-- Header -->
-    <header class="site-header">
-      <div class="header-inner">
-        <a href="{{ '/' | relative_url }}" class="logo-section">
-          <div class="logo-icon">JF</div>
-          <div class="logo-text">Jorge<span>.dev</span></div>
-        </a>
+        .logo-text span {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+            background: var(--bg-card);
+        }
+
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            margin-left: 8px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-card-hover);
+            color: var(--text-primary);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .sun-icon { display: none; }
+        .moon-icon { display: block; }
+        [data-theme="light"] .sun-icon { display: block; }
+        [data-theme="light"] .moon-icon { display: none; }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav { display: none; }
+            .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
+            .nav.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                right: 0;
+                background: var(--bg-secondary);
+                border-bottom: 1px solid var(--border-color);
+                padding: 16px;
+            }
+        }
+
+        /* ============================================
+           MAIN CONTENT
+        ============================================ */
+        .main {
+            padding-top: calc(var(--header-height) + 40px);
+            min-height: calc(100vh - 200px);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0 80px;
+        }
+
+        .hero-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            border: 3px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-name {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .hero-title {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            transition: all 0.2s;
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .badge-python { color: #3b82f6; border-color: rgba(59, 130, 246, 0.3); }
+        .badge-rust { color: #f97316; border-color: rgba(249, 115, 22, 0.3); }
+        .badge-cpp { color: #06b6d4; border-color: rgba(6, 182, 212, 0.3); }
+
+        .hero-social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .social-link:hover {
+            background: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+
+        .social-link svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* Sections */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .section-divider {
+            height: 1px;
+            background: var(--border-color);
+            margin-bottom: 32px;
+        }
+
+        /* Content styles from markdown */
+        .content {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content p { margin-bottom: 16px; }
+        .content strong { color: var(--text-primary); font-weight: 600; }
         
-        <nav class="header-nav">
-          <ul class="nav-links">
-            <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
-            <li><a href="{{ '/md_pages/proyectos/' | relative_url }}">Proyectos</a></li>
-            <li><a href="{{ '/md_pages/sci/' | relative_url }}">Snake Code Institute</a></li>
-            <li><a href="{{ site.github.owner_url }}">GitHub</a></li>
-          </ul>
-          
-          <button class="theme-toggle" onclick="toggleDarkMode()" aria-label="Cambiar tema">
-            <i class="fas fa-moon" id="theme-icon"></i>
-          </button>
-        </nav>
-      </div>
+        .content h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 48px 0 16px;
+            color: var(--text-primary);
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 32px 0 12px;
+            color: var(--text-primary);
+        }
+
+        .content ul, .content ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        .content li { margin-bottom: 8px; }
+
+        .content a {
+            color: var(--accent-blue);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .content a:hover {
+            color: var(--accent-blue-light);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Table */
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .content th, .content td {
+            padding: 16px 20px;
+            text-align: left;
+        }
+
+        .content th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .content tr:not(:last-child) td {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .content td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Code blocks */
+        .content pre {
+            background: #1e1e2e;
+            border-radius: 12px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 24px 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .content code {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        .content p code {
+            background: var(--bg-card);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-blue);
+        }
+
+        .footer-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .footer-copy .heart {
+            color: #ef4444;
+        }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 640px) {
+            .hero-name { font-size: 2.2rem; }
+            .hero-title { font-size: 1rem; }
+            .section-title { font-size: 1.5rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="{{ '/' | relative_url }}" class="logo">
+                <div class="logo-icon">JF</div>
+                <div class="logo-text">Jorge<span>.dev</span></div>
+            </a>
+
+            <nav class="nav" id="nav">
+                <a href="{{ '/' | relative_url }}" class="nav-link">Inicio</a>
+                <a href="{{ '/proyectos' | relative_url }}" class="nav-link">Proyectos</a>
+                <a href="{{ '/blog' | relative_url }}" class="nav-link">Blog</a>
+                <a href="{{ '/md_pages/sci/' | relative_url }}" class="nav-link">Snake Code Institute</a>
+                <a href="https://github.com/Jorge-de-la-Flor" target="_blank" class="nav-link">GitHub</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
+                    <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                    <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                    </svg>
+                </button>
+            </nav>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
     </header>
 
     <!-- Main Content -->
-    <main class="site-main">
-      {{ content }}
+    <main class="main">
+        <div class="container">
+            {{ content }}
+        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="site-footer">
-      <div class="footer-content">
-        <div class="footer-links">
-          <a href="{{ site.github.owner_url }}"><i class="fab fa-github"></i> GitHub</a>
-          <a href="https://linktr.ee/frostalo"><i class="fas fa-link"></i> Linktree</a>
-          <a href="{{ '/md_pages/sci/' | relative_url }}"><i class="fas fa-graduation-cap"></i> Snake Code Institute</a>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://github.com/Jorge-de-la-Flor" target="_blank" class="footer-link">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://linktr.ee/jorgedelaflor" target="_blank" class="footer-link">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                    Linktree
+                </a>
+                <a href="{{ '/blog' | relative_url }}" class="footer-link">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                    Blog
+                </a>
+                <a href="{{ '/md_pages/sci/' | relative_url }}" class="footer-link">
+                    🐍 Snake Code Institute
+                </a>
+            </div>
+            <p class="footer-copy">
+                © 2025 Jorge de la Flor · Hecho con <span class="heart">❤</span> usando Python, Rust & C++
+            </p>
         </div>
-        <p class="footer-copy">
-          © {{ 'now' | date: "%Y" }} Jorge de la Flor · 
-          Hecho con <i class="fas fa-heart" style="color: var(--accent-rust);"></i> usando Python, Rust & C++
-        </p>
-      </div>
     </footer>
-  </div>
 
-  <script>
-    // Dark mode toggle
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      const icon = document.getElementById('theme-icon');
-      
-      if (document.body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      } else {
-        localStorage.setItem('theme', 'light');
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-      }
-    }
-    
-    // Apply saved theme on load
-    (function() {
-      const saved = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const icon = document.getElementById('theme-icon');
-      
-      if (saved === 'dark' || (!saved && prefersDark)) {
-        document.body.classList.add('dark-mode');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      }
-    })();
-  </script>
+    <script>
+        // Theme toggle
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.body.setAttribute('data-theme', savedTheme);
+        })();
+
+        // Mobile menu
+        function toggleMobileMenu() {
+            document.getElementById('nav').classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
