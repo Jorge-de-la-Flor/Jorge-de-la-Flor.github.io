@@ -3,7 +3,7 @@ layout: sci
 title: "Inscripción · Snake Code Institute"
 description: "El único curso que realmente necesitas para dominar Python desde cero hasta nivel" 
 badge: "Inscripción"
-permalink: md_pages/sci/inscripcion
+# permalink: md_pages/sci/inscripcion
 ---
 
 # 📝 Inscripción al Bootcamp · Snake Code Institute
