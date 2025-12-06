@@ -692,7 +692,7 @@
   <!-- Navbar -->
   <nav class="sci-navbar">
     <div class="sci-navbar-container">
-      <a href="{{ '/' | relative_url }}" class="sci-navbar-brand">
+      <a href="{{ '/md_pages/sci/' | relative_url }}" class="sci-navbar-brand">
         <img src="{{ '/assets/images/sci/logo-sci.png' | relative_url }}" alt="Snake Code Institute">
         <span>Snake Code Institute</span>
       </a>
@@ -707,7 +707,9 @@
         <li><a href="{{ '/md_pages/sci/' | relative_url }}">Curso</a></li>
         <li><a href="{{ '/md_pages/sci/temario' | relative_url }}">Temario</a></li>
         <li><a href="#contacto">Contacto</a></li>
-        <li><a href="{{ site.sci_enroll_url | default: '#' }}" class="sci-btn sci-btn-primary">Inscribirme</a></li>
+        <!-- Agregado enlace de regreso a Jorge.dev -->
+        <li><a href="{{ '/' | relative_url }}">← Jorge.dev</a></li>
+        <li><a href="{{ site.sci_enroll_url | default: '#inscripcion' }}" class="sci-btn sci-btn-primary">Inscribirme</a></li>
       </ul>
     </div>
   </nav>
@@ -737,7 +739,7 @@
   <footer class="sci-footer" id="contacto">
     <div class="sci-footer-content">
       <div>
-        <a href="{{ '/' | relative_url }}" class="sci-footer-brand">
+        <a href="{{ '/md_pages/sci/' | relative_url }}" class="sci-footer-brand">
           <img src="{{ '/assets/images/sci/logo-sci.png' | relative_url }}" alt="Snake Code Institute">
           <span>Snake Code</span>
         </a>
@@ -748,9 +750,9 @@
         <h4>Curso</h4>
         <ul>
           <li><a href="{{ '/md_pages/sci/temario' | relative_url }}">Temario Completo</a></li>
-          <li><a href="{{ '/md_pages/sci/modulo-1' | relative_url }}">Fundamentos</a></li>
-          <li><a href="{{ '/md_pages/sci/poo' | relative_url }}">POO</a></li>
-          <li><a href="{{ '/md_pages/sci/solid' | relative_url }}">SOLID</a></li>
+          <li><a href="{{ '/md_pages/sci/' | relative_url }}#fundamentos">Fundamentos</a></li>
+          <li><a href="{{ '/md_pages/sci/' | relative_url }}#poo">POO</a></li>
+          <li><a href="{{ '/md_pages/sci/' | relative_url }}#solid">SOLID</a></li>
         </ul>
       </div>
       
@@ -766,32 +768,22 @@
       <div>
         <h4>Contacto</h4>
         <ul>
-          <li><a href="mailto:{{ site.sci_email | default: 'contacto@snakecode.com' }}">Email</a></li>
-          <li><a href="{{ site.sci_github | default: '#' }}">GitHub</a></li>
-          <li><a href="{{ site.sci_linkedin | default: '#' }}">LinkedIn</a></li>
+          <li><a href="mailto:contacto@snakecode.dev">Email</a></li>
+          <li><a href="{{ site.github.owner_url }}">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/jorgedelaflor">LinkedIn</a></li>
         </ul>
       </div>
     </div>
     
     <div class="sci-footer-bottom">
-      <p>&copy; {{ 'now' | date: "%Y" }} Snake Code Institute. Todos los derechos reservados.</p>
+      <p>© {{ 'now' | date: "%Y" }} Snake Code Institute · Creado por <a href="{{ '/' | relative_url }}">Jorge de la Flor</a></p>
     </div>
   </footer>
 
   <!-- Highlight.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
-  <script>
-    // Inicializar syntax highlighting
-    hljs.highlightAll();
-    
-    // Agregar label de lenguaje a los bloques de código
-    document.querySelectorAll('pre code').forEach((block) => {
-      const lang = block.className.match(/language-(\w+)/);
-      if (lang) {
-        block.parentElement.setAttribute('data-lang', lang[1]);
-      }
-    });
-  </script>
+  <script>hljs.highlightAll();</script>
 </body>
 </html>
+  
