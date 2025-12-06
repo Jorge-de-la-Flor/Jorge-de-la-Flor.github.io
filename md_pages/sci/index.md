@@ -3,7 +3,7 @@ layout: sci
 title: Python Vanilla PRO
 description: El único curso que realmente necesitas para dominar Python desde cero hasta nivel profesional
 badge: Curso Completo
-# permalink: /sci/
+permalink: md_pages/sci/
 ---
 
 ## Donde otros enseñan lo básico, nosotros te convertimos en profesional

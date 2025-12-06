@@ -1,9 +1,9 @@
 ---
 layout: sci
 title: Temario Completo
-description: 10 módulos diseñados para llevarte de cero a profesional en Python
+description: "10 módulos diseñados para llevarte de cero a profesional en Python"
 badge: Python Vanilla PRO
-permalink: /sci/temario/
+permalink: md_pages/sci/temario
 ---
 
 ## Módulo 1: Bienvenida e Introducción
