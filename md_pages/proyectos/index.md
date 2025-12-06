@@ -1,5 +1,5 @@
 ---
-layout: sci
+layout: default
 title: Proyectos
 description: Bienvenido al apartado de mis proyectos
 badge: Proyectos
