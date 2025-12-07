@@ -57,7 +57,7 @@ class DataProcessor:
 9. **Archivos y Datos** - I/O, JSON, CSV
 10. **Proyecto Final** - Aplicación completa con SOLID
 
-[Ver Temario Detallado](/temario.md){: .sci-btn .sci-btn-primary}
+[Ver Temario Detallado](/sci/temario/){: .sci-btn .sci-btn-primary}
 
 ---
 
@@ -65,4 +65,4 @@ class DataProcessor:
 
 No pierdas más tiempo con tutoriales que no te llevan a ningún lado.
 
-[Inscribirme Ahora](/inscripcion.md){: .sci-btn .sci-btn-primary}
+[Inscribirme Ahora](#inscripcion){: .sci-btn .sci-btn-primary}
