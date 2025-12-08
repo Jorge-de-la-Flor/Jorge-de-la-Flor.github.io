@@ -56,14 +56,15 @@ title: Jorge de la Flor - Software Developer
 
 ---
 
-## Stack tecnológico
+## Stack Tecnológico
 
-| Categoría | Tecnologías |
-|-----------|-------------|
-| **Lenguajes** | Python (experto), Rust (avanzado), C/C++ (embebidos) |
-| **Backend** | Django, FastAPI, Flask, SQLAlchemy, asyncio |
-| **Embebidos** | ESP32, STM32, Arduino, embedded-hal, PlatformIO |
-| **Data** | Pandas, OpenCV, PostgreSQL, Power BI |
+<div class="tech-badges">
+  <span class="tech-badge python"><i class="fab fa-python"></i> Python</span>
+  <span class="tech-badge rust"><i class="fas fa-cog"></i> Rust</span>
+  <span class="tech-badge embedded"><i class="fas fa-microchip"></i> Sistemas Embebidos</span>
+</div>
+
+**Uso diario:** Desarrollo principalmente en Python y Rust, concentrado en proyectos con embedded-hal y creación de nuevos frameworks.
 
 ---
 
