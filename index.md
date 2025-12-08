@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Jorge de la Flor - Embedded Systems Engineer
+title: Jorge de la Flor - Software Developer
 ---
 
 <div class="profile-hero">
   <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="Jorge de la Flor" class="profile-avatar" onerror="this.style.display='none'">
   
   <h1 class="profile-name">Jorge de la Flor</h1>
-  <p class="profile-title">Construyo sistemas embebidos que generan resultados reales</p>
+  <p class="profile-title">Software Developer · Embedded Systems · Founder @ Snake Code Institute</p>
   
   <div class="tech-badges">
     <span class="tech-badge python"><i class="fab fa-python"></i> Python</span>
@@ -17,65 +17,66 @@ title: Jorge de la Flor - Embedded Systems Engineer
   
   <div class="social-links">
     <a href="{{ site.github.owner_url }}" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://linktr.ee/frostalo" class="social-link" title="Más"><i class="fas fa-link"></i></a>
+    <a href="https://linktr.ee/frostalo" class="social-link" title="Linktree"><i class="fas fa-link"></i></a>
     <a href="{{ '/md_pages/sci/' | relative_url }}" class="social-link" title="Cursos"><i class="fas fa-graduation-cap"></i></a>
   </div>
 </div>
 
-## ¿Qué hago?
+## Sobre mí
 
-**Integro hardware + software + negocio** para crear soluciones que optimizan operaciones industriales y automatizan procesos complejos.
+Desarrollador especializado en **Python**, **Rust** y **sistemas embebidos**. Fundador de **Snake Code Institute**, donde enseño programación profesional: desde fundamentos hasta arquitectura SOLID, testing y patrones reales.
 
-- 🔧 **Sistemas embebidos** (Arduino, ESP32, STM32)  
-- 🤖 **IoT industrial** y monitoreo en tiempo real  
-- ⚡ **Automatización** con Python/Rust que ahorra 50%+ en tiempo  
-- ☁️ **Cloud integration** (Azure) para escalabilidad  
+**Construyo:**
+- Sistemas embebidos production-ready (ESP32, STM32, Arduino)  
+- Automatizaciones que optimizan operaciones industriales  
+- Aplicaciones Python que escalan (FastAPI, async, data pipelines)  
 
-**Resultado:** Tus operaciones funcionan solas. Tú tomas decisiones con datos reales.
+**Resultado:** Código limpio que genera impacto real en negocio y operaciones.
 
 ---
 
-## Proyectos que demuestran
+## Proyectos destacados
 
 <div class="card-grid">
   <div class="card">
-    <h3><i class="fas fa-industry"></i> Monitoreo Industrial</h3>
-    <p>Sistemas embebidos que detectan fallos antes que ocurran. Desplegados en producción.</p>
+    <h3 class="card-title"><i class="fas fa-graduation-cap" style="color: var(--accent-python);"></i> Snake Code Institute</h3>
+    <p class="card-desc">Curso Python completo: cero a profesional con POO, SOLID, testing y arquitectura real.</p>
   </div>
   
   <div class="card">
-    <h3><i class="fas fa-robot"></i> Automatización Logística</h3>
-    <p>Procesos que reducían 8h manuales a 30min automáticos. ROI inmediato.</p>
+    <h3 class="card-title"><i class="fas fa-microchip" style="color: var(--accent-rust);"></i> Sistemas Embebidos</h3>
+    <p class="card-desc">Monitoreo industrial, IoT y HALs en Rust. Desplegados 24/7 en producción.</p>
   </div>
   
   <div class="card">
-    <h3><i class="fas fa-brain"></i> Visión por Computador</h3>
-    <p>Documentos procesados automáticamente con OCR + ML. Precisión 98%.</p>
+    <h3 class="card-title"><i class="fas fa-robot"></i> Automatización</h3>
+    <p class="card-desc">Optimización logística y OCR que reducen horas manuales en minutos.</p>
   </div>
 </div>
 
 ---
 
-## Stack que domina
+## Stack tecnológico
 
-| **Backend** | Python, FastAPI, Flask |  
-| **Sistemas** | Rust, C/C++, embedded-hal |  
-| **Hardware** | ESP32, STM32, Arduino |  
-| **Cloud** | Azure (Developer/DevOps) |  
-| **Data** | Pandas, SQL, Power BI |
+| Categoría | Tecnologías |
+|-----------|-------------|
+| **Lenguajes** | Python (experto), Rust (avanzado), C/C++ (embebidos) |
+| **Backend** | FastAPI, Flask, SQLAlchemy, asyncio |
+| **Embebidos** | ESP32, STM32, Arduino, embedded-hal, PlatformIO |
+| **Data** | Pandas, OpenCV, PostgreSQL, Power BI |
 
 ---
 
-## ¿Trabajamos juntos?
+## ¿Colaboramos?
 
-**Para:** Empresas que necesitan automatizar operaciones, startups IoT, industrias con procesos manuales.
+**Para empresas:** Consultoría embedded/IoT, automatizaciones que pagan solas  
+**Para devs:** Cursos Python profesional en Snake Code Institute  
 
-**Te ofrezco:**
-- Consultoría técnica embedded/IoT  
-- Automatizaciones que pagan solas  
-- Cursos Python profesional (Snake Code Institute)  
-
-**Contacta:** jafdelaflor@gmail.com | [GitHub]({{ site.github.owner_url }}) | [Linktree](https://linktr.ee/frostalo)
+**Contacta:**  
+- [GitHub]({{ site.github.owner_url }}) - Código y proyectos  
+- [Snake Code Institute]({{ '/md_pages/sci/' | relative_url }}) - Aprende programación real  
+- [jafdelaflor@gmail.com](mailto:jafdelaflor@gmail.com) - Proyectos y colaboraciones  
+- [Linktree](https://linktr.ee/frostalo) - Todo lo demás  
 
 <div style="text-align:center; margin: 3rem 0;">
   <a href="mailto:jafdelaflor@gmail.com" class="cta-button">Hablemos de tu proyecto</a>
