@@ -58,8 +58,6 @@ title: Jorge de la Flor - Software Developer
 
 ## Stack Tecnológico
 
-## Stack Tecnológico
-
 <div class="tech-badges">
   <span class="tech-badge ml"><i class="fas fa-brain"></i> Micro IA</span>
   <span class="tech-badge python"><i class="fab fa-python"></i> Python</span>
