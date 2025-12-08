@@ -61,6 +61,7 @@ title: Jorge de la Flor - Software Developer
 <div class="tech-badges">
   <span class="tech-badge python"><i class="fab fa-python"></i> Python</span>
   <span class="tech-badge rust"><i class="fas fa-cog"></i> Rust</span>
+  <span class="tech-badge cpp"><i class="fas fa-microchip"></i> C/C++</span>
   <span class="tech-badge embedded"><i class="fas fa-microchip"></i> Sistemas Embebidos</span>
 </div>
 
