@@ -22,7 +22,7 @@ title: Blog
 
 ---
 
-*¿Tienes sugerencias de temas? [Contáctame](https://linktr.ee/frostalo)*
+*¿Tienes sugerencias de temas? [Contáctame](/#contacto)*
 
 ---
 
