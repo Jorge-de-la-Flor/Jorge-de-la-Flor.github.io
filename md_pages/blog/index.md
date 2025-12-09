@@ -13,9 +13,7 @@ title: Blog
   <h2 class="section-title">Blog</h2>
 </div> -->
 
-## Blog
-
-Estoy preparando contenido sobre:
+## Estoy preparando contenido sobre
 
 - **Python Avanzado** - Decoradores, metaclases, y patrones de diseño
 - **Rust para Pythonistas** - Guía de transición

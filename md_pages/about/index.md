@@ -19,6 +19,8 @@ Soy **Jorge de la Flor**, desarrollador de software especializado en **Python**,
 
 Trabajo en el punto donde convergen **embedded**, **IoT** e **inteligencia artificial ligera**, diseñando sistemas que pueden correr cerca del dato: en el edge, no solo en la nube.
 
+Por encima de la lista de tecnologías, me importa que cada proyecto tenga un **propósito claro**. Me interesa que las cosas sean más **simples**, más **rápidas** y más **confiables** para todos. Siempre busco cómo **optimizar** un poco más cada sistema.
+
 ---
 
 ## Qué hago hoy
