@@ -6,7 +6,7 @@ title: Jorge de la Flor - Software Developer
 <div class="profile-hero">
   <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="Jorge de la Flor" class="profile-avatar" onerror="this.style.display='none'">
   
-  <h1 class="profile-name">Jorge de la Flor · aka Tangelo</h1>
+  <h1 class="profile-name">Jorge de la Flor</h1>
   <p class="profile-title">Software Developer · Founder @ Snake Code Institute & Crab Code Institute</p>
   
   <div class="tech-badges">
