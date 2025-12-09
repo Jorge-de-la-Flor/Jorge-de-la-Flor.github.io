@@ -5,7 +5,7 @@ title: Sobre mí - Jorge de la Flor
 
 # Sobre mí
 
-Soy **Jorge de la Flor**, desarrollador de software especializado en **Python**, **Rust**, **sistemas embebidos** y **Micro IA**. Combino una base fuerte en **Negocios Internacionales** con experiencia técnica para llevar soluciones desde el **hardware** hasta el **negocio**.
+Soy **Jorge de la Flor** · aka **Tangelo**, desarrollador de software especializado en **Python**, **Rust**, **sistemas embebidos** y **Micro IA**. Combino una base fuerte en **Negocios Internacionales** con experiencia técnica para llevar soluciones desde el **hardware** hasta el **negocio**.
 
 Trabajo en el punto donde convergen **embedded**, **IoT** e **inteligencia artificial ligera**, diseñando sistemas que pueden correr cerca del dato: en el edge, no solo en la nube.
 
