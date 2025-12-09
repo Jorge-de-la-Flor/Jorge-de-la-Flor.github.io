@@ -34,17 +34,10 @@ title: Jorge de la Flor - Software Developer
 **Líder técnico activo en comunidades developer LATAM** - desarrollo, testing, debugging y web dev para proyectos colaborativos. Desarrollo soluciones que integran **hardware → software → negocio**.
 
 <p style="margin-top: 1.5rem;">
-  <a href="{{ '/about/' | relative_url }}" class="cta-link">
-    👉 Leer más sobre mi recorrido →
+  <a href="{{ '/md_pages/about/' | relative_url }}" class="cta-link">
+    🚀 Leer más sobre mi recorrido →
   </a>
 </p>
-
-<div style="margin-top: 1.5rem;">
-  <a href="{{ '/about/' | relative_url }}" class="cta-button">
-    Leer más sobre mi recorrido
-  </a>
-</div>
-
 
 ---
 
