@@ -87,17 +87,13 @@ title: Jorge de la Flor - Software Developer
   <a href="#contacto" class="cta-button">Hablemos de tu proyecto</a>
 </div>
 
-**Contacta:**  
-- [GitHub]({{ site.github.owner_url }}) - Código y proyectos
-- [jafdelaflor@gmail.com](mailto:jafdelaflor@gmail.com) - Proyectos y colaboraciones 
-- [Snake Code Institute]({{ '/md_pages/sci/' | relative_url }}) - Aprende programación real   
-- [Linktree](https://linktr.ee/frostalo) - Todo lo demás  
-
-<!-- <div style="text-align:center; margin: 3rem 0;">
-  <a href="mailto:jafdelaflor@gmail.com" class="cta-button">Hablemos de tu proyecto</a>
-</div> -->
-
 ## Contacto {#contacto}
 
 - **Email:** [jafdelaflor@gmail.com](mailto:jafdelaflor@gmail.com) – Proyectos y colaboraciones   
+- [GitHub]({{ site.github.owner_url }}) - Código y proyectos
+- [Snake Code Institute]({{ '/md_pages/sci/' | relative_url }}) - Aprende programación real   
+- [Linktree](https://linktr.ee/frostalo) - Todo lo demás  
+
+
+
 
