@@ -24,6 +24,10 @@ title: Jorge de la Flor - Software Developer
   </div>
 </div>
 
+<div style="text-align:center; margin: 2rem 0;">
+  <a href="#contacto" class="cta-button">Hablemos de tu proyecto</a>
+</div>
+
 ## Sobre mí
 
 **Desarrollador especializado en Python, Rust y sistemas embebidos.** Egresado de **San Ignacio University (USA)** + **Universidad San Ignacio de Loyola (Perú)** con doble grado en **International Business**.
@@ -82,10 +86,6 @@ title: Jorge de la Flor - Software Developer
 
 **Para empresas:** Consultoría embedded/IoT y automatizaciones a medida.  
 **Para devs:** Cursos de Python profesional en Snake Code Institute.  
-
-<div style="text-align:center; margin: 2rem 0;">
-  <a href="#contacto" class="cta-button">Hablemos de tu proyecto</a>
-</div>
 
 ## Contacto {#contacto}
 
