@@ -24,10 +24,4 @@ permalink: md_pages/proyectos/
 
 ---
 
-_Puedes ver más código y experimentos en_ [mi GitHub]({{ site.github.owner_url }}).
-
-<p>
-  <em>Más proyectos y código en</em> 
-  <a href="{{ site.github.owner_url }}">mi GitHub</a>.
-</p>
-
+_Más proyectos y código en_ [mi GitHub]({{ site.github.owner_url }}).

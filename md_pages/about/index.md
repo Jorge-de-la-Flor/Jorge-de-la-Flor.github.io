@@ -8,10 +8,10 @@ title: Sobre mí - Jorge de la Flor
   <p class="profile-title">Especializado en sistemas embebidos, Micro IA y soluciones en Python y Rust que conectan hardware, software y negocio.</p>
 </div>
 
-<div class="section-header">
+<!-- <div class="section-header">
   <i class="fas fa-user section-icon"></i>
   <h2 class="section-title">Quién soy</h2>
-</div>
+</div> -->
 
 Soy **Jorge de la Flor**, desarrollador de software especializado en **Python**, **Rust**, **sistemas embebidos** y **Micro IA**. Combino una base fuerte en **Negocios Internacionales** con experiencia técnica para llevar soluciones desde el **hardware** hasta el **negocio**.
 
