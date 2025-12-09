@@ -8,6 +8,7 @@ title: Jorge de la Flor - Software Developer
   
   <h1 class="profile-name">Jorge de la Flor</h1>
   <p class="profile-title">Software Developer · Founder @ Snake Code Institute & Crab Code Institute</p>
+  <p class="profile-title">Especializado en sistemas embebidos, Micro IA y frameworks en Rust que conectan hardware con negocio.</p>
   
   <div class="tech-badges">
     <span class="tech-badge python"><i class="fab fa-python"></i> Python</span>
@@ -73,14 +74,18 @@ title: Jorge de la Flor - Software Developer
 </div>
 
 
-**Uso diario:** Desarrollo principalmente en Python y Rust, concentrado en proyectos con embedded-hal y creación de nuevos frameworks.
+**Uso diario:** Python y Rust, centrado en proyectos con embedded-hal y creación de nuevos frameworks.
 
 ---
 
 ## ¿Colaboramos?
 
-**Para empresas:** Consultoría embedded/IoT, automatizaciones que pagan solas  
-**Para devs:** Cursos Python profesional en Snake Code Institute  
+**Para empresas:** Consultoría embedded/IoT y automatizaciones a medida.  
+**Para devs:** Cursos de Python profesional en Snake Code Institute.  
+
+<div style="text-align:center; margin: 2rem 0;">
+  <a href="#contacto" class="cta-button">Hablemos de tu proyecto</a>
+</div>
 
 **Contacta:**  
 - [GitHub]({{ site.github.owner_url }}) - Código y proyectos
@@ -88,6 +93,11 @@ title: Jorge de la Flor - Software Developer
 - [Snake Code Institute]({{ '/md_pages/sci/' | relative_url }}) - Aprende programación real   
 - [Linktree](https://linktr.ee/frostalo) - Todo lo demás  
 
-<div style="text-align:center; margin: 3rem 0;">
+<!-- <div style="text-align:center; margin: 3rem 0;">
   <a href="mailto:jafdelaflor@gmail.com" class="cta-button">Hablemos de tu proyecto</a>
-</div>
+</div> -->
+
+## Contacto {#contacto}
+
+- **Email:** [jafdelaflor@gmail.com](mailto:jafdelaflor@gmail.com) – Proyectos y colaboraciones   
+
