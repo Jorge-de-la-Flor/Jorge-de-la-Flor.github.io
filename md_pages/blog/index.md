@@ -13,8 +13,6 @@ title: Blog
   <h2 class="section-title">Blog</h2>
 </div>
 
-## Próximamente
-
 Estoy preparando contenido sobre:
 
 - **Python Avanzado** - Decoradores, metaclases, y patrones de diseño
