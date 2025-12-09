@@ -13,10 +13,12 @@ permalink: md_pages/proyectos/
   </p>
 </div>
 
-<div class="section-header">
+<!-- <div class="section-header">
   <i class="fas fa-code section-icon"></i>
   <h2 class="section-title">Proyectos destacados</h2>
-</div>
+</div> -->
+
+## Proyectos destacados
 
 - **Snake Code Institute** – Curso de Python profesional: fundamentos → arquitectura (SOLID, testing, FastAPI).  
 - **Crab Code Institute** – Rust para sistemas y embedded con `embedded-hal` y herramientas propias.  

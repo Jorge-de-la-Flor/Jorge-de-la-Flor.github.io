@@ -8,10 +8,12 @@ title: Blog
   <p class="profile-title">Aquí encontrarás artículos sobre programación, tutoriales y reflexiones sobre desarrollo de software.</p>
 </div>
 
-<div class="section-header">
+<!-- <div class="section-header">
   <i class="fas fa-newspaper section-icon"></i>
   <h2 class="section-title">Blog</h2>
-</div>
+</div> -->
+
+## Blog
 
 Estoy preparando contenido sobre:
 
