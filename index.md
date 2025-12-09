@@ -83,7 +83,7 @@ title: Jorge de la Flor - Software Developer
 **Para empresas:** Consultoría embedded/IoT y automatizaciones a medida.  
 **Para devs:** Cursos de Python profesional en Snake Code Institute. 
 
-Hablemos de tu proyecto, escríbeme a  [jafdelaflor@gmail.com](mailto:jafdelaflor@gmail.com) para proyectos y colaboraciones
+Hablemos de tu proyecto: escríbeme a **jafdelaflor@gmail.com** para proyectos y colaboraciones.
 
 <!-- <div style="text-align:center; margin: 2rem 0;">
   <a href="#contacto" class="cta-button">Hablemos de tu proyecto</a>
