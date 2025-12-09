@@ -3,7 +3,10 @@ layout: default
 title: Sobre mí - Jorge de la Flor
 ---
 
-# Sobre mí
+<div class="profile-hero" style="padding: 1rem 0 2rem;">
+  <h1 class="profile-name">Sobre mí</h1>
+  <p class="profile-title">Artículos sobre Python, Rust y desarrollo</p>
+</div>
 
 Soy **Jorge de la Flor**, desarrollador de software especializado en **Python**, **Rust**, **sistemas embebidos** y **Micro IA**. Combino una base fuerte en **Negocios Internacionales** con experiencia técnica para llevar soluciones desde el **hardware** hasta el **negocio**.
 

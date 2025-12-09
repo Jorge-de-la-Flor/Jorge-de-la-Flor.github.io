@@ -8,7 +8,7 @@ title: Jorge de la Flor - Software Developer
   
   <h1 class="profile-name">Jorge de la Flor</h1>
   <p class="profile-title">Software Developer · Founder @ Snake Code Institute & Crab Code Institute</p>
-  <p class="profile-title">Especializado en sistemas embebidos, Micro IA y frameworks en Rust que conectan hardware con negocio.</p>
+  <p class="profile-title">Especializado en sistemas embebidos, Micro IA y soluciones en Python y Rust que conectan hardware, software y negocio.</p>
   
   <div class="tech-badges">
     <span class="tech-badge python"><i class="fab fa-python"></i> Python</span>
@@ -93,7 +93,3 @@ title: Jorge de la Flor - Software Developer
 - [GitHub]({{ site.github.owner_url }}) - Código y proyectos
 - [Snake Code Institute]({{ '/md_pages/sci/' | relative_url }}) - Aprende programación real   
 - [Linktree](https://linktr.ee/frostalo) - Todo lo demás  
-
-
-
-
