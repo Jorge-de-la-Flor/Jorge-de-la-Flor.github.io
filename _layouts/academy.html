@@ -4,24 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: "Academy - Jorge de la Flor" }}</title>
-  <meta name="description" content="{{ page.description | default: 'Aprende a programar de verdad.' }}">
+  <meta name="description" content="{{ page.description | default: 'Aprende Python y Rust de verdad. Snake Code Institute y Crab Code Institute.' }}">
   
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* ===== RESET & BASE ===== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     :root {
-      /* Snake (Python) - Azul */
       --snake-primary: #3b82f6;
       --snake-secondary: #06b6d4;
       --snake-bg: #0a0f1a;
       --snake-glow: rgba(59, 130, 246, 0.2);
       
-      /* Crab (Rust) - Naranja */
       --crab-primary: #f97316;
       --crab-secondary: #ef4444;
       --crab-bg: #1a0f0a;
@@ -30,16 +32,15 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--snake-bg);
       color: white;
       line-height: 1.6;
-      min-height: 100vh;
+      transition: background-color 0.5s ease;
     }
 
-    /* Theme classes - se aplican segun el layout hijo */
-    body.snake-theme { background-color: var(--snake-bg); }
-    body.crab-theme { background-color: var(--crab-bg); }
-
-    a { color: inherit; text-decoration: none; }
+    body.crab-mode {
+      background-color: var(--crab-bg);
+    }
 
     /* ===== NAV ===== */
     .nav {
@@ -63,68 +64,130 @@
       justify-content: space-between;
     }
 
-    .nav-brand {
+    .nav-tabs {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-tab {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      font-weight: 700;
-      font-size: 1.125rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    .nav-brand img {
-      width: 40px;
-      height: 40px;
+    .nav-tab:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-tab.active.snake {
+      background: rgba(59, 130, 246, 0.2);
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+    }
+
+    .nav-tab.active.crab {
+      background: rgba(249, 115, 22, 0.2);
+      box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.5);
+    }
+
+    .nav-tab img {
+      width: 32px;
+      height: 32px;
       object-fit: contain;
     }
 
-    .nav-brand .emoji {
-      font-size: 2rem;
+    .nav-tab .emoji {
+      font-size: 1.75rem;
+      line-height: 1;
     }
 
-    .snake-theme .nav-brand { color: var(--snake-primary); }
-    .crab-theme .nav-brand { color: var(--crab-primary); }
+    .nav-tab-text {
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+      transition: color 0.3s ease;
+    }
 
-    .nav-links {
+    .nav-tab.active.snake .nav-tab-text {
+      color: var(--snake-primary);
+    }
+
+    .nav-tab.active.crab .nav-tab-text {
+      color: var(--crab-primary);
+    }
+
+    .nav-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 0 0.5rem;
+    }
+
+    .nav-right {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 1rem;
     }
 
     .nav-link {
       color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
       font-size: 0.875rem;
       transition: color 0.3s ease;
     }
 
-    .nav-link:hover { color: white; }
+    .nav-link:hover {
+      color: white;
+    }
 
     .nav-cta {
-      padding: 0.5rem 1.25rem;
+      padding: 0.5rem 1rem;
       border-radius: 0.5rem;
       font-weight: 600;
+      text-decoration: none;
       color: white;
       transition: all 0.3s ease;
     }
 
-    .snake-theme .nav-cta { background: var(--snake-primary); }
-    .snake-theme .nav-cta:hover { background: #2563eb; }
-    .crab-theme .nav-cta { background: var(--crab-primary); }
-    .crab-theme .nav-cta:hover { background: #ea580c; }
+    .nav-cta.snake {
+      background: var(--snake-primary);
+    }
 
-    /* ===== MAIN CONTENT ===== */
-    .main-content {
+    .nav-cta.snake:hover {
+      background: #2563eb;
+    }
+
+    .nav-cta.crab {
+      background: var(--crab-primary);
+    }
+
+    .nav-cta.crab:hover {
+      background: #ea580c;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      display: none;
       position: relative;
       min-height: 100vh;
       padding-top: 64px;
     }
 
+    .section.active {
+      display: block;
+    }
+
     /* Background effects */
     .bg-effects {
-      position: fixed;
+      position: absolute;
       inset: 0;
       overflow: hidden;
       pointer-events: none;
-      z-index: -1;
     }
 
     .glow {
@@ -135,10 +198,29 @@
       filter: blur(120px);
     }
 
-    .snake-theme .glow-1 { top: -10%; left: -15%; background: rgba(59, 130, 246, 0.15); }
-    .snake-theme .glow-2 { bottom: -10%; right: -15%; background: rgba(6, 182, 212, 0.15); }
-    .crab-theme .glow-1 { top: -10%; left: -15%; background: rgba(249, 115, 22, 0.15); }
-    .crab-theme .glow-2 { bottom: -10%; right: -15%; background: rgba(239, 68, 68, 0.15); }
+    .snake-section .glow-1 {
+      top: 0;
+      left: -25%;
+      background: rgba(59, 130, 246, 0.2);
+    }
+
+    .snake-section .glow-2 {
+      bottom: 0;
+      right: -25%;
+      background: rgba(6, 182, 212, 0.2);
+    }
+
+    .crab-section .glow-1 {
+      top: 0;
+      left: -25%;
+      background: rgba(249, 115, 22, 0.2);
+    }
+
+    .crab-section .glow-2 {
+      bottom: 0;
+      right: -25%;
+      background: rgba(239, 68, 68, 0.2);
+    }
 
     .grid-pattern {
       position: absolute;
@@ -146,61 +228,50 @@
       opacity: 0.03;
     }
 
-    .snake-theme .grid-pattern {
-      background-image: linear-gradient(to right, #3b82f6 1px, transparent 1px),
-                        linear-gradient(to bottom, #3b82f6 1px, transparent 1px);
+    .snake-section .grid-pattern {
+      background-image: 
+        linear-gradient(to right, #3b82f6 1px, transparent 1px),
+        linear-gradient(to bottom, #3b82f6 1px, transparent 1px);
       background-size: 60px 60px;
     }
 
-    .crab-theme .grid-pattern {
-      background-image: linear-gradient(to right, #f97316 1px, transparent 1px),
-                        linear-gradient(to bottom, #f97316 1px, transparent 1px);
+    .crab-section .grid-pattern {
+      background-image: 
+        linear-gradient(to right, #f97316 1px, transparent 1px),
+        linear-gradient(to bottom, #f97316 1px, transparent 1px);
       background-size: 60px 60px;
     }
 
-    /* ===== UTILITY CLASSES ===== */
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1rem;
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      padding: 6rem 1rem;
+      text-align: center;
     }
 
-    .section {
-      padding: 5rem 0;
+    .hero-logo {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+      animation: float 3s ease-in-out infinite;
     }
 
-    .text-center { text-align: center; }
-
-    .text-muted { color: rgba(255, 255, 255, 0.6); }
-
-    /* Titles */
-    .title-xl {
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
+    .hero-logo img {
+      width: 128px;
+      height: 128px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 30px var(--snake-glow));
     }
 
-    .title-lg {
-      font-size: clamp(1.75rem, 5vw, 2.5rem);
-      font-weight: 700;
+    .crab-section .hero-logo img,
+    .crab-section .hero-logo {
+      filter: drop-shadow(0 0 30px var(--crab-glow));
     }
 
-    .gradient-text {
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
-    .snake-theme .gradient-text {
-      background-image: linear-gradient(to right, #60a5fa, #22d3ee, #3b82f6);
-    }
-
-    .crab-theme .gradient-text {
-      background-image: linear-gradient(to right, #fb923c, #f87171, #f97316);
-    }
-
-    /* Badges */
     .badge {
       display: inline-block;
       padding: 0.375rem 1rem;
@@ -209,91 +280,166 @@
       font-weight: 500;
     }
 
-    .snake-theme .badge {
+    .snake-section .badge {
       background: rgba(59, 130, 246, 0.2);
       color: #60a5fa;
       box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.3);
     }
 
-    .crab-theme .badge {
+    .crab-section .badge {
       background: rgba(249, 115, 22, 0.2);
       color: #fb923c;
       box-shadow: inset 0 0 0 1px rgba(249, 115, 22, 0.3);
     }
 
-    /* Buttons */
+    .hero-title {
+      margin-top: 1.5rem;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .hero-title .gradient {
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .snake-section .hero-title .gradient {
+      background-image: linear-gradient(to right, #60a5fa, #22d3ee, #3b82f6);
+    }
+
+    .crab-section .hero-title .gradient {
+      background-image: linear-gradient(to right, #fb923c, #f87171, #f97316);
+    }
+
+    .hero-description {
+      max-width: 42rem;
+      margin: 1.5rem auto 0;
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 0.5rem;
       padding: 0.75rem 2rem;
       border-radius: 0.5rem;
       font-weight: 600;
+      text-decoration: none;
       transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
     }
 
-    .btn:hover { transform: scale(1.05); }
+    .btn:hover {
+      transform: scale(1.05);
+    }
 
-    .btn-primary { color: white; }
-    .snake-theme .btn-primary { background: var(--snake-primary); }
-    .snake-theme .btn-primary:hover { background: #2563eb; }
-    .crab-theme .btn-primary { background: var(--crab-primary); }
-    .crab-theme .btn-primary:hover { background: #ea580c; }
+    .btn-primary.snake {
+      background: var(--snake-primary);
+      color: white;
+    }
 
-    .btn-secondary { background: transparent; }
-    .snake-theme .btn-secondary {
+    .btn-primary.snake:hover {
+      background: #2563eb;
+    }
+
+    .btn-primary.crab {
+      background: var(--crab-primary);
+      color: white;
+    }
+
+    .btn-primary.crab:hover {
+      background: #ea580c;
+    }
+
+    .btn-secondary.snake {
       border: 1px solid rgba(59, 130, 246, 0.5);
       color: #60a5fa;
     }
-    .snake-theme .btn-secondary:hover { background: rgba(59, 130, 246, 0.1); }
-    .crab-theme .btn-secondary {
+
+    .btn-secondary.snake:hover {
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    .btn-secondary.crab {
       border: 1px solid rgba(249, 115, 22, 0.5);
       color: #fb923c;
     }
-    .crab-theme .btn-secondary:hover { background: rgba(249, 115, 22, 0.1); }
 
-    .btn-lg {
-      padding: 1rem 2.5rem;
-      font-size: 1.125rem;
-    }
-
-    /* Cards */
-    .card {
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      transition: all 0.3s ease;
-    }
-
-    .snake-theme .card {
-      background: rgba(59, 130, 246, 0.05);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-    }
-    .snake-theme .card:hover {
-      background: rgba(59, 130, 246, 0.1);
-      border-color: rgba(59, 130, 246, 0.4);
-    }
-
-    .crab-theme .card {
-      background: rgba(249, 115, 22, 0.05);
-      border: 1px solid rgba(249, 115, 22, 0.2);
-    }
-    .crab-theme .card:hover {
+    .btn-secondary.crab:hover {
       background: rgba(249, 115, 22, 0.1);
-      border-color: rgba(249, 115, 22, 0.4);
     }
 
-    /* Code blocks */
-    .code-block {
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 42rem;
+      margin: 4rem auto 0;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-value {
+      font-size: 1.875rem;
+      font-weight: 700;
+    }
+
+    .snake-section .stat-value {
+      color: #60a5fa;
+    }
+
+    .crab-section .stat-value {
+      color: #fb923c;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ===== CONTENT SECTIONS ===== */
+    .content-section {
+      position: relative;
+      padding: 6rem 1rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: clamp(1.875rem, 5vw, 2.5rem);
+      font-weight: 700;
+    }
+
+    /* Code preview */
+    .code-preview {
+      margin-top: 2rem;
       border-radius: 0.75rem;
       overflow: hidden;
       background: #0d1117;
     }
 
-    .snake-theme .code-block { border: 1px solid rgba(59, 130, 246, 0.2); }
-    .crab-theme .code-block { border: 1px solid rgba(249, 115, 22, 0.2); }
+    .snake-section .code-preview {
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .crab-section .code-preview {
+      border: 1px solid rgba(249, 115, 22, 0.2);
+    }
 
     .code-header {
       display: flex;
@@ -308,6 +454,7 @@
       height: 12px;
       border-radius: 50%;
     }
+
     .code-dot.red { background: #ef4444; }
     .code-dot.yellow { background: #eab308; }
     .code-dot.green { background: #22c55e; }
@@ -326,7 +473,6 @@
       line-height: 1.7;
     }
 
-    /* Syntax highlighting */
     .code-content .comment { color: #6b7280; }
     .code-content .keyword { color: #c084fc; }
     .code-content .function { color: #60a5fa; }
@@ -334,47 +480,130 @@
     .code-content .class { color: #facc15; }
     .code-content .variable { color: #fb923c; }
     .code-content .type { color: #facc15; }
-    .code-content .macro { color: #f472b6; }
-    .code-content .lifetime { color: #38bdf8; }
 
-    /* Grid layouts */
-    .grid-2 { display: grid; gap: 1rem; }
-    .grid-3 { display: grid; gap: 1rem; }
+    /* Modules grid */
+    .modules-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
 
     @media (min-width: 640px) {
-      .grid-2 { grid-template-columns: repeat(2, 1fr); }
-      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .modules-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (min-width: 1024px) {
-      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .modules-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
-    /* Stats */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      max-width: 42rem;
-      margin: 0 auto;
-      padding-top: 3rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    .module-card {
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
     }
 
-    .stat-value {
-      font-size: 1.875rem;
+    .snake-section .module-card {
+      background: rgba(59, 130, 246, 0.05);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .snake-section .module-card:hover {
+      background: rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+
+    .crab-section .module-card {
+      background: rgba(249, 115, 22, 0.05);
+      border: 1px solid rgba(249, 115, 22, 0.2);
+    }
+
+    .crab-section .module-card:hover {
+      background: rgba(249, 115, 22, 0.1);
+      border-color: rgba(249, 115, 22, 0.4);
+    }
+
+    .module-num {
+      font-size: 0.875rem;
       font-weight: 700;
     }
 
-    .snake-theme .stat-value { color: #60a5fa; }
-    .crab-theme .stat-value { color: #fb923c; }
-
-    .stat-label {
-      font-size: 0.875rem;
-      color: rgba(255, 255, 255, 0.5);
+    .snake-section .module-num {
+      color: var(--snake-primary);
     }
 
-    /* ===== FOOTER ===== */
+    .crab-section .module-num {
+      color: var(--crab-primary);
+    }
+
+    .module-title {
+      margin-top: 0.5rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+
+    .module-desc {
+      margin-top: 0.25rem;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* CTA */
+    .cta-section {
+      position: relative;
+      padding: 6rem 1rem;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: clamp(1.875rem, 5vw, 2.5rem);
+      font-weight: 700;
+    }
+
+    .cta-description {
+      margin-top: 1rem;
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+    }
+
+    .snake-section .cta-button {
+      background: var(--snake-primary);
+    }
+
+    .snake-section .cta-button:hover {
+      background: #2563eb;
+    }
+
+    .crab-section .cta-button {
+      background: var(--crab-primary);
+    }
+
+    .crab-section .cta-button:hover {
+      background: #ea580c;
+    }
+
+    /* Footer */
     .footer {
       padding: 2rem 1rem;
       text-align: center;
@@ -383,75 +612,345 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .footer a {
-      transition: color 0.3s ease;
-    }
-
-    .snake-theme .footer a:hover { color: var(--snake-primary); }
-    .crab-theme .footer a:hover { color: var(--crab-primary); }
-
-    /* Animations */
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .float-animation {
-      animation: float 3s ease-in-out infinite;
-    }
-
     /* Responsive */
     @media (max-width: 640px) {
-      .nav-links { gap: 1rem; }
-      .hide-mobile { display: none; }
+      .nav-tab-text {
+        display: none;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
     }
   </style>
 </head>
-<body class="{{ page.theme | default: 'snake' }}-theme">
-  <!-- Background effects -->
-  <div class="bg-effects">
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-    <div class="grid-pattern"></div>
-  </div>
-
+<body>
   <!-- Navigation -->
   <nav class="nav">
     <div class="nav-container">
-      <a href="{{ page.home_url | default: '/md_pages/academy/' | relative_url }}" class="nav-brand">
-        {% if page.theme == 'crab' %}
+      <div class="nav-tabs">
+        <button class="nav-tab active snake" onclick="switchTo('snake')" id="snake-tab">
+          <img src="{{ '/assets/images/sci/logo-sci.png' | relative_url }}" alt="Snake Code Institute">
+          <span class="nav-tab-text">Snake Code</span>
+        </button>
+        
+        <div class="nav-divider"></div>
+        
+        <button class="nav-tab crab" onclick="switchTo('crab')" id="crab-tab">
           <span class="emoji">🦀</span>
-          <span>Crab Code Institute</span>
-        {% else %}
-          <img src="{{ '/assets/images/logo-sci.png' | relative_url }}" alt="Logo">
-          <span>Snake Code Institute</span>
-        {% endif %}
-      </a>
+          <span class="nav-tab-text">Crab Code</span>
+        </button>
+      </div>
       
-      <div class="nav-links">
-        {% if page.nav_links %}
-          {% for link in page.nav_links %}
-            <a href="{{ link.url }}" class="nav-link hide-mobile">{{ link.text }}</a>
-          {% endfor %}
-        {% else %}
-          <a href="{{ '/' | relative_url }}" class="nav-link">Jorge.dev</a>
-          <a href="#temario" class="nav-link hide-mobile">Temario</a>
-        {% endif %}
-        <a href="{{ page.cta_url | default: '#inscripcion' }}" class="nav-cta">
-          {{ page.cta_text | default: 'Inscribirme' }}
-        </a>
+      <div class="nav-right">
+        <a href="{{ '/' | relative_url }}" class="nav-link">← Jorge.dev</a>
+        <a href="#inscripcion" class="nav-cta snake" id="nav-cta">Inscribirme</a>
       </div>
     </div>
   </nav>
 
-  <!-- Main content -->
-  <main class="main-content">
-    {{ content }}
-  </main>
+  <!-- Snake Code Institute Section -->
+  <section class="section snake-section active" id="snake-section">
+    <div class="bg-effects">
+      <div class="glow glow-1"></div>
+      <div class="glow glow-2"></div>
+      <div class="grid-pattern"></div>
+    </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; {{ 'now' | date: "%Y" }} Jorge de la Flor. <a href="{{ '/' | relative_url }}">Volver al inicio</a></p>
-  </footer>
+    <div class="hero">
+      <div class="hero-logo">
+        <img src="{{ '/assets/images/logo-sci.png' | relative_url }}" alt="Snake Code Institute">
+      </div>
+      <span class="badge">DOMINA PYTHON</span>
+      <h1 class="hero-title">
+        Snake Code <span class="gradient">Institute</span>
+      </h1>
+      <p class="hero-description">
+        El lugar donde Python se aprende de verdad. Desde fundamentos hasta arquitectura profesional con POO, SOLID y testing.
+      </p>
+      <div class="hero-buttons">
+        <a href="#temario-python" class="btn btn-primary snake">
+          Ver Temario Completo
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+        <a href="#inscripcion" class="btn btn-secondary snake">Inscribirme Ahora</a>
+      </div>
+      <div class="stats">
+        <div>
+          <div class="stat-value">10</div>
+          <div class="stat-label">Modulos</div>
+        </div>
+        <div>
+          <div class="stat-value">50+</div>
+          <div class="stat-label">Horas de contenido</div>
+        </div>
+        <div>
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Practico</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section" id="temario-python">
+      <div class="container">
+        <h2 class="section-title">Lo que dominaras</h2>
+        
+        <div class="code-preview">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">data_processor.py</span>
+          </div>
+          <pre class="code-content"><span class="comment"># No solo aprenderas esto...</span>
+<span class="function">print</span>(<span class="string">"Hola Mundo"</span>)
+
+<span class="comment"># Aprenderas a construir esto:</span>
+<span class="keyword">class</span> <span class="class">DataProcessor</span>:
+    <span class="string">"""Procesador de datos siguiendo principios SOLID."""</span>
+
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>, strategy: <span class="type">ProcessingStrategy</span>):
+        <span class="variable">self</span>._strategy = strategy
+        <span class="variable">self</span>._validators: <span class="type">list</span>[Validator] = []
+
+    <span class="keyword">def</span> <span class="function">process</span>(<span class="variable">self</span>, data: <span class="type">DataFrame</span>) -> <span class="type">Result</span>:
+        validated = <span class="variable">self</span>._validate(data)
+        <span class="keyword">return</span> <span class="variable">self</span>._strategy.execute(validated)</pre>
+        </div>
+
+        <div class="modules-grid">
+          <div class="module-card">
+            <span class="module-num">01</span>
+            <h3 class="module-title">Fundamentos</h3>
+            <p class="module-desc">Variables, operadores, estructuras de control</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">02</span>
+            <h3 class="module-title">Funciones</h3>
+            <p class="module-desc">Parametros, scope, decoradores, closures</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">03</span>
+            <h3 class="module-title">Estructuras de Datos</h3>
+            <p class="module-desc">Listas, diccionarios, sets, comprehensions</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">04</span>
+            <h3 class="module-title">POO Fundamentos</h3>
+            <p class="module-desc">Clases, herencia, polimorfismo</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">05</span>
+            <h3 class="module-title">POO Avanzado</h3>
+            <p class="module-desc">Metodos especiales, dataclasses, ABC</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">06</span>
+            <h3 class="module-title">SOLID</h3>
+            <p class="module-desc">Principios de diseno de software</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">07</span>
+            <h3 class="module-title">Testing</h3>
+            <p class="module-desc">Pytest, mocking, TDD</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">08</span>
+            <h3 class="module-title">Manejo de Errores</h3>
+            <p class="module-desc">Excepciones, logging, debugging</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">09</span>
+            <h3 class="module-title">Archivos y Datos</h3>
+            <p class="module-desc">I/O, JSON, CSV, bases de datos</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">10</span>
+            <h3 class="module-title">Proyecto Final</h3>
+            <p class="module-desc">Aplicacion completa con arquitectura limpia</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section" id="inscripcion">
+      <h2 class="cta-title">Listo para dominar Python?</h2>
+      <p class="cta-description">No pierdas mas tiempo con tutoriales que no te llevan a ningun lado.</p>
+      <a href="#" class="cta-button">Inscribirme Ahora</a>
+    </div>
+
+    <footer class="footer">
+      <p>2025 Snake Code Institute - El lugar donde Python se domina de verdad</p>
+    </footer>
+  </section>
+
+  <!-- Crab Code Institute Section -->
+  <section class="section crab-section" id="crab-section">
+    <div class="bg-effects">
+      <div class="glow glow-1"></div>
+      <div class="glow glow-2"></div>
+      <div class="grid-pattern"></div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-logo">🦀</div>
+      <span class="badge">DOMINA RUST</span>
+      <h1 class="hero-title">
+        Crab Code <span class="gradient">Institute</span>
+      </h1>
+      <p class="hero-description">
+        Aprende Rust desde cero. El lenguaje mas amado por desarrolladores, con enfoque en sistemas, performance y seguridad de memoria.
+      </p>
+      <div class="hero-buttons">
+        <a href="#temario-rust" class="btn btn-primary crab">
+          Ver Temario Completo
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+        <a href="#inscripcion-rust" class="btn btn-secondary crab">Inscribirme Ahora</a>
+      </div>
+      <div class="stats">
+        <div>
+          <div class="stat-value">8</div>
+          <div class="stat-label">Modulos</div>
+        </div>
+        <div>
+          <div class="stat-value">40+</div>
+          <div class="stat-label">Horas de contenido</div>
+        </div>
+        <div>
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Sistemas reales</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section" id="temario-rust">
+      <div class="container">
+        <h2 class="section-title">Lo que dominaras</h2>
+        
+        <div class="code-preview">
+          <div class="code-header">
+            <span class="code-dot red"></span>
+            <span class="code-dot yellow"></span>
+            <span class="code-dot green"></span>
+            <span class="code-filename">data_processor.rs</span>
+          </div>
+          <pre class="code-content"><span class="comment">// No solo aprenderas esto...</span>
+<span class="keyword">fn</span> <span class="function">main</span>() {
+    <span class="function">println!</span>(<span class="string">"Hola Mundo"</span>);
+}
+
+<span class="comment">// Aprenderas a construir esto:</span>
+<span class="keyword">pub struct</span> <span class="class">DataProcessor</span>&lt;T: <span class="type">Strategy</span>&gt; {
+    strategy: T,
+    validators: <span class="type">Vec</span>&lt;Box&lt;<span class="keyword">dyn</span> <span class="type">Validator</span>&gt;&gt;,
+}
+
+<span class="keyword">impl</span>&lt;T: <span class="type">Strategy</span>&gt; <span class="class">DataProcessor</span>&lt;T&gt; {
+    <span class="keyword">pub fn</span> <span class="function">process</span>(&<span class="variable">self</span>, data: DataFrame) -> <span class="type">Result</span>&lt;Output, Error&gt; {
+        <span class="keyword">let</span> validated = <span class="variable">self</span>.validate(data)?;
+        <span class="variable">self</span>.strategy.execute(validated)
+    }
+}</pre>
+        </div>
+
+        <div class="modules-grid">
+          <div class="module-card">
+            <span class="module-num">01</span>
+            <h3 class="module-title">Fundamentos</h3>
+            <p class="module-desc">Variables, ownership, borrowing</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">02</span>
+            <h3 class="module-title">Control de Flujo</h3>
+            <p class="module-desc">Pattern matching, enums, Option, Result</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">03</span>
+            <h3 class="module-title">Structs y Traits</h3>
+            <p class="module-desc">Tipos personalizados, polimorfismo</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">04</span>
+            <h3 class="module-title">Memoria y Lifetime</h3>
+            <p class="module-desc">Referencias, lifetime annotations</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">05</span>
+            <h3 class="module-title">Colecciones</h3>
+            <p class="module-desc">Vec, HashMap, iteradores</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">06</span>
+            <h3 class="module-title">Error Handling</h3>
+            <p class="module-desc">Result, ?, custom errors</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">07</span>
+            <h3 class="module-title">Concurrencia</h3>
+            <p class="module-desc">Threads, async/await, channels</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">08</span>
+            <h3 class="module-title">Proyecto Final</h3>
+            <p class="module-desc">CLI tool o servicio web con Axum</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section" id="inscripcion-rust">
+      <h2 class="cta-title">Listo para dominar Rust?</h2>
+      <p class="cta-description">El lenguaje del futuro para sistemas de alto rendimiento.</p>
+      <a href="#" class="cta-button">Inscribirme Ahora</a>
+    </div>
+
+    <footer class="footer">
+      <p>2025 Crab Code Institute - El lugar donde Rust se domina de verdad</p>
+    </footer>
+  </section>
+
+  <script>
+    function switchTo(institute) {
+      const body = document.body;
+      const snakeSection = document.getElementById('snake-section');
+      const crabSection = document.getElementById('crab-section');
+      const snakeTab = document.getElementById('snake-tab');
+      const crabTab = document.getElementById('crab-tab');
+      const navCta = document.getElementById('nav-cta');
+
+      if (institute === 'snake') {
+        body.classList.remove('crab-mode');
+        snakeSection.classList.add('active');
+        crabSection.classList.remove('active');
+        snakeTab.classList.add('active');
+        crabTab.classList.remove('active');
+        navCta.classList.remove('crab');
+        navCta.classList.add('snake');
+      } else {
+        body.classList.add('crab-mode');
+        crabSection.classList.add('active');
+        snakeSection.classList.remove('active');
+        crabTab.classList.add('active');
+        snakeTab.classList.remove('active');
+        navCta.classList.remove('snake');
+        navCta.classList.add('crab');
+      }
+
+      // Scroll to top when switching
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
