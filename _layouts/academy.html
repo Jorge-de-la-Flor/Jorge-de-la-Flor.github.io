@@ -632,156 +632,53 @@
   </style>
 </head>
 <body class="{% if page.mode == 'crab' %}crab-mode{% endif %}">
-  <!-- Navigation -->
+  <!-- NAV GLOBAL -->
   <nav class="nav">
     <div class="nav-container">
       <div class="nav-tabs">
-        <button class="nav-tab {% if page.mode != 'crab' %}active snake{% else %}snake{% endif %}"
-                onclick="switchTo('snake')" id="snake-tab">
+        <a class="nav-tab snake{% if page.mode == 'snake' or page.mode == nil %} active{% endif %}"
+           href="{{ '/md_pages/sci/' | relative_url }}">
           <img src="{{ '/assets/images/logo-sci.png' | relative_url }}" alt="Snake Code Institute">
           <span class="nav-tab-text">Snake Code</span>
-        </button>
+        </a>
 
         <div class="nav-divider"></div>
 
-        <button class="nav-tab {% if page.mode == 'crab' %}active crab{% else %}crab{% endif %}"
-                onclick="switchTo('crab')" id="crab-tab">
+        <a class="nav-tab crab{% if page.mode == 'crab' %} active{% endif %}"
+           href="{{ '/md_pages/cci/' | relative_url }}">
           <span class="emoji">🦀</span>
           <span class="nav-tab-text">Crab Code</span>
-        </button>
+        </a>
       </div>
 
       <div class="nav-right">
         <a href="{{ '/' | relative_url }}" class="nav-link">← Jorge.dev</a>
-        <a href="#inscripcion-{{ page.mode | default: 'snake' }}"
-           class="nav-cta {% if page.mode == 'crab' %}crab{% else %}snake{% endif %}"
-           id="nav-cta">
-          Inscribirme
-        </a>
+        {% if page.cta_link %}
+          <a href="{{ page.cta_link }}" class="nav-cta {% if page.mode == 'crab' %}crab{% else %}snake{% endif %}">
+            {{ page.cta_label | default: 'Inscribirme' }}
+          </a>
+        {% endif %}
       </div>
     </div>
   </nav>
 
-    <!-- AQUÍ entra el contenido Markdown de Snake -->
-    <div class="content-section" id="temario-snake">
-      <div class="container">
-        {% if page.mode == 'snake' %}
-          {{ content }}
-        {% else %}
-          <!-- Puedes dejar un texto genérico si estás en modo crab -->
-          <h2 class="section-title">Página en construcción</h2>
-          <p class="hero-description">La página actual se está construyendo, agradecemos su paciencia.</p>
-        {% endif %}
-      </div>
+  <!-- BACKGROUND GLOBAL -->
+  <div class="bg-effects">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="grid-pattern"></div>
+  </div>
+
+  <!-- CONTENIDO ESPECÍFICO DE LA PÁGINA -->
+  <main class="section {% if page.mode == 'crab' %}crab-section{% else %}snake-section{% endif %} active"
+        style="padding-top: 64px;">
+    <div class="container">
+      {{ content }}
     </div>
+  </main>
 
-    <div class="cta-section" id="inscripcion-snake">
-      <h2 class="cta-title">¿Listo para dominar Python?</h2>
-      <p class="cta-description">No pierdas más tiempo con tutoriales que no te llevan a ningún lado.</p>
-      <a href="{{ page.enroll_link_snake | default: '#' }}" class="cta-button">Inscribirme Ahora</a>
-    </div>
-
-    <footer class="footer">
-      <p>2025 Snake Code Institute - El lugar donde Python se domina de verdad</p>
-    </footer>
-  </section>
-
-  <!-- Crab Code Institute Section -->
-  <section class="section crab-section {% if page.mode == 'crab' %}active{% endif %}" id="crab-section">
-    <div class="bg-effects">
-      <div class="glow glow-1"></div>
-      <div class="glow glow-2"></div>
-      <div class="grid-pattern"></div>
-    </div>
-
-    <div class="hero">
-      <div class="hero-logo">🦀</div>
-      <span class="badge">DOMINA RUST</span>
-      <h1 class="hero-title">
-        Crab Code <span class="gradient">Institute</span>
-      </h1>
-      <p class="hero-description">
-        Aprende Rust desde cero. El lenguaje más amado por desarrolladores, con enfoque en sistemas, performance y seguridad de memoria.
-      </p>
-      <div class="hero-buttons">
-        <a href="#temario-crab" class="btn btn-primary crab">
-          Ver Temario Completo
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-          </svg>
-        </a>
-        <a href="#inscripcion-crab" class="btn btn-secondary crab">Inscribirme Ahora</a>
-      </div>
-      <div class="stats">
-        <div>
-          <div class="stat-value">8</div>
-          <div class="stat-label">Módulos</div>
-        </div>
-        <div>
-          <div class="stat-value">40+</div>
-          <div class="stat-label">Horas de contenido</div>
-        </div>
-        <div>
-          <div class="stat-value">100%</div>
-          <div class="stat-label">Sistemas reales</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- AQUÍ entra el contenido Markdown de Crab -->
-    <div class="content-section" id="temario-crab">
-      <div class="container">
-        {% if page.mode == 'crab' %}
-          {{ content }}
-        {% else %}
-          <h2 class="section-title">Página en construcción</h2>
-          <p class="hero-description">La página actual se está construyendo, agradecemos su paciencia.</p>
-        {% endif %}
-      </div>
-    </div>
-
-    <div class="cta-section" id="inscripcion-crab">
-      <h2 class="cta-title">¿Listo para dominar Rust?</h2>
-      <p class="cta-description">El lenguaje del futuro para sistemas de alto rendimiento.</p>
-      <a href="{{ page.enroll_link_crab | default: '#' }}" class="cta-button">Inscribirme Ahora</a>
-    </div>
-
-    <footer class="footer">
-      <p>2025 Crab Code Institute - El lugar donde Rust se domina de verdad</p>
-    </footer>
-  </section>
-
-  <script>
-    function switchTo(institute) {
-      const body = document.body;
-      const snakeSection = document.getElementById('snake-section');
-      const crabSection = document.getElementById('crab-section');
-      const snakeTab = document.getElementById('snake-tab');
-      const crabTab = document.getElementById('crab-tab');
-      const navCta = document.getElementById('nav-cta');
-
-      if (institute === 'snake') {
-        body.classList.remove('crab-mode');
-        snakeSection.classList.add('active');
-        crabSection.classList.remove('active');
-        snakeTab.classList.add('active');
-        crabTab.classList.remove('active');
-        navCta.classList.remove('crab');
-        navCta.classList.add('snake');
-        navCta.href = '#inscripcion-snake';
-      } else {
-        body.classList.add('crab-mode');
-        crabSection.classList.add('active');
-        snakeSection.classList.remove('active');
-        crabTab.classList.add('active');
-        snakeTab.classList.remove('active');
-        navCta.classList.remove('snake');
-        navCta.classList.add('crab');
-        navCta.href = '#inscripcion-crab';
-      }
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
+  <footer class="footer">
+    <p>2025 Snake & Crab Code – Formación profesional en Python y Rust</p>
+  </footer>
 </body>
 </html>

@@ -1,240 +1,183 @@
 ---
 layout: academy
-title: Temario Completo
-description: "10 módulos diseñados para llevarte de cero a profesional en Python"
-badge: Python Vanilla PRO
-# permalink: md_pages/sci/temario
+title: "Python Vanilla PRO – Temario"
+mode: "snake"
+permalink: /md_pages/sci/temario/
+cta_link: "/md_pages/sci/inscripcion/"
+cta_label: "Inscribirme en Python"
 ---
 
-## Módulo 1: Bienvenida e Introducción
+<div class="content-section">
+  <h2 class="section-title">Python Vanilla PRO – Temario Completo</h2>
 
-- Bienvenida al curso
-- Presentación del contenido
-- Metodología de aprendizaje
-- Herramientas necesarias
+  <div class="markdown-body">
 
----
+## Módulo 1 – Introducción, filosofía y fundamentos
 
-## Módulo 2: Conceptos Básicos de Python
+- Qué es Python y para qué se usa.
+- Python como lenguaje: interpretado vs compilado; tipado dinámico vs estático.
+- Implementaciones de Python:
+  - CPython (implementación por defecto en C).
+  - Mención de PyPy, Cython y Numba como caminos para rendimiento.
+- Just-In-Time vs Ahead-Of-Time:
+  - Idea general de JIT (ejemplo PyPy/Numba).
+  - Idea general de AOT (ejemplo C/Rust).
+- PEPs y filosofía de Python:
+  - Qué es una PEP.
+  - PEP 20 – Zen de Python (ideas principales, import this).
+- Tipos de datos básicos en Python: int, float, bool, str, NoneType.
+- Comparación con tipos de bajo nivel en otros lenguajes: int8, int16, int32, int64, float32, float64, char, short, long, etc., y cómo eso aparece luego en NumPy.
+- Crear variables y constantes.
+- Números y operadores aritméticos.
+- Operadores relacionales y lógicos.
+- Pedir valores por teclado.
+- Generar nuevos tipos de datos simples y múltiples variables.
+- Laboratorio: ejercicios integradores de introducción.
 
-### 2.1 Fundamentos
-- Indentación y sintaxis
-- Comentarios y documentación
-- El Zen de Python
+## Módulo 2 – Listas y manejo de copias
 
-### 2.2 Variables y Tipos de Datos
-- Variables y asignación
-- Tipos primitivos (int, float, str, bool)
-- Type hints básicos
-- Conversión de tipos
+- Listas.
+- Índices.
+- Sublistas (slicing).
+- Métodos de la lista – Parte 1 y 2.
+- List comprehensions (creación compacta de listas).
+- Matrices (listas de listas).
+- Copias en Python (parte 1):
+  - Asignación vs copia superficial en listas.
+  - list.copy() y efectos en listas anidadas.
+- Laboratorio: problemas con listas.
 
-### 2.3 Operadores
-- Aritméticos
-- Comparación
-- Lógicos
-- Asignación compuesta
+## Módulo 3 – Tuplas
 
-### 2.4 Estructuras de Control
-- Condicionales (if, elif, else)
-- Match-case (Python 3.10+)
-- Bucles (for, while)
-- Control de flujo (break, continue, pass)
+- Tuplas.
+- Crear tuplas.
+- Desempaquetado de tuplas – Parte 1 y 2.
+- Función zip.
+- Funciones y operaciones con tuplas.
+- Laboratorio: uso de tuplas y zip.
 
-### 2.5 Entrada/Salida
-- print() avanzado
-- input() y validación
-- Formateo de strings (f-strings)
+## Módulo 4 – Strings y formateo moderno
 
----
+- Strings.
+- Strings como listas.
+- Generar nuevos strings.
+- Método .format().
+- f-strings (formateo moderno).
+- u-strings: prefijo u para Unicode, contexto histórico Python 2 vs Python 3 (ahora por defecto).
+- r-strings (raw strings): rutas, regex y escapes.
+- t-strings / template strings (Python 3.14+): idea y diferencia con f-strings para casos de seguridad y plantillas.
+- Función print (formateo y trucos).
+- Búsqueda en listas y secuencias.
+- Métodos de listas aplicados a colecciones de texto.
+- Laboratorio: formateo de texto y mini scripts.
 
-## Módulo 3: Funciones
+## Módulo 5 – Diccionarios y copias avanzadas
 
-### 3.1 Definición y Llamada
-- Sintaxis de funciones
-- Docstrings
-- Type hints en funciones
+- Diccionarios.
+- Llaves de diccionarios.
+- Obtener elementos.
+- Llaves, valores y pares.
+- Actualizar diccionarios.
+- Dict comprehensions (creación compacta de diccionarios).
+- Copias en Python (parte 2):
+  - .copy() en diccionarios.
+  - Módulo copy: copy y deepcopy con estructuras anidadas (listas/dicts dentro de dicts).
+- Laboratorio: modelos de datos con diccionarios.
 
-### 3.2 Parámetros y Argumentos
-- Posicionales y nombrados
-- Valores por defecto
-- *args y **kwargs
-- Parámetros solo posicionales y solo nombrados
+## Módulo 6 – Condiciones y ciclos
 
-### 3.3 Retorno y Scope
-- Return múltiple
-- Scope local vs global
-- Closures
-- Funciones como objetos
+- None y valores falsos.
+- if (partes 1 y 2), else, elif, condiciones anidadas.
+- match (pattern matching básico).
+- Operador ternario.
+- for / for-each.
+- Función range.
+- Ciclo while (partes 1 y 2).
+- break, continue y pass.
+- Laboratorio: problemas de lógica, bucles y decisiones.
 
-### 3.4 Funciones Avanzadas
-- Lambda functions
-- Funciones de orden superior
-- Decoradores básicos
+## Módulo 7 – Funciones, type hints y programación avanzada
 
----
+- Crear funciones.
+- Parámetros y retorno de valores.
+- Retornar múltiples valores.
+- Valores por nombre y posición.
+- Valores por defecto.
+- *args, **kwargs y combinación.
+- Funciones como ciudadanos de primera clase.
+- Funciones anidadas.
+- Variables como funciones.
+- Funciones lambda.
+- Callbacks.
+- Retornar funciones.
+- Closures.
+- Decoradores (creación y uso).
+- Docstrings y buenas prácticas de documentación.
+- Anotaciones de tipos (type hints) en funciones: sintaxis básica, Optional, Union, List, Dict, etc.
+- Introducción a type-checking con mypy u otra herramienta (revisión estática de tipos).
+- Laboratorio: funciones, closures, decoradores y type hints.
 
-## Módulo 4: Estructuras de Datos
+## Módulo 8 – POO en Python (OOP PRO, SOLID, DI y patrones)
 
-### 4.1 Listas
-- Creación y acceso
-- Slicing avanzado
-- Métodos de lista
-- List comprehensions
+- Crear clases.
+- Método __init__.
+- Atributos dinámicos.
+- Métodos de instancia.
+- Atributos “privados” y convenciones.
+- Properties (getters/setters “pythónicas”).
+- Herencia y sobrescritura de métodos.
+- Herencia múltiple. (MRO)
+- Polimorfismo.
+- Clases abstractas y ABC (módulo abc).
+- Interfaces y contratos de código usando ABC.
+- Decoradores en POO: @classmethod, @staticmethod y @dataclass aplicados a clases.
+- Type hints en clases y métodos, uso de forward references para evitar imports circulares.
+- Principios SOLID (visión general, estilo Pythonic).
+- Inyección de dependencias: pasar dependencias por constructor o parámetros en lugar de crearlas dentro de la clase.
+- Patrones de diseño básicos en Python:
+  - Singleton (concepto y advertencias).
+  - Factory / factory method usando cls y funciones que crean instancias.
+- Laboratorio: pequeño sistema orientado a objetos aplicando SOLID “light”, DI y un patrón simple.
 
-### 4.2 Tuplas
-- Inmutabilidad
-- Named tuples
-- Unpacking
+## Módulo 9 – Módulos, paquetes, archivos, pip, serialización, errores y optimización
 
-### 4.3 Diccionarios
-- Operaciones CRUD
-- Métodos útiles
-- Dict comprehensions
-- defaultdict y Counter
+- Módulos y paquetes: import, estructura de carpetas, __init__.py.
+- Entornos virtuales básicos (venv) y organización de proyectos.
+- Gestor de paquetes con pip:
+  - Qué es pip y qué es PyPI.
+  - Comandos básicos: pip install, pip uninstall, pip list.
+  - requirements.txt y pip install -r requirements.txt.
+  - Uso de pip dentro de entornos virtuales.
+- Manejo de archivos: lectura y escritura de archivos de texto.
+- Manejo de CSV.
+- Manejo de JSON.
+- Serialización y deserialización:
+  - Serializar datos a JSON (json.dump, json.dumps).
+  - Leer y reconstruir datos desde JSON (json.load, json.loads).
+  - Qué es serialización y para qué sirve (guardar estado, comunicar entre sistemas).
+  - (Opcional) Mención de pickle y uso responsable.
+- Manejo de errores y excepciones:
+  - try/except/else/finally.
+  - raise y excepciones personalizadas.
+- Optimización básica en Python (enfocada a data analysis):
+  - “Primero medir, luego optimizar”: idea de profiling simple.
+  - Evitar loops innecesarios y preferir operaciones vectorizadas (introducción conceptual a NumPy/pandas).
+  - Elegir estructuras adecuadas (listas vs diccionarios vs sets) y minimizar copias grandes de datos.
+  - Mención de librerías optimizadas (NumPy, pandas) y JIT con Numba como caminos para acelerar secciones críticas.
+- Laboratorio: app que guarda/carga datos en JSON, maneja errores y aplica al menos una mejora simple de rendimiento.
 
-### 4.4 Sets
-- Operaciones de conjuntos
-- Frozensets
-- Casos de uso
+## Módulo 10 – Testing y proyecto final
 
-### 4.5 Comprehensions
-- List, dict, set comprehensions
-- Generator expressions
-- Comprehensions anidadas
+- Introducción a testing con unittest o pytest.
+- Escribir tests básicos para funciones y clases.
+- Ejecutar pruebas y entender resultados.
+- Proyecto final:
+  - Definición del problema.
+  - Diseño con POO, SOLID “light”, DI y type hints.
+  - Implementación usando funciones avanzadas, clases, archivos y serialización.
+  - Manejo de errores en el flujo principal.
+  - Pruebas básicas del proyecto con unittest/pytest.
 
----
+  </div>
+</div>
 
-## Módulo 5: POO - Fundamentos
-
-### 5.1 Clases y Objetos
-- Definición de clases
-- `__init__` y self
-- Atributos de instancia y clase
-
-### 5.2 Métodos
-- Métodos de instancia
-- @classmethod
-- @staticmethod
-
-### 5.3 Encapsulamiento
-- Convenciones de privacidad
-- Properties
-- Getters y setters
-
-### 5.4 Herencia
-- Herencia simple
-- super()
-- Herencia múltiple
-- MRO (Method Resolution Order)
-
-### 5.5 Polimorfismo
-- Duck typing
-- Abstract Base Classes
-- Protocolos
-
----
-
-## Módulo 6: POO - Avanzado
-
-### 6.1 Métodos Especiales
-- `__str__` y `__repr__`
-- `__eq__`, `__lt__`, etc.
-- `__len__`, `__getitem__`
-- Context managers (`__enter__`, `__exit__`)
-
-### 6.2 Dataclasses
-- @dataclass básico
-- Campos con default_factory
-- Frozen dataclasses
-- Post-init processing
-
-### 6.3 Principios SOLID
-- Single Responsibility
-- Open/Closed
-- Liskov Substitution
-- Interface Segregation
-- Dependency Inversion
-
----
-
-## Módulo 7: Manejo de Errores
-
-### 7.1 Excepciones
-- try/except/else/finally
-- Excepciones built-in
-- Excepciones personalizadas
-- Jerarquía de excepciones
-
-### 7.2 Debugging
-- print debugging
-- assert statements
-- pdb básico
-- Logging
-
-### 7.3 Validación
-- Validación de entrada
-- Guard clauses
-- Fail fast principle
-
----
-
-## Módulo 8: Módulos y Paquetes
-
-### 8.1 Importaciones
-- import vs from import
-- Imports relativos vs absolutos
-- __all__ y exportaciones
-
-### 8.2 Paquetes
-- Estructura de paquetes
-- __init__.py
-- Namespace packages
-
-### 8.3 Entornos Virtuales
-- venv
-- pip y requirements.txt
-- pyproject.toml básico
-
----
-
-## Módulo 9: Archivos y Datos
-
-### 9.1 Manejo de Archivos
-- open() y context managers
-- Modos de apertura
-- Encoding
-
-### 9.2 Formatos de Datos
-- JSON
-- CSV
-- Pickle (serialización)
-
-### 9.3 Paths
-- pathlib
-- Operaciones con rutas
-- Glob patterns
-
----
-
-## Módulo 10: Proyecto Final
-
-### 10.1 Planificación
-- Requisitos del proyecto
-- Diseño de arquitectura
-- Estructura de carpetas
-
-### 10.2 Implementación
-- Aplicación de todos los conceptos
-- SOLID en práctica
-- Testing básico
-
-### 10.3 Documentación
-- README profesional
-- Docstrings completos
-- Type hints completos
-
----
-
-## ¿Listo para empezar?
-
-[Inscribirme Ahora](#inscripcion){: .sci-btn .sci-btn-primary}
