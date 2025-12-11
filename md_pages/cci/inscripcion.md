@@ -1,5 +1,5 @@
 ---
-layout: sci
+layout: academy
 title: "Inscripción · Snake Code Institute"
 description: "El único curso que realmente necesitas para dominar Python desde cero hasta nivel" 
 badge: "Inscripción"

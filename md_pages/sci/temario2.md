@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: academy
 title: "Curso Python Vanilla PRO – Temario Completo"
 ---
 

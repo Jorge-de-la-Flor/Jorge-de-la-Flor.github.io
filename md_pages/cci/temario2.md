@@ -1,6 +1,6 @@
 ---
-layout: default
-title: "Curso Python Vanilla PRO – Temario Completo"
+layout: academy
+title: "Curso Rust Vanilla PRO – Temario Completo"
 ---
 
 # Curso Python Vanilla PRO – Temario Completo

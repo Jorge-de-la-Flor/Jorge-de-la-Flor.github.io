@@ -1,5 +1,5 @@
 ---
-layout: sci
+layout: academy
 title: Temario Completo
 description: "10 módulos diseñados para llevarte de cero a profesional en Python"
 badge: Python Vanilla PRO
