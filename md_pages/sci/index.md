@@ -1,5 +1,5 @@
 ---
-layout: academy
+layout: academyy
 title: "Snake Code Institute - Domina Python"
 mode: "snake"
 # permalink: /academy/python-vanilla-pro/

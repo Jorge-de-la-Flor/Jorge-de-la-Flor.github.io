@@ -1,5 +1,5 @@
 ---
-layout: academy
+layout: academyy
 title: Snake Code Institute - Domina Python
 description: El lugar donde Python se aprende de verdad
 cta_text: Inscribirme
