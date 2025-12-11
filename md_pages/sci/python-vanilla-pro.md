@@ -9,7 +9,11 @@ enroll_link_snake: "https://tuenlace-de-inscripcion.com/python-vanilla-pro"
 
 ## Python Vanilla PRO – Temario
 
-<!-- Aquí pegas tu temario completo en Markdown:
-   Módulo 1 – Introducción...
-   Módulo 2 – Listas...
-   etc. -->
+## Módulo 1: Bienvenida e Introducción
+
+- Bienvenida al curso
+- Presentación del contenido
+- Metodología de aprendizaje
+- Herramientas necesarias
+
+---
