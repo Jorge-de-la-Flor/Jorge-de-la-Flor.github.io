@@ -119,7 +119,7 @@ title: "Curso Python Vanilla PRO – Temario Completo"
 - Atributos “privados” y convenciones.
 - Properties (getters/setters “pythónicas”).
 - Herencia y sobrescritura de métodos.
-- Herencia múltiple.
+- Herencia múltiple. (MRO)
 - Polimorfismo.
 - Clases abstractas y ABC (módulo abc).
 - Interfaces y contratos de código usando ABC.

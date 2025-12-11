@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: "Academy - Jorge de la Flor" }}</title>
   <meta name="description" content="{{ page.description | default: 'Aprende Python y Rust de verdad. Snake Code Institute y Crab Code Institute.' }}">
-  
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+
   <style>
     * {
       margin: 0;
@@ -631,33 +631,39 @@
     }
   </style>
 </head>
-<body>
+<body class="{% if page.mode == 'crab' %}crab-mode{% endif %}">
   <!-- Navigation -->
   <nav class="nav">
     <div class="nav-container">
       <div class="nav-tabs">
-        <button class="nav-tab active snake" onclick="switchTo('snake')" id="snake-tab">
+        <button class="nav-tab {% if page.mode != 'crab' %}active snake{% else %}snake{% endif %}"
+                onclick="switchTo('snake')" id="snake-tab">
           <img src="{{ '/assets/images/logo-sci.png' | relative_url }}" alt="Snake Code Institute">
           <span class="nav-tab-text">Snake Code</span>
         </button>
-        
+
         <div class="nav-divider"></div>
-        
-        <button class="nav-tab crab" onclick="switchTo('crab')" id="crab-tab">
+
+        <button class="nav-tab {% if page.mode == 'crab' %}active crab{% else %}crab{% endif %}"
+                onclick="switchTo('crab')" id="crab-tab">
           <span class="emoji">🦀</span>
           <span class="nav-tab-text">Crab Code</span>
         </button>
       </div>
-      
+
       <div class="nav-right">
         <a href="{{ '/' | relative_url }}" class="nav-link">← Jorge.dev</a>
-        <a href="#inscripcion" class="nav-cta snake" id="nav-cta">Inscribirme</a>
+        <a href="#inscripcion-{{ page.mode | default: 'snake' }}"
+           class="nav-cta {% if page.mode == 'crab' %}crab{% else %}snake{% endif %}"
+           id="nav-cta">
+          Inscribirme
+        </a>
       </div>
     </div>
   </nav>
 
   <!-- Snake Code Institute Section -->
-  <section class="section snake-section active" id="snake-section">
+  <section class="section snake-section {% if page.mode != 'crab' %}active{% endif %}" id="snake-section">
     <div class="bg-effects">
       <div class="glow glow-1"></div>
       <div class="glow glow-2"></div>
@@ -676,18 +682,18 @@
         El lugar donde Python se aprende de verdad. Desde fundamentos hasta arquitectura profesional con POO, SOLID y testing.
       </p>
       <div class="hero-buttons">
-        <a href="#temario-python" class="btn btn-primary snake">
+        <a href="#temario-snake" class="btn btn-primary snake">
           Ver Temario Completo
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
           </svg>
         </a>
-        <a href="#inscripcion" class="btn btn-secondary snake">Inscribirme Ahora</a>
+        <a href="#inscripcion-snake" class="btn btn-secondary snake">Inscribirme Ahora</a>
       </div>
       <div class="stats">
         <div>
           <div class="stat-value">10</div>
-          <div class="stat-label">Modulos</div>
+          <div class="stat-label">Módulos</div>
         </div>
         <div>
           <div class="stat-value">50+</div>
@@ -695,97 +701,28 @@
         </div>
         <div>
           <div class="stat-value">100%</div>
-          <div class="stat-label">Practico</div>
+          <div class="stat-label">Práctico</div>
         </div>
       </div>
     </div>
 
-    <div class="content-section" id="temario-python">
+    <!-- AQUÍ entra el contenido Markdown de Snake -->
+    <div class="content-section" id="temario-snake">
       <div class="container">
-        <h2 class="section-title">Lo que dominaras</h2>
-        
-        <div class="code-preview">
-          <div class="code-header">
-            <span class="code-dot red"></span>
-            <span class="code-dot yellow"></span>
-            <span class="code-dot green"></span>
-            <span class="code-filename">data_processor.py</span>
-          </div>
-          <pre class="code-content"><span class="comment"># No solo aprenderas esto...</span>
-<span class="function">print</span>(<span class="string">"Hola Mundo"</span>)
-
-<span class="comment"># Aprenderas a construir esto:</span>
-<span class="keyword">class</span> <span class="class">DataProcessor</span>:
-    <span class="string">"""Procesador de datos siguiendo principios SOLID."""</span>
-
-    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>, strategy: <span class="type">ProcessingStrategy</span>):
-        <span class="variable">self</span>._strategy = strategy
-        <span class="variable">self</span>._validators: <span class="type">list</span>[Validator] = []
-
-    <span class="keyword">def</span> <span class="function">process</span>(<span class="variable">self</span>, data: <span class="type">DataFrame</span>) -> <span class="type">Result</span>:
-        validated = <span class="variable">self</span>._validate(data)
-        <span class="keyword">return</span> <span class="variable">self</span>._strategy.execute(validated)</pre>
-        </div>
-
-        <div class="modules-grid">
-          <div class="module-card">
-            <span class="module-num">01</span>
-            <h3 class="module-title">Fundamentos</h3>
-            <p class="module-desc">Variables, operadores, estructuras de control</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">02</span>
-            <h3 class="module-title">Funciones</h3>
-            <p class="module-desc">Parametros, scope, decoradores, closures</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">03</span>
-            <h3 class="module-title">Estructuras de Datos</h3>
-            <p class="module-desc">Listas, diccionarios, sets, comprehensions</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">04</span>
-            <h3 class="module-title">POO Fundamentos</h3>
-            <p class="module-desc">Clases, herencia, polimorfismo</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">05</span>
-            <h3 class="module-title">POO Avanzado</h3>
-            <p class="module-desc">Metodos especiales, dataclasses, ABC</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">06</span>
-            <h3 class="module-title">SOLID</h3>
-            <p class="module-desc">Principios de diseno de software</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">07</span>
-            <h3 class="module-title">Testing</h3>
-            <p class="module-desc">Pytest, mocking, TDD</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">08</span>
-            <h3 class="module-title">Manejo de Errores</h3>
-            <p class="module-desc">Excepciones, logging, debugging</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">09</span>
-            <h3 class="module-title">Archivos y Datos</h3>
-            <p class="module-desc">I/O, JSON, CSV, bases de datos</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">10</span>
-            <h3 class="module-title">Proyecto Final</h3>
-            <p class="module-desc">Aplicacion completa con arquitectura limpia</p>
-          </div>
-        </div>
+        {% if page.mode == 'snake' %}
+          {{ content }}
+        {% else %}
+          <!-- Puedes dejar un texto genérico si estás en modo crab -->
+          <h2 class="section-title">Cursos de Python</h2>
+          <p class="hero-description">Selecciona un curso de Python para ver el temario completo.</p>
+        {% endif %}
       </div>
     </div>
 
-    <div class="cta-section" id="inscripcion">
-      <h2 class="cta-title">Listo para dominar Python?</h2>
-      <p class="cta-description">No pierdas mas tiempo con tutoriales que no te llevan a ningun lado.</p>
-      <a href="#" class="cta-button">Inscribirme Ahora</a>
+    <div class="cta-section" id="inscripcion-snake">
+      <h2 class="cta-title">¿Listo para dominar Python?</h2>
+      <p class="cta-description">No pierdas más tiempo con tutoriales que no te llevan a ningún lado.</p>
+      <a href="{{ page.enroll_link_snake | default: '#' }}" class="cta-button">Inscribirme Ahora</a>
     </div>
 
     <footer class="footer">
@@ -794,7 +731,7 @@
   </section>
 
   <!-- Crab Code Institute Section -->
-  <section class="section crab-section" id="crab-section">
+  <section class="section crab-section {% if page.mode == 'crab' %}active{% endif %}" id="crab-section">
     <div class="bg-effects">
       <div class="glow glow-1"></div>
       <div class="glow glow-2"></div>
@@ -808,21 +745,21 @@
         Crab Code <span class="gradient">Institute</span>
       </h1>
       <p class="hero-description">
-        Aprende Rust desde cero. El lenguaje mas amado por desarrolladores, con enfoque en sistemas, performance y seguridad de memoria.
+        Aprende Rust desde cero. El lenguaje más amado por desarrolladores, con enfoque en sistemas, performance y seguridad de memoria.
       </p>
       <div class="hero-buttons">
-        <a href="#temario-rust" class="btn btn-primary crab">
+        <a href="#temario-crab" class="btn btn-primary crab">
           Ver Temario Completo
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
           </svg>
         </a>
-        <a href="#inscripcion-rust" class="btn btn-secondary crab">Inscribirme Ahora</a>
+        <a href="#inscripcion-crab" class="btn btn-secondary crab">Inscribirme Ahora</a>
       </div>
       <div class="stats">
         <div>
           <div class="stat-value">8</div>
-          <div class="stat-label">Modulos</div>
+          <div class="stat-label">Módulos</div>
         </div>
         <div>
           <div class="stat-value">40+</div>
@@ -835,85 +772,22 @@
       </div>
     </div>
 
-    <div class="content-section" id="temario-rust">
+    <!-- AQUÍ entra el contenido Markdown de Crab -->
+    <div class="content-section" id="temario-crab">
       <div class="container">
-        <h2 class="section-title">Lo que dominaras</h2>
-        
-        <div class="code-preview">
-          <div class="code-header">
-            <span class="code-dot red"></span>
-            <span class="code-dot yellow"></span>
-            <span class="code-dot green"></span>
-            <span class="code-filename">data_processor.rs</span>
-          </div>
-          <pre class="code-content"><span class="comment">// No solo aprenderas esto...</span>
-<span class="keyword">fn</span> <span class="function">main</span>() {
-    <span class="function">println!</span>(<span class="string">"Hola Mundo"</span>);
-}
-
-<span class="comment">// Aprenderas a construir esto:</span>
-<span class="keyword">pub struct</span> <span class="class">DataProcessor</span>&lt;T: <span class="type">Strategy</span>&gt; {
-    strategy: T,
-    validators: <span class="type">Vec</span>&lt;Box&lt;<span class="keyword">dyn</span> <span class="type">Validator</span>&gt;&gt;,
-}
-
-<span class="keyword">impl</span>&lt;T: <span class="type">Strategy</span>&gt; <span class="class">DataProcessor</span>&lt;T&gt; {
-    <span class="keyword">pub fn</span> <span class="function">process</span>(&<span class="variable">self</span>, data: DataFrame) -> <span class="type">Result</span>&lt;Output, Error&gt; {
-        <span class="keyword">let</span> validated = <span class="variable">self</span>.validate(data)?;
-        <span class="variable">self</span>.strategy.execute(validated)
-    }
-}</pre>
-        </div>
-
-        <div class="modules-grid">
-          <div class="module-card">
-            <span class="module-num">01</span>
-            <h3 class="module-title">Fundamentos</h3>
-            <p class="module-desc">Variables, ownership, borrowing</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">02</span>
-            <h3 class="module-title">Control de Flujo</h3>
-            <p class="module-desc">Pattern matching, enums, Option, Result</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">03</span>
-            <h3 class="module-title">Structs y Traits</h3>
-            <p class="module-desc">Tipos personalizados, polimorfismo</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">04</span>
-            <h3 class="module-title">Memoria y Lifetime</h3>
-            <p class="module-desc">Referencias, lifetime annotations</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">05</span>
-            <h3 class="module-title">Colecciones</h3>
-            <p class="module-desc">Vec, HashMap, iteradores</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">06</span>
-            <h3 class="module-title">Error Handling</h3>
-            <p class="module-desc">Result, ?, custom errors</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">07</span>
-            <h3 class="module-title">Concurrencia</h3>
-            <p class="module-desc">Threads, async/await, channels</p>
-          </div>
-          <div class="module-card">
-            <span class="module-num">08</span>
-            <h3 class="module-title">Proyecto Final</h3>
-            <p class="module-desc">CLI tool o servicio web con Axum</p>
-          </div>
-        </div>
+        {% if page.mode == 'crab' %}
+          {{ content }}
+        {% else %}
+          <h2 class="section-title">Cursos de Rust</h2>
+          <p class="hero-description">Selecciona un curso de Rust para ver el temario completo.</p>
+        {% endif %}
       </div>
     </div>
 
-    <div class="cta-section" id="inscripcion-rust">
-      <h2 class="cta-title">Listo para dominar Rust?</h2>
+    <div class="cta-section" id="inscripcion-crab">
+      <h2 class="cta-title">¿Listo para dominar Rust?</h2>
       <p class="cta-description">El lenguaje del futuro para sistemas de alto rendimiento.</p>
-      <a href="#" class="cta-button">Inscribirme Ahora</a>
+      <a href="{{ page.enroll_link_crab | default: '#' }}" class="cta-button">Inscribirme Ahora</a>
     </div>
 
     <footer class="footer">
@@ -938,6 +812,7 @@
         crabTab.classList.remove('active');
         navCta.classList.remove('crab');
         navCta.classList.add('snake');
+        navCta.href = '#inscripcion-snake';
       } else {
         body.classList.add('crab-mode');
         crabSection.classList.add('active');
@@ -946,9 +821,9 @@
         snakeTab.classList.remove('active');
         navCta.classList.remove('snake');
         navCta.classList.add('crab');
+        navCta.href = '#inscripcion-crab';
       }
 
-      // Scroll to top when switching
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
