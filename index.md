@@ -67,12 +67,8 @@ title: Jorge de la Flor - Software Developer
 ## Stack Tecnológico
 
 <p style="text-align: center; font-weight: 600; font-size: 1.2rem; margin-top: 0.5rem;">
-  Piensa en Python, potencia en Rust.
-</p>
-
-<div align="center">
   <strong>Piensa en Python, potencia en Rust.</strong>
-</div>
+</p>
 
 <div class="tech-badges">
   <span class="tech-badge ml"><i class="fas fa-brain"></i> Micro IA</span>
