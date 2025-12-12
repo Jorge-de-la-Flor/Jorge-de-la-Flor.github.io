@@ -15,4 +15,5 @@ jobs:
       - name: build
         run: script/bootstrap
       - name: test
-        run: script/cibuild
+        run: sh script/cibuild
+
