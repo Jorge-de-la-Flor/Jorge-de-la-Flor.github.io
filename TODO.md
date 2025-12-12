@@ -1,0 +1,1 @@
+TODO: descomentar el apartado de sci de _layouts/default.html, cuando vuelva a poner operativo sci y cci. Y restaurar carpetas de sci y cci, entre otras, ubicadas en la carpeta del repo-estudio. Además, darles una revisada en las rutas y pérmalinks, que todo funcione, ya que las he comentado algunas.
