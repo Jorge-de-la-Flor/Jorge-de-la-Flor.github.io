@@ -19,9 +19,9 @@ title: Jorge de la Flor - Software Developer
   
   <div class="social-links">
     <a href="{{ site.github.owner_url }}" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://linktr.ee/frostalo" class="social-link" title="Linktree"><i class="fas fa-link"></i></a>
-    <a href="{{ '/md_pages/sci/' | relative_url }}" class="social-link" title="SCI"><i class="fas fa-graduation-cap"></i></a>
-    <a href="{{ '/md_pages/cci/' | relative_url }}" class="social-link" title="CCI"><i class="fas fa-rust"></i></a>
+    <a href="https://linktr.ee/frost_core" class="social-link" title="Linktree"><i class="fas fa-link"></i></a>
+    <!-- <a href="{{ '/md_pages/sci/' | relative_url }}" class="social-link" title="SCI"><i class="fas fa-graduation-cap"></i></a> -->
+    <!-- <a href="{{ '/md_pages/cci/' | relative_url }}" class="social-link" title="CCI"><i class="fas fa-rust"></i></a> -->
   </div>
 </div>
 
@@ -98,5 +98,5 @@ Hablemos de tu proyecto: escríbeme a **jafdelaflor@gmail.com** para proyectos y
 
 - [jafdelaflor@gmail.com](mailto:jafdelaflor@gmail.com) – Proyectos y colaboraciones
 - [GitHub]({{ site.github.owner_url }}) - Código y proyectos
-- [Snake Code Institute]({{ '/md_pages/sci/' | relative_url }}) - Aprende programación real   
-- [Linktree](https://linktr.ee/frostalo) - Todo lo demás  
+<!-- - [Snake Code Institute]({{ '/md_pages/sci/' | relative_url }}) - Aprende programación real    -->
+- [Linktree](https://linktr.ee/frost_core) - Todo lo demás  
