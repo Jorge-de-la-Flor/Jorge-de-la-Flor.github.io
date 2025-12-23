@@ -37,7 +37,7 @@ title: Jorge de la Flor - Software Developer
 
 <p style="margin-top: 1.5rem;">
   <a href="{{ '/md_pages/about/' | relative_url }}" class="cta-link">
-    🚀 Leer más sobre mi recorrido →
+    🚀 Leer más sobre mí →
   </a>
 </p>
 
