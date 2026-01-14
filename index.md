@@ -99,4 +99,4 @@ Hablemos de tu proyecto: escríbeme a **jafdelaflor@gmail.com** para proyectos y
 - [jafdelaflor@gmail.com](mailto:jafdelaflor@gmail.com) – Proyectos y colaboraciones
 - [GitHub]({{ site.github.owner_url }}) - Código y proyectos
 <!-- - [Snake Code Institute]({{ '/md_pages/sci/' | relative_url }}) - Aprende programación real    -->
-- [Linktree](https://linktr.ee/frost_core) - Todo lo demás  
+- [Linktree](https://linktr.ee/frost_core) - Todas mis demás redes
