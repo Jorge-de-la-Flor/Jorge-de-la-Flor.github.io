@@ -3,7 +3,7 @@ layout: default
 title: Proyectos
 description: Bienvenido al apartado de mis proyectos
 badge: Proyectos
-permalink: md_pages/proyectos/
+permalink: /proyectos/sci/
 ---
 
 <div class="profile-hero" style="padding: 1rem 0 2rem;">

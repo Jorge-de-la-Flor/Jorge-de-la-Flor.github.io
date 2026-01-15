@@ -3,7 +3,7 @@ layout: default
 title: Apider
 description: Bienvenido al apartado de mi proyecto Apider
 badge: Apider
-permalink: md_pages/proyectos/apider
+permalink: /proyectos/apider/
 ---
 
 <div class="profile-hero" 
