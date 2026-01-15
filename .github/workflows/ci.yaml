@@ -1,3 +1,4 @@
+name: CI
 on:
   push:
   pull_request:
@@ -5,16 +6,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: script/cibuild
     steps:
-      - uses: actions/checkout@v4        # ← v2 → v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.2
-          bundler-cache: true
-      - name: build
-        run: script/bootstrap
-      - name: test
-        run: script/cibuild              # ← QUITA "sh"
-        shell: bash                     # ← AGREGAR ESTO
-
+    - uses: actions/checkout@v4
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.2
+        bundler-cache: true
+    - name: bootstrap
+      run: script/bootstrap
+    - name: test
+      run: script/cibuild
+      shell: bash
