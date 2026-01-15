@@ -20,9 +20,9 @@ permalink: /proyectos/
 
 ## Proyectos destacados
 
-- [**Apider**](/md_pages/proyectos/apider/) – Framework minimalista de automatización que reemplaza herramientas visuales como n8n mediante flujos definidos enteramente en código Python.
-- [**Snake Code Institute**](/md_pages/proyectos/sci/) – Curso de Python profesional: fundamentos → arquitectura (SOLID, testing, FastAPI).  
-- [**Crab Code Institute**](/md_pages/proyectos/cci/) – Rust para sistemas y embedded con `embedded-hal` y herramientas propias.  
+- [**Apider**](/proyectos/apider/) – Framework minimalista de automatización que reemplaza herramientas visuales como n8n mediante flujos definidos enteramente en código Python.
+- [**Snake Code Institute**](/proyectos/sci/) – Curso de Python profesional: fundamentos → arquitectura (SOLID, testing, FastAPI).  
+- [**Crab Code Institute**](/proyectos/cci/) – Rust para sistemas y embedded con `embedded-hal` y herramientas propias.  
 - **Sistemas embebidos industriales** – ESP32/STM32/Arduino → HALs en Rust → monitoreo e IoT en producción.
 
 ## Otros proyectos
