@@ -1,102 +1,64 @@
 ---
 layout: default
-title: Jorge de la Flor - Software Developer
+title: Jorge de la Flor – Embedded Linux & Systems Engineer
 ---
 
-<div class="profile-hero">
-  <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="Jorge de la Flor" class="profile-avatar" onerror="this.style.display='none'">
-  
-  <h1 class="profile-name">Jorge de la Flor</h1>
-  <p class="profile-title">Software Developer · Founder @ Snake Code Institute & Crab Code Institute</p>
-  <p class="profile-title">Especializado en sistemas embebidos, Micro IA y soluciones en Python y Rust que conectan hardware, software y negocio.</p>
-  <p class="profile-title">Piensa en Python, potencia en Rust.</p>
-  
-  <div class="tech-badges">
-    <span class="tech-badge python"><i class="fab fa-python"></i> Python</span>
-    <span class="tech-badge rust"><i class="fas fa-cog"></i> Rust</span>
-    <span class="tech-badge cpp"><i class="fas fa-microchip"></i> C/C++</span>
-  </div>
-  
-  <div class="social-links">
-    <a href="{{ site.github.owner_url }}" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://linktr.ee/frost_core" class="social-link" title="Linktree"><i class="fas fa-link"></i></a>
-    <!-- <a href="{{ '/md_pages/sci/' | relative_url }}" class="social-link" title="SCI"><i class="fas fa-graduation-cap"></i></a> -->
-    <!-- <a href="{{ '/md_pages/cci/' | relative_url }}" class="social-link" title="CCI"><i class="fas fa-rust"></i></a> -->
-  </div>
-</div>
+# Jorge de la Flor  
+**Embedded Linux & Systems Engineer**
 
-## Sobre mí
+Engineer focused on low-level systems, embedded Linux and edge workloads on resource-constrained hardware. Experience building and maintaining Linux-based systems on ARM platforms, integrating hardware and software layers, and developing system-level services using Rust, C/C++ and Python.
 
-**Desarrollador especializado en Python, Rust y sistemas embebidos.** Egresado de **San Ignacio University (USA)** + **Universidad San Ignacio de Loyola (Perú)** con doble grado en **International Business**.
-
-**Fundador de:**
-- **Snake Code Institute** - Formación profesional en Python  
-- **Crab Code Institute** - Rust para sistemas y embedded  
-
-**Líder técnico activo en comunidades developer LATAM** - desarrollo, testing, debugging y web dev para proyectos colaborativos. Desarrollo soluciones que integran **hardware → software → negocio**.
-
-<p style="margin-top: 1.5rem;">
-  <a href="{{ '/md_pages/about/' | relative_url }}" class="cta-link">
-    🚀 Leer más sobre mí →
-  </a>
-</p>
+Strong interest in operating systems, device-level integration, reliability and long-term maintainability of embedded and edge systems.
 
 ---
 
-## Proyectos destacados
+## Technical Focus
 
-<div class="card-grid">
-  <div class="card">
-    <h3 class="card-title"><i class="fas fa-graduation-cap" style="color: var(--accent-python);"></i> Snake Code Institute</h3>
-    <p class="card-desc">Python: fundamentos → arquitectura profesional (SOLID, testing, FastAPI).</p>
-  </div>
-  
-  <div class="card">
-    <h3 class="card-title"><i class="fas fa-rust" style="color: #DEA584;"></i> Crab Code Institute</h3>
-    <p class="card-desc">Rust: CLI tools, embedded-hal, concurrency segura.</p>
-  </div>
-  
-  <div class="card">
-    <h3 class="card-title"><i class="fas fa-microchip" style="color: var(--accent-rust);"></i> Embedded Systems</h3>
-    <p class="card-desc">ESP32/STM32/Arduino → Rust HALs → IoT industrial.</p>
-  </div>
-</div>
+- Embedded Linux (Ubuntu, Debian-based systems)
+- ARM-based platforms and single-board computers
+- Systems programming with **Rust** and **C/C++**
+- Python for automation, tooling and backend services
+- Hardware–software integration and device bring-up
+- Linux services, networking, storage and system configuration
+- Edge systems under CPU, memory and storage constraints
 
 ---
 
-## Stack Tecnológico
+## Selected Projects
 
-<p style="text-align: center; font-weight: 600; font-size: 1.2rem; margin-top: 0.5rem;">
-  <strong>Piensa en Python, potencia en Rust.</strong>
-</p>
+### Embedded Linux Private Cloud System
+- Designed and deployed a self-hosted private cloud using **Raspberry Pi** running Linux.
+- Configured and maintained a **Nextcloud** instance for secure file storage.
+- Integrated external SSD storage over USB, with separate primary and backup disks.
+- Worked directly with Linux services, filesystem management, networking and SSH-based remote administration.
+- Focused on system stability, maintainability and continuous operation.
 
-<div class="tech-badges">
-  <span class="tech-badge ml"><i class="fas fa-brain"></i> Micro IA</span>
-  <span class="tech-badge python"><i class="fab fa-python"></i> Python</span>
-  <span class="tech-badge rust"><i class="fas fa-cog"></i> Rust</span>
-  <span class="tech-badge cpp"><i class="fas fa-microchip"></i> C/C++</span>
-  <span class="tech-badge embedded"><i class="fas fa-microchip"></i> Sistemas Embebidos</span>
-</div>
-
-
-**Uso diario:** Python y Rust, centrado en proyectos con embedded-hal y creación de nuevos frameworks.
+### Embedded Systems & IoT Development
+- Development experience on **ESP32, STM32 and Arduino** platforms.
+- Low-level programming and hardware interaction using **C/C++** and **Rust**.
+- Device bring-up, peripheral integration and basic real-time considerations.
+- Exposure to fragmented embedded ecosystems and rapid adaptation to new SDKs and toolchains.
 
 ---
 
-## ¿Colaboramos?
+## Engineering Practices
 
-**Para empresas:** Consultoría embedded/IoT y automatizaciones a medida.  
-**Para devs:** Cursos de Python profesional en Snake Code Institute.
+- Structured problem solving and incremental system design
+- Clear separation of concerns between hardware, OS and application layers
+- Preference for simple, maintainable solutions over unnecessary complexity
+- Comfortable working in Linux environments and terminal-based workflows
 
-Hablemos de tu proyecto: escríbeme a **frostcore.dev@proton.me** para proyectos y colaboraciones.
+---
 
-<!-- <div style="text-align:center; margin: 2rem 0;">
-  <a href="#contacto" class="cta-button">Hablemos de tu proyecto</a>
-</div> -->
+## Background
 
-## Contacto {#contacto}
+- Bachelor’s Degree in **International Business** (Dual Degree Program – Peru / USA)
+- Strong technical self-training alongside formal education
+- Experience collaborating across technical and non-technical domains
 
-- [frostcore.dev@proton.me](mailto:frostcore.dev@proton.me) – Proyectos y colaboraciones
-- [GitHub]({{ site.github.owner_url }}) - Código y proyectos
-<!-- - [Snake Code Institute]({{ '/md_pages/sci/' | relative_url }}) - Aprende programación real    -->
-- [Linktree](https://linktr.ee/frost_core) - Todas mis demás redes
+---
+
+## Contact
+
+- GitHub: https://github.com/Jorge-de-la-Flor  
+- LinkedIn: https://www.linkedin.com/in/jorge-de-la-flor-100950210/
