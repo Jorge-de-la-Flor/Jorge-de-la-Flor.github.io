@@ -1,6 +1,8 @@
 title: Jorge de la Flor
 logo: /assets/img/Foto de presentación.jpg
 description: Bienvenido a la presentación de mi perfil.
+url: "https://jafa.dev"
+baseurl: ""
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-minimal
