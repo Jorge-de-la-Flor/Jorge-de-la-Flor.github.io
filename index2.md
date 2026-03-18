@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Jorge de la Flor - Software Developer
+title: Jorge de la Flor - Embedded Systems & Robotics Engineer
 ---
 
 <div class="profile-hero">
   <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="Jorge de la Flor" class="profile-avatar" onerror="this.style.display='none'">
   
   <h1 class="profile-name">Jorge de la Flor</h1>
-  <p class="profile-title">Software Developer · Founder @ Snake Code Institute & Crab Code Institute</p>
+  <p class="profile-title">Embedded Systems & Robotics Engineer · Founder @ Snake Code Institute & Crab Code Institute</p>
   <p class="profile-title">Especializado en sistemas embebidos, Micro IA y soluciones en Python y Rust que conectan hardware, software y negocio.</p>
   <p class="profile-title">Piensa en Python, potencia en Rust.</p>
   

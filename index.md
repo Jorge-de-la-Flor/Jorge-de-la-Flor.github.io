@@ -1,15 +1,14 @@
 ---
 layout: default
-title: Jorge de la Flor – Embedded Linux & Systems Engineer
+title: Jorge de la Flor – Embedded Systems & Robotics Engineer
 ---
-
 
 <div class="profile-hero">
   <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="Jorge de la Flor" class="profile-avatar" onerror="this.style.display='none'">
   
   <h1 class="profile-name">Jorge de la Flor</h1>
 
-  <p class="profile-title">Embedded Linux & Systems Engineer</p>
+  <p class="profile-title">Embedded Systems & Robotics Engineer</p>
   <p class="profile-title">Engineer focused on low-level systems, embedded Linux and edge workloads on resource-constrained hardware. Experience building and maintaining Linux-based systems on ARM platforms, integrating hardware and software layers, and developing system-level services using Rust, C/C++ and Python.</p>
   <p class="profile-title">Strong interest in operating systems, device-level integration, reliability and long-term maintainability of embedded and edge systems.</p>
 </div>
