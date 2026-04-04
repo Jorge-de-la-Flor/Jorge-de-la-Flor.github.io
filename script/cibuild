@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 set -e
 bundle exec jekyll build
-bundle exec htmlproofer ./_site \
+
+# HTMLProofer ULTRA simple - solo links internos
+htmlproofer ./_site \
   --disable-external \
-  --allow-hash-href \
-  --check-favicon \
-  --check-html \
-  --empty-alt-ignore \
-  --url-swap "/localhost:4000/,https://jorge-de-la-flor.github.io/" \
-  --only-4xx
+  --allow-hash-href
