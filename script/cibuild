@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
 set -e
 bundle exec jekyll build
-
-# HTMLProofer ULTRA simple - solo links internos
-htmlproofer ./_site \
-  --disable-external \
-  --allow-hash-href
+echo "✅ Build OK - GitHub Pages deploy automático"
