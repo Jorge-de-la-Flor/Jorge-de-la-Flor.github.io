@@ -1,0 +1,44 @@
+# Configuración del sitio
+title: Jorge de la Flor — Software Architect & Protocol Developer
+description: Software Architect & Protocol Developer · Embedded Systems · Cyber-Physical Systems
+url: "https://jafa.dev"
+baseurl: "/prueba-lfs"
+
+# Autor
+author:
+  name: Jorge Aurelio de la Flor Argandona
+  email: frostcore@jafa.dev
+  github: Jorge-de-la-Flor
+  linkedin: jorge-de-la-flor
+
+# Redes sociales
+social:
+  github: Jorge-de-la-Flor
+  linkedin: jorge-de-la-flor
+  linktree: https://linktr.ee/frost_core
+  sessionize: https://sessionize.com/jorge-de-la-flor
+
+# Configuración de Jekyll
+permalink: pretty
+markdown: kramdown
+highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore
+  - README.md
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"

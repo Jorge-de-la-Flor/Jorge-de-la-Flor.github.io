@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    Jorge de la Flor - Software Architect & Systems Developer
+  </title>
+  <meta name="description" content="Software Architect & Systems Developer · Cloud-agnostic · Language Engineering · Embedded Architectures" />
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Estilos principales -->
+  <style>
+/* ============================================
+   Variables & Reset
+   ============================================ */
+:root {
+  --bg-primary: #0a0e17;
+  --bg-secondary: #111927;
+  --bg-card: #141e2b;
+  --text-primary: #e8edf5;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border-color: #1e2a3a;
+
+  --accent-python: #3776ab;
+  --accent-rust: #de5846;
+  --accent-cpp: #00599c;
+  --accent-embedded: #00b894;
+  --accent-ml: #8b5cf6;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --transition: 0.25s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  padding: 0 1.5rem;
+}
+
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--accent-rust);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ============================================
+   Container
+   ============================================ */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 0 3rem;
+}
+
+/* ============================================
+   Header / Navigation
+   ============================================ */
+.site-header {
+  padding: 1rem 0 2rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2.5rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.nav-brand .brand-icon {
+  display: inline-block;
+  font-size: 1.1rem;
+  color: var(--accent-rust);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.8rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  padding: 0.3rem 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+  border-bottom-color: var(--accent-rust);
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.site-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  transition: color var(--transition), transform var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   Profile Hero
+   ============================================ */
+.profile-hero {
+  text-align: center;
+  padding: 1.5rem 0 2.5rem;
+}
+
+.profile-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.2rem;
+  border: 3px solid var(--border-color);
+  box-shadow: var(--shadow);
+  background: var(--bg-secondary);
+}
+
+.profile-name {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.3rem;
+  background: linear-gradient(135deg, #e8edf5 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.profile-title {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 680px;
+  margin: 0.4rem auto;
+  line-height: 1.6;
+}
+
+.profile-title:first-of-type {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   Tech Badges
+   ============================================ */
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+  margin: 1.5rem 0;
+}
+
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 1rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  transition: border-color var(--transition), color var(--transition),
+    transform var(--transition), box-shadow var(--transition);
+}
+
+.tech-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.tech-badge.python {
+  border-color: var(--accent-python);
+  color: #8bb9e6;
+}
+.tech-badge.python:hover {
+  border-color: var(--accent-python);
+  color: #e8edf5;
+  box-shadow: 0 0 24px rgba(55, 118, 171, 0.2);
+}
+
+.tech-badge.rust {
+  border-color: var(--accent-rust);
+  color: #f5a08c;
+}
+.tech-badge.rust:hover {
+  border-color: var(--accent-rust);
+  color: #e8edf5;
+  box-shadow: 0 0 24px rgba(222, 88, 70, 0.2);
+}
+
+.tech-badge.cpp {
+  border-color: var(--accent-cpp);
+  color: #7ab7e6;
+}
+.tech-badge.cpp:hover {
+  border-color: var(--accent-cpp);
+  color: #e8edf5;
+  box-shadow: 0 0 24px rgba(0, 89, 156, 0.2);
+}
+
+.tech-badge.embedded {
+  border-color: var(--accent-embedded);
+  color: #6dd5b8;
+}
+.tech-badge.embedded:hover {
+  border-color: var(--accent-embedded);
+  color: #e8edf5;
+  box-shadow: 0 0 24px rgba(0, 184, 148, 0.2);
+}
+
+.tech-badge.ml {
+  border-color: var(--accent-ml);
+  color: #b794f4;
+}
+.tech-badge.ml:hover {
+  border-color: var(--accent-ml);
+  color: #e8edf5;
+  box-shadow: 0 0 24px rgba(139, 92, 246, 0.2);
+}
+
+/* ============================================
+   Social Links
+   ============================================ */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  transition: border-color var(--transition), color var(--transition),
+    transform var(--transition), box-shadow var(--transition);
+}
+
+.social-link:hover {
+  color: var(--text-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-color: var(--accent-rust);
+}
+
+/* ============================================
+   Headings
+   ============================================ */
+h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 2.5rem 0 1.2rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--border-color);
+  margin: 2.5rem 0;
+}
+
+/* ============================================
+   Card Grid (proyectos destacados)
+   ============================================ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.5rem 1.8rem;
+  transition: border-color var(--transition), transform var(--transition),
+    box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card:hover {
+  border-color: #2a3a4e;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.card-link {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent-rust);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: gap var(--transition);
+}
+
+.card-link:hover {
+  gap: 0.6rem;
+  color: var(--accent-rust);
+}
+
+/* ============================================
+   CTA Link
+   ============================================ */
+.cta-link {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--accent-rust);
+  padding: 0.4rem 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.cta-link:hover {
+  border-bottom-color: var(--accent-rust);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   Botón CTA grande
+   ============================================ */
+.cta-button {
+  display: inline-block;
+  padding: 0.8rem 2.5rem;
+  background: var(--accent-rust);
+  color: #fff;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background: #c94a3a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(222, 88, 70, 0.3);
+}
+
+code {
+  background: var(--bg-secondary);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--accent-python);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 700px) {
+  .nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  .nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem 1.4rem;
+    font-size: 0.9rem;
+  }
+
+  .profile-name {
+    font-size: 1.8rem;
+  }
+
+  .profile-title {
+    font-size: 0.95rem;
+  }
+
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  body {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-name {
+    font-size: 1.5rem;
+  }
+
+  .tech-badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.7rem;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+}
+  </style>
+
+</head>
+  <body>
+    <div class="container">
+      <header class="site-header">
+  <nav class="nav">
+    <a href="/" class="nav-brand">
+      <span class="brand-icon">&lt;/&gt;</span>
+      Jorge A. de la Flor
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/md_pages/about/">Sobre mí</a></li>
+      <li><a href="mailto:frostcore@jafa.dev">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+      <main class="content">
+        <div class="profile-hero">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Jorge de la Flor" class="profile-avatar" onerror="this.src='/assets/images/avatar.jpg'">
+  
+  <h1 class="profile-name">Jorge A. de la Flor</h1>
+  <p class="profile-title">Software Architect & Systems Developer</p>
+  <p class="profile-title" style="font-weight: 400; color: var(--text-secondary);">
+    Cloud-agnostic · Language Engineering · Embedded Architectures
+  </p>
+  
+  <div class="tech-badges">
+    <span class="tech-badge rust"><i class="fas fa-cog"></i> Rust</span>
+    <span class="tech-badge python"><i class="fab fa-python"></i> Python</span>
+    <span class="tech-badge cpp"><i class="fas fa-microchip"></i> C/C++</span>
+    <span class="tech-badge embedded"><i class="fas fa-microchip"></i> Embedded</span>
+    <span class="tech-badge ml"><i class="fas fa-code-branch"></i> Language Engineering</span>
+    <span class="tech-badge" style="border-color: #f59e0b; color: #f59e0b;"><i class="fas fa-fingerprint"></i> Protocolos</span>
+  </div>
+  
+  <div class="social-links">
+    <a href="https://github.com/Jorge-de-la-Flor" class="social-link" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/jorge-de-la-flor" class="social-link" title="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="mailto:frostcore@jafa.dev" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+  </div>
+</div>
+
+<hr />
+
+<h2>Sobre mí</h2>
+
+<div style="font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary);">
+  <p><strong>Arquitecto de software y desarrollador de sistemas</strong> especializado en infraestructura cloud-agnóstica, sistemas embebidos y tooling de lenguajes. Creador de <strong>Apider</strong>, <strong>OMNI-PY</strong> e <strong>InvisibleDots</strong> — plataformas y protocolos que resuelven problemas de portabilidad, automatización, generación de código y autenticación de documentos físicos.</p>
+  
+  <p>Los principios arquitectónicos que unifican estos proyectos están formalizados como el <strong>Modelo Agnóstico (AMP)</strong> en mi libro en preparación: <em>The Agnostic Engineer: Architecture Beyond Infrastructure</em>.</p>
+  
+  <p>Combino una formación en <strong>International Business</strong> con experiencia práctica en ingeniería de software. He sido ponente invitado en <strong>Microsoft Build 2026</strong> y en <strong>Azure User Group Latam</strong>.</p>
+</div>
+
+<p style="margin-top: 1.5rem;">
+  <a href="/md_pages/about/" class="cta-link">
+    Conoce mi trayectoria completa →
+  </a>
+</p>
+
+<hr />
+
+<h2>Proyectos destacados</h2>
+
+<div class="card-grid">
+  <div class="card">
+    <h3 class="card-title"><i class="fas fa-cloud" style="color: #4fc3f7;"></i> Apider SDK</h3>
+    <p class="card-desc">
+      Runtime multi-tenant serverless en Azure Functions. Publicado en PyPI (<code>pip install apider</code>). 
+      Aislamiento por ContextVar, cifrado Fernet, servidor MCP stateless y facturación con Paddle. 
+      <strong>61 tests</strong> en CI.
+    </p>
+    <a href="https://pypi.org/project/apider" class="card-link" target="_blank">Ver en PyPI →</a>
+  </div>
+  
+  <div class="card">
+    <h3 class="card-title"><i class="fas fa-code" style="color: #8b5cf6;"></i> OMNI-PY</h3>
+    <p class="card-desc">
+      Transpilador de Python a múltiples lenguajes (Java, Go, JavaScript). 
+      Capa AST en Python + <strong>TypeTracker en Rust</strong> (PyO3 FFI) que realiza 
+      inferencia de tipos y análisis de nulabilidad. Emisión idiomática y segura.
+    </p>
+  </div>
+  
+  <div class="card">
+    <h3 class="card-title"><i class="fas fa-fingerprint" style="color: #f59e0b;"></i> InvisibleDots</h3>
+    <p class="card-desc">
+      Implementación de referencia del <strong>Protocolo IMEP</strong> (Invisible Metadata Encoding Protocol) 
+      para incrustar metadatos criptográficamente verificables en documentos impresos. 
+      <strong>Python + Rust</strong> con PyO3, Reed-Solomon, Ed25519 y OpenCV.
+    </p>
+    <a href="https://github.com/Jorge-de-la-Flor/InvisibleDots" class="card-link" target="_blank">Ver en GitHub →</a>
+  </div>
+</div>
+
+<hr />
+
+<h2>Filosofía arquitectónica</h2>
+
+<div style="background: var(--bg-card); border-left: 4px solid var(--accent-rust); padding: 1.5rem; border-radius: var(--radius); margin: 1.5rem 0;">
+  <p style="font-weight: 500; font-size: 1.1rem; margin-bottom: 0.5rem;">
+    <i class="fas fa-book" style="color: var(--accent-rust); margin-right: 0.5rem;"></i>
+    <strong>The Agnostic Engineer: Architecture Beyond Infrastructure</strong>
+  </p>
+  <p style="color: var(--text-secondary); margin-bottom: 0;">
+    Formaliza el principio de <strong>"Agnosticismo por Transformación"</strong> como principio arquitectónico unificado, aplicado en tres dominios: <strong>cloud</strong> (Apider), <strong>language tooling</strong> (OMNI-PY) y <strong>protocolos</strong> (IMEP/InvisibleDots).
+  </p>
+</div>
+
+<hr />
+
+<h2>Stack Tecnológico</h2>
+
+<div class="tech-badges" style="margin-bottom: 1.5rem; gap: 0.5rem;">
+  <span class="tech-badge rust"><i class="fas fa-cog"></i> Rust</span>
+  <span class="tech-badge python"><i class="fab fa-python"></i> Python</span>
+  <span class="tech-badge cpp"><i class="fas fa-microchip"></i> C/C++</span>
+  <span class="tech-badge embedded"><i class="fas fa-microchip"></i> ESP32/STM32</span>
+  <span class="tech-badge ml"><i class="fas fa-code-branch"></i> Language Engineering</span>
+  <span class="tech-badge" style="border-color: #4fc3f7; color: #4fc3f7;"><i class="fas fa-cloud"></i> Azure</span>
+  <span class="tech-badge" style="border-color: #f59e0b; color: #f59e0b;"><i class="fas fa-lock"></i> Security</span>
+  <span class="tech-badge" style="border-color: #34d399; color: #34d399;"><i class="fas fa-print"></i> IMEP</span>
+</div>
+
+<p><strong>Además:</strong> AST, MCP, Polars, PostgreSQL, SQLite, Docker, CI/CD, RTOS, protocolos embebidos (UART, SPI, I²C, MQTT), OpenCV, Reed-Solomon, Ed25519.</p>
+
+<hr />
+
+<h2>¿Colaboramos?</h2>
+
+<p>Busco oportunidades de <strong>investigación</strong> en arquitectura agnóstica, ingeniería de lenguajes, y sistemas embebidos de bajo nivel. Si tu proyecto necesita un enfoque arquitectónico sólido desde el inicio, hablemos.</p>
+
+<a href="mailto:frostcore@jafa.dev" class="cta-button">Contactar</a>
+      </main>
+      <footer class="site-footer">
+  <div class="footer-content">
+    <p>&copy; 2026 Jorge A. de la Flor — Hecho con <i class="fas fa-heart" style="color: #e74c3c;"></i> y <i class="fas fa-code"></i></p>
+    <div class="footer-links">
+      <a href="mailto:frostcore@jafa.dev" title="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://linkedin.com/in/jorge-de-la-flor" title="LinkedIn" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://github.com/Jorge-de-la-Flor" title="GitHub" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://linktr.ee/frost_core" title="Linktree" target="_blank" rel="noopener">
+        <i class="fas fa-link"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+    </div>
+  </body>
+</html>
