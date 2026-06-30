@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Santana Urban Salon · Peluquería de lujo</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600&display=swap" rel="stylesheet" />
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ===== RESET & VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #c9a86c;
+            --gold-light: #e8d5b0;
+            --dark: #0e0c0a;
+            --dark-soft: #1a1714;
+            --text-light: #f0ede8;
+            --text-muted: #b5afa6;
+            --border-gold: rgba(201, 168, 108, 0.3);
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            --radius: 12px;
+            --transition: 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        .gold-text {
+            color: var(--gold);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            font-weight: 600;
+            padding: 14px 40px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(201, 168, 108, 0.3);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 12px 36px;
+            border-radius: 50px;
+            border: 2px solid var(--gold);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--dark);
+            border-color: var(--gold);
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            background: #25D366;
+            color: #fff;
+            font-weight: 600;
+            padding: 14px 40px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20b85f;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(37, 211, 102, 0.3);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 16px 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        header.scrolled {
+            background: rgba(14, 12, 10, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-gold);
+            padding: 10px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+            font-weight: 400;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--text-light);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: url('./Gemini_Generated_Image_46dbbc46dbbc46db.png') center/cover no-repeat;
+            isolation: isolate;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(14, 12, 10, 0.8) 0%, rgba(14, 12, 10, 0.3) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            padding: 40px 0;
+        }
+
+        .hero-content .badge {
+            display: inline-block;
+            background: rgba(201, 168, 108, 0.15);
+            border: 1px solid var(--border-gold);
+            color: var(--gold);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin-bottom: 36px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            padding: 100px 0;
+            background: var(--dark-soft);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .service-card {
+            background: var(--dark);
+            padding: 36px 24px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-gold);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow);
+        }
+
+        .service-card i {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            padding: 100px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 1 / 1;
+            background: var(--dark-soft);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(14, 12, 10, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .gallery-item .overlay i {
+            font-size: 2.5rem;
+            color: var(--gold);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--dark-soft);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .testimonial-card {
+            background: var(--dark);
+            padding: 32px 24px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-gold);
+        }
+
+        .testimonial-card .stars {
+            color: var(--gold);
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-card blockquote {
+            font-style: italic;
+            font-size: 1.05rem;
+            margin-bottom: 16px;
+            color: var(--text-light);
+        }
+
+        .testimonial-card .client {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-card .client img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+        }
+
+        .testimonial-card .client .name {
+            font-weight: 600;
+        }
+
+        .testimonial-card .client .role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== CONTACT / BOOKING simplificado ===== */
+        .contact-section {
+            padding: 100px 0;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-top: 48px;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-info ul li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+        }
+
+        .contact-info ul li i {
+            color: var(--gold);
+            width: 20px;
+        }
+
+        .contact-form {
+            background: var(--dark-soft);
+            padding: 40px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-gold);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--dark);
+            border: 1px solid var(--border-gold);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 168, 108, 0.2);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .contact-form .btn-primary {
+            width: 100%;
+            padding: 16px;
+        }
+
+        .contact-form .btn-whatsapp {
+            width: 100%;
+            padding: 16px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .form-message {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .form-message.success {
+            display: block;
+            background: rgba(201, 168, 108, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+        }
+
+        .form-message.error {
+            display: block;
+            background: rgba(255, 82, 82, 0.15);
+            border: 1px solid #ff5252;
+            color: #ff8a8a;
+        }
+
+        /* ===== CONTACT INFO CARDS (dirección, teléfono...) ===== */
+        .contact-details {
+            padding: 60px 0 100px;
+            background: var(--dark-soft);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-top: 48px;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item i {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .contact-item h4 {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .contact-item p {
+            color: var(--text-muted);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 40px 0 24px;
+            border-top: 1px solid var(--border-gold);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-socials a {
+            font-size: 1.4rem;
+            transition: var(--transition);
+            color: var(--text-muted);
+        }
+
+        .footer-socials a:hover {
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-gold);
+            padding-top: 24px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--dark);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 28px;
+                transition: var(--transition);
+                border-left: 1px solid var(--border-gold);
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .hero-content h1 {
+                font-size: clamp(2.2rem, 10vw, 3.5rem);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-form {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn-primary,
+            .btn-outline,
+            .btn-whatsapp {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header id="header">
+        <div class="container navbar">
+            <a href="#" class="logo">Santana<span>.</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#gallery">Galería</a></li>
+                <li><a href="#testimonials">Testimonios</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <span class="badge">Elegancia & Estilo</span>
+            <h1>Tu look<br /><span class="gold-text">empieza aquí</span></h1>
+            <p>Santana Urban Salon es el destino de lujo para cortes, color y tratamientos personalizados en un ambiente exclusivo.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Reserva tu cita</a>
+                <a href="#services" class="btn-outline">Descubre más</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Servicios <span class="gold-text">Premium</span></h2>
+            <p class="section-subtitle">Cada servicio está pensado para realzar tu belleza con técnicas de vanguardia y productos de alta calidad.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-cut"></i>
+                    <h3>Corte & Peinado</h3>
+                    <p>Diseños personalizados que se adaptan a tu rostro y personalidad.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>Colorimetría</h3>
+                    <p>Balayage, reflejos, tonos fantasía y más con los mejores pigmentos.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-spa"></i>
+                    <h3>Tratamientos Capilares</h3>
+                    <p>Hidratación profunda, keratina y reparación para un cabello radiante.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-ring"></i>
+                    <h3>Bridal & Eventos</h3>
+                    <p>Peinados y maquillaje para tu gran día con un toque de lujo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Nuestros <span class="gold-text">Trabajos</span></h2>
+            <p class="section-subtitle">Una muestra de nuestra pasión por la belleza y el detalle.</p>
+            <div class="gallery-grid">
+                <!-- Imágenes libres de Unsplash -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=2070&auto=format&fit=crop" alt="Corte de pelo" />
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=2069&auto=format&fit=crop" alt="Color balayage" />
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=2070&auto=format&fit=crop" alt="Peinado recogido" />
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070&auto=format&fit=crop" alt="Tratamiento capilar" />
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Lo que dicen <span class="gold-text">nuestros clientes</span></h2>
+            <p class="section-subtitle">La opinión de quienes han vivido la experiencia Santana.</p>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>"El mejor salón al que he ido. Atención impecable, resultados espectaculares. Volveré sin dudarlo."</blockquote>
+                    <div class="client">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop" alt="Cliente" />
+                        <div>
+                            <div class="name">Laura M.</div>
+                            <div class="role">Cliente habitual</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>"Mi color favorito, siempre perfecto. El equipo es súper profesional y el ambiente es único."</blockquote>
+                    <div class="client">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" alt="Cliente" />
+                        <div>
+                            <div class="name">Carlos R.</div>
+                            <div class="role">Cliente desde 2020</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>"Me sentí como una reina en mi boda. ¡Gracias por hacer que mi día fuera aún más especial!"</blockquote>
+                    <div class="client">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop" alt="Cliente" />
+                        <div>
+                            <div class="name">Sofía G.</div>
+                            <div class="role">Novia 2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT + FORM (estático) ===== -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Reserva tu <span class="gold-text">cita</span></h2>
+            <p class="section-subtitle">Ponte en contacto con nosotros y te confirmaremos tu hora en menos de 24h.</p>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>¿Cómo funciona?</h3>
+                    <p>Rellena el formulario o escríbenos directamente por WhatsApp. Te responderemos con la disponibilidad y confirmaremos tu reserva.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Respuesta rápida</li>
+                        <li><i class="fas fa-check-circle"></i> Asesoramiento personalizado</li>
+                        <li><i class="fas fa-check-circle"></i> Sin compromiso</li>
+                    </ul>
+                    <div style="margin-top: 30px;">
+                        <a href="https://wa.me/34911223344?text=Hola%20Santana%2C%20quiero%20reservar%20una%20cita" target="_blank" class="btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> Reservar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" placeholder="Tu nombre" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="tucorreo@ejemplo.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servicio de interés</label>
+                            <input type="text" id="service" placeholder="Ej: Corte, Color, Tratamiento..." />
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" placeholder="Cuéntanos qué servicio deseas y tus preferencias de fecha/hora..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i> Enviar mensaje</button>
+                        <div id="formMessage" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT DETAILS (dirección, etc.) ===== -->
+    <section class="contact-details">
+        <div class="container">
+            <h2 class="section-title">Información de <span class="gold-text">contacto</span></h2>
+            <p class="section-subtitle">Visítanos o llámanos para cualquier consulta.</p>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Dirección</h4>
+                    <p>Calle de la Belleza, 12<br />28001 Madrid</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <h4>Teléfono</h4>
+                    <p>+34 911 22 33 44</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Email</h4>
+                    <p>info@santanaus.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <h4>Horario</h4>
+                    <p>Lun–Sáb: 9:00 – 20:00<br />Dom: Cerrado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="logo">Santana<span>.</span></a>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Santana Urban Salon · Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // --- MENU HAMBURGUESA ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // --- HEADER SCROLL ---
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- FORMULARIO DE CONTACTO (estático, usa mailto) ---
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const service = document.getElementById('service').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email) {
+                formMessage.className = 'form-message error';
+                formMessage.textContent = '⚠️ Por favor, completa al menos tu nombre y email.';
+                return;
+            }
+
+            // Construir el cuerpo del correo
+            const subject = 'Nueva reserva / consulta desde la web';
+            const body = `Nombre: ${name}%0AEmail: ${email}%0AServicio: ${service || 'No especificado'}%0AMensaje: ${message || 'Sin mensaje adicional'}`;
+
+            // Abrir cliente de correo
+            window.location.href = `mailto:info@santanaus.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+            // Mostrar mensaje de éxito
+            formMessage.className = 'form-message success';
+            formMessage.textContent = '✅ ¡Mensaje enviado! Se abrirá tu cliente de correo para completar el envío.';
+            contactForm.reset();
+
+            setTimeout(() => {
+                formMessage.className = 'form-message';
+                formMessage.textContent = '';
+            }, 6000);
+        });
+    </script>
+
+</body>
+</html>
