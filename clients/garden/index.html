@@ -522,8 +522,9 @@
 
       /* Botón verde WhatsApp con ícono grande */
       .btn-whatsapp {
-        display: inline-flex;
+        display: flex;
         align-items: center;
+        justify-content: center;
         gap: 14px;
         background: #25d366;
         color: #fff;
@@ -539,6 +540,7 @@
         box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
         border: none;
         cursor: pointer;
+        width: 100%; /* Ocupa todo el ancho de su contenedor */
       }
       .btn-whatsapp i {
         font-size: 2rem; /* Ícono más grande */
@@ -573,6 +575,7 @@
         border: none;
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
+        flex: 1 1 auto;
       }
       .social-btn i {
         font-size: 1.3rem;
@@ -821,6 +824,10 @@
       }
 
       @media (max-width: 480px) {
+        /* Logo más pequeño en móvil para que no tape el título */
+        .logo {
+          font-size: 1.3rem;
+        }
         section {
           padding: 40px 0;
         }
@@ -1191,7 +1198,7 @@
               12:00 pm – 10:00 pm
             </div>
 
-            <!-- Botón verde de WhatsApp con ícono grande -->
+            <!-- Botón verde de WhatsApp con ícono grande (ocupa todo el ancho) -->
             <a
               href="https://wa.me/51946313269"
               target="_blank"
