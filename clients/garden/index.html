@@ -65,7 +65,7 @@
         background: var(--white);
         z-index: 1000;
         padding: 14px 0;
-        border-bottom: 3px solid var(--red);
+        border-bottom: 3px solid var(--red); /* Única franja roja */
         box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
       }
       header .container {
@@ -164,15 +164,7 @@
         color: var(--black);
         position: relative;
         border-bottom: 1px solid var(--gray-border);
-      }
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 6px;
-        background: var(--red);
+        /* Se eliminó el ::before que creaba la franja roja extra */
       }
       .hero .container {
         display: grid;
@@ -465,7 +457,7 @@
         object-fit: cover;
       }
 
-      /* ===== UBICACIÓN (MEJORADA) ===== */
+      /* ===== UBICACIÓN ===== */
       .location {
         background: var(--white);
       }
@@ -540,10 +532,10 @@
         box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
         border: none;
         cursor: pointer;
-        width: 100%; /* Ocupa todo el ancho de su contenedor */
+        width: 100%;
       }
       .btn-whatsapp i {
-        font-size: 2rem; /* Ícono más grande */
+        font-size: 2rem;
       }
       .btn-whatsapp:hover {
         background: #1ebe5c;
@@ -551,7 +543,7 @@
         box-shadow: 0 8px 28px rgba(37, 211, 102, 0.4);
       }
 
-      /* Botones rojos de redes sociales (Facebook, Instagram, TikTok) */
+      /* Botones rojos de redes sociales */
       .social-buttons {
         display: flex;
         flex-wrap: wrap;
@@ -579,7 +571,7 @@
       }
       .social-btn i {
         font-size: 1.3rem;
-        color: var(--white); /* Aseguramos blanco para los íconos */
+        color: var(--white);
       }
       .social-btn:hover {
         background: var(--red-dark);
@@ -587,7 +579,6 @@
         box-shadow: 0 8px 24px rgba(211, 47, 47, 0.3);
       }
 
-      /* Mapa */
       .location-map {
         border-radius: 16px;
         overflow: hidden;
@@ -824,7 +815,6 @@
       }
 
       @media (max-width: 480px) {
-        /* Logo más pequeño en móvil para que no tape el título */
         .logo {
           font-size: 1.3rem;
         }
@@ -1172,7 +1162,7 @@
       </div>
     </section>
 
-    <!-- ===== UBICACIÓN Y HORARIO (MEJORADA) ===== -->
+    <!-- ===== UBICACIÓN Y HORARIO ===== -->
     <section class="location" id="location">
       <div class="container">
         <h2 class="section-title">Visítanos</h2>
@@ -1198,7 +1188,6 @@
               12:00 pm – 10:00 pm
             </div>
 
-            <!-- Botón verde de WhatsApp con ícono grande (ocupa todo el ancho) -->
             <a
               href="https://wa.me/51946313269"
               target="_blank"
@@ -1207,7 +1196,6 @@
               <i class="fab fa-whatsapp"></i> Pide por WhatsApp
             </a>
 
-            <!-- Botones rojos: Facebook, Instagram y TikTok (íconos blancos) -->
             <div class="social-buttons">
               <a
                 href="https://www.facebook.com/GardenRestaurantePeru"
@@ -1323,7 +1311,6 @@
 
     <!-- ===== SCRIPT ===== -->
     <script>
-      // Menú hamburguesa
       const hamburger = document.getElementById("hamburger");
       const navLinks = document.getElementById("navLinks");
 
@@ -1339,7 +1326,6 @@
         });
       });
 
-      // Formulario (simulación)
       document
         .getElementById("contactForm")
         .addEventListener("submit", function (e) {
@@ -1348,7 +1334,6 @@
           this.reset();
         });
 
-      // Actualizar año en el footer
       document.querySelector(".copy").textContent =
         `© ${new Date().getFullYear()} Restaurante Garden · Cocina Nikkei Casera · Jesús Maria, Lima`;
     </script>
