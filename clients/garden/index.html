@@ -1,0 +1,1277 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurante Garden · Cocina Nikkei</title>
+    <!-- Font Awesome (iconos) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ===== RESET & BASE ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #ffffff;
+        color: #1a1a1a;
+        line-height: 1.6;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ===== PALETA ===== */
+      :root {
+        --white: #ffffff;
+        --red: #d32f2f;
+        --red-dark: #b71c1c;
+        --black: #1a1a1a;
+        --gray-light: #f8f7f5;
+        --gray-border: #eaeaea;
+        --shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+        --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.12);
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        z-index: 1000;
+        padding: 14px 0;
+        border-bottom: 3px solid var(--red);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+      }
+      header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--black);
+        letter-spacing: 1px;
+      }
+      .logo span {
+        color: var(--red);
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        list-style: none;
+      }
+      .nav-links a {
+        color: var(--black);
+        font-size: 0.95rem;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        transition: color 0.3s;
+        position: relative;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--red);
+        transition: width 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--red);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-links .btn-reserva {
+        background: var(--red);
+        color: var(--white);
+        padding: 8px 24px;
+        border-radius: 30px;
+        font-weight: 600;
+        transition:
+          background 0.3s,
+          transform 0.2s;
+      }
+      .nav-links .btn-reserva:hover {
+        background: var(--red-dark);
+        transform: scale(1.03);
+      }
+      .nav-links .btn-reserva::after {
+        display: none;
+      }
+
+      /* Menú hamburguesa */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .hamburger span {
+        display: block;
+        width: 28px;
+        height: 2.5px;
+        background: var(--black);
+        transition: 0.3s;
+      }
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      /* ===== HERO ===== */
+      .hero {
+        margin-top: 76px;
+        padding: 70px 0 60px;
+        background: var(--white);
+        color: var(--black);
+        position: relative;
+        border-bottom: 1px solid var(--gray-border);
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: var(--red);
+      }
+      .hero .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+      .hero-text h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 3.8rem;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 16px;
+        color: var(--black);
+      }
+      .hero-text h1 span {
+        color: var(--red);
+      }
+      .hero-text p {
+        font-size: 1.15rem;
+        color: #444;
+        margin-bottom: 28px;
+        max-width: 500px;
+      }
+      .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .btn-primary {
+        background: var(--red);
+        color: var(--white);
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: 600;
+        font-size: 1rem;
+        transition:
+          background 0.3s,
+          transform 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        cursor: pointer;
+      }
+      .btn-primary:hover {
+        background: var(--red-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgba(211, 47, 47, 0.25);
+      }
+      .btn-secondary {
+        background: var(--red);
+        color: var(--white);
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: 600;
+        font-size: 1rem;
+        transition:
+          background 0.3s,
+          transform 0.2s;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .btn-secondary:hover {
+        background: var(--red-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgba(211, 47, 47, 0.25);
+      }
+      .hero-stats {
+        display: flex;
+        gap: 40px;
+        margin-top: 32px;
+      }
+      .hero-stats div {
+        text-align: center;
+      }
+      .hero-stats .number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--red);
+        display: block;
+      }
+      .hero-stats .label {
+        font-size: 0.9rem;
+        color: #666;
+        font-weight: 300;
+      }
+
+      .hero-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .hero-image img {
+        width: 100%;
+        max-width: 480px;
+        aspect-ratio: 1 / 1;
+        border-radius: 20px;
+        object-fit: cover;
+        box-shadow: var(--shadow);
+        border: 2px solid var(--gray-border);
+      }
+
+      /* ===== SECCIONES ===== */
+      section {
+        padding: 80px 0;
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 12px;
+        color: var(--black);
+      }
+      .section-subtitle {
+        text-align: center;
+        color: #5a5a5a;
+        font-size: 1.05rem;
+        margin-bottom: 48px;
+      }
+      .section-title .red {
+        color: var(--red);
+      }
+
+      /* ===== SOBRE NOSOTROS ===== */
+      .about {
+        background: var(--white);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .about-text p {
+        margin-bottom: 20px;
+        color: #2a2a2a;
+        font-size: 1.05rem;
+      }
+      .about-text .highlight {
+        font-weight: 700;
+        color: var(--red);
+      }
+      .about-text .feature {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+        color: var(--black);
+      }
+      .about-text .feature i {
+        color: var(--red);
+        width: 24px;
+        font-size: 1.2rem;
+      }
+      .about-image img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        border: 2px solid var(--gray-border);
+      }
+
+      /* ===== MENÚ ===== */
+      .menu {
+        background: var(--gray-light);
+        border-top: 1px solid var(--gray-border);
+        border-bottom: 1px solid var(--gray-border);
+      }
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+      }
+      .menu-card {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 20px 20px 24px;
+        box-shadow: var(--shadow);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+        text-align: center;
+        border-top: 5px solid var(--red);
+      }
+      .menu-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-hover);
+      }
+      .menu-card img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 12px;
+      }
+      .menu-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: var(--black);
+        margin-bottom: 8px;
+      }
+      .menu-card p {
+        font-size: 0.95rem;
+        color: #4a4a4a;
+      }
+      .menu-card .tag {
+        display: inline-block;
+        background: var(--red);
+        color: var(--white);
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 4px 16px;
+        border-radius: 30px;
+        margin-top: 12px;
+        letter-spacing: 0.5px;
+      }
+
+      /* ===== TESTIMONIOS ===== */
+      .testimonials {
+        background: var(--white);
+      }
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+      .testimonial-card {
+        background: var(--gray-light);
+        border-radius: 16px;
+        padding: 28px 24px;
+        border-left: 5px solid var(--red);
+        transition: background 0.3s;
+        box-shadow: var(--shadow);
+      }
+      .testimonial-card:hover {
+        background: #f0eeeb;
+      }
+      .testimonial-card p {
+        font-size: 1rem;
+        font-style: italic;
+        color: #2a2a2a;
+        margin-bottom: 12px;
+      }
+      .testimonial-card .author {
+        font-weight: 600;
+        color: var(--red);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .testimonial-card .author i {
+        font-size: 1rem;
+        color: var(--red);
+      }
+
+      /* ===== GALERÍA ===== */
+      .gallery {
+        background: var(--gray-light);
+        border-top: 1px solid var(--gray-border);
+        border-bottom: 1px solid var(--gray-border);
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      .gallery-item {
+        aspect-ratio: 1 / 1;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border: 2px solid var(--gray-border);
+        transition:
+          transform 0.3s,
+          border-color 0.3s;
+      }
+      .gallery-item:hover {
+        transform: scale(1.03);
+        border-color: var(--red);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ===== UBICACIÓN (MEJORADA) ===== */
+      .location {
+        background: var(--white);
+      }
+      .location-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: stretch;
+      }
+      .location-info {
+        background: var(--white);
+        padding: 32px 28px;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--gray-border);
+        border-top-width: 5px;
+        border-top-color: var(--red);
+        transition: box-shadow 0.3s;
+      }
+      .location-info:hover {
+        box-shadow: var(--shadow-hover);
+      }
+      .location-info h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        margin-bottom: 16px;
+        color: var(--black);
+      }
+      /* Iconos de información (ubicación, reloj) en ROJO */
+      .location-info p i,
+      .location-info .horario i {
+        color: var(--red);
+        width: 24px;
+        text-align: center;
+      }
+      .location-info p {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 14px;
+        color: #2a2a2a;
+      }
+      .location-info .horario {
+        background: var(--black);
+        color: var(--white);
+        padding: 16px 20px;
+        border-radius: 12px;
+        margin: 16px 0;
+      }
+      .location-info .horario span {
+        font-weight: 700;
+        color: var(--red);
+      }
+
+      /* Botón verde WhatsApp con ícono grande */
+      .btn-whatsapp {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        background: #25d366;
+        color: #fff;
+        padding: 14px 140px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-top: 8px;
+        transition:
+          background 0.3s,
+          transform 0.2s,
+          box-shadow 0.3s;
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+        border: none;
+        cursor: pointer;
+      }
+      .btn-whatsapp i {
+        font-size: 2rem; /* Ícono más grande */
+      }
+      .btn-whatsapp:hover {
+        background: #1ebe5c;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 28px rgba(37, 211, 102, 0.4);
+      }
+
+      /* Botones rojos de redes sociales (Facebook, Instagram, TikTok) */
+      .social-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 20px;
+      }
+      .social-btn {
+        background: var(--red);
+        color: var(--white);
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition:
+          background 0.3s,
+          transform 0.2s,
+          box-shadow 0.3s;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
+      }
+      .social-btn i {
+        font-size: 1.3rem;
+        color: var(--white); /* Aseguramos blanco para los íconos */
+      }
+      .social-btn:hover {
+        background: var(--red-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(211, 47, 47, 0.3);
+      }
+
+      /* Mapa */
+      .location-map {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        min-height: 300px;
+        background: #ddd;
+        border: 2px solid var(--gray-border);
+        transition:
+          box-shadow 0.3s,
+          border-color 0.3s;
+      }
+      .location-map:hover {
+        box-shadow: var(--shadow-hover);
+        border-color: var(--red);
+      }
+      .location-map iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 300px;
+        border: 0;
+        display: block;
+      }
+
+      /* ===== CONTACTO ===== */
+      .contact {
+        background: var(--gray-light);
+        border-top: 1px solid var(--gray-border);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 14px 18px;
+        border: 2px solid var(--gray-border);
+        border-radius: 12px;
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+        background: var(--white);
+        transition: border 0.3s;
+        margin-bottom: 16px;
+        color: var(--black);
+      }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: var(--red);
+        box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+      }
+      .contact-form textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+      .contact-form button {
+        background: var(--red);
+        color: var(--white);
+        border: none;
+        padding: 14px 36px;
+        border-radius: 40px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition:
+          background 0.3s,
+          transform 0.2s;
+      }
+      .contact-form button:hover {
+        background: var(--red-dark);
+        transform: translateY(-3px);
+      }
+      .contact-info .item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: var(--white);
+        padding: 16px 20px;
+        border-radius: 12px;
+        margin-bottom: 14px;
+        border-left: 4px solid var(--red);
+        box-shadow: var(--shadow);
+      }
+      .contact-info .item i {
+        font-size: 1.4rem;
+        color: var(--red);
+        width: 32px;
+        text-align: center;
+      }
+      .contact-info .item a {
+        color: var(--black);
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      .contact-info .item a:hover {
+        color: var(--red);
+      }
+      .contact-info .card-cta {
+        background: var(--black);
+        color: var(--white);
+        padding: 24px;
+        border-radius: 12px;
+        text-align: center;
+        border: 1px solid var(--red);
+        margin-top: 8px;
+      }
+      .contact-info .card-cta p {
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #ddd;
+      }
+      .contact-info .card-cta .btn-primary {
+        background: var(--red);
+      }
+      .contact-info .card-cta .btn-primary:hover {
+        background: var(--red-dark);
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background: var(--black);
+        color: #aaa;
+        padding: 40px 0 20px;
+        border-top: 3px solid var(--red);
+      }
+      footer .container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+        align-items: center;
+      }
+      footer .logo-footer {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        color: var(--white);
+      }
+      footer .logo-footer span {
+        color: var(--red);
+      }
+      footer .social a {
+        display: inline-block;
+        margin-left: 16px;
+        color: #aaa;
+        font-size: 1.4rem;
+        transition:
+          color 0.3s,
+          transform 0.2s;
+      }
+      footer .social a:hover {
+        color: var(--red);
+        transform: translateY(-3px);
+      }
+      footer .copy {
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 0.9rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 20px;
+        color: #666;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 992px) {
+        .hero .container {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .hero-text p {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .hero-buttons {
+          justify-content: center;
+        }
+        .hero-stats {
+          justify-content: center;
+        }
+        .hero-image img {
+          max-width: 360px;
+          margin: 0 auto;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .location-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 70%;
+          max-width: 300px;
+          height: 100vh;
+          background: var(--white);
+          flex-direction: column;
+          padding: 80px 30px 30px;
+          gap: 24px;
+          transition: right 0.4s ease;
+          box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+          border-left: 3px solid var(--red);
+        }
+        .nav-links.open {
+          right: 0;
+        }
+        .hamburger {
+          display: flex;
+          z-index: 1001;
+        }
+        .hero-text h1 {
+          font-size: 2.8rem;
+        }
+        .section-title {
+          font-size: 2.2rem;
+        }
+        .menu-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .testimonial-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-text h1 {
+          font-size: 2.2rem;
+        }
+        .menu-grid {
+          grid-template-columns: 1fr;
+        }
+        .gallery-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+        }
+        .hero-stats {
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+        .social-buttons {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .social-btn {
+          justify-content: center;
+        }
+        .btn-whatsapp {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== HEADER ===== -->
+    <header>
+      <div class="container">
+        <div class="logo">Garden <span>Restaurante</span></div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">Nosotros</a></li>
+          <li><a href="#menu">Menú</a></li>
+          <li><a href="#testimonials">Reseñas</a></li>
+          <li><a href="#gallery">Galería</a></li>
+          <li><a href="#location">Ubicación</a></li>
+          <li><a href="#contact">Contacto</a></li>
+          <li>
+            <a href="https://bit.ly/3AZioEk" target="_blank" class="btn-reserva"
+              >Ver Carta</a
+            >
+          </li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-text">
+          <h1>Cocina <span>Nikkei</span> <br />con alma casera</h1>
+          <p>
+            Sabores que fusionan lo mejor de la tradición peruana y japonesa,
+            hechos con amor y los mejores ingredientes.
+          </p>
+          <div class="hero-buttons">
+            <a
+              href="https://bit.ly/3AZioEk"
+              target="_blank"
+              class="btn-primary"
+            >
+              <i class="fas fa-utensils"></i> Ver carta completa
+            </a>
+            <a href="#contact" class="btn-secondary">
+              <i class="fas fa-envelope"></i> Contáctanos
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <span class="number">9.7k</span>
+              <span class="label">Seguidores</span>
+            </div>
+            <div>
+              <span class="number">60%</span>
+              <span class="label">Recomendación</span>
+            </div>
+            <div>
+              <span class="number">28</span>
+              <span class="label">Opiniones</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600"
+            alt="Plato estrella de Garden"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOBRE NOSOTROS ===== -->
+    <section class="about" id="about">
+      <div class="container">
+        <h2 class="section-title">Sobre <span class="red">Garden</span></h2>
+        <p class="section-subtitle">
+          Más que un restaurante, un hogar para los sentidos
+        </p>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              <span class="highlight">Restaurante Garden</span> es reconocido
+              por su cocina nikkei casera, donde cada plato cuenta una historia
+              de fusión y tradición. Ubicados en el corazón de Jesús Maria,
+              ofrecemos un ambiente familiar y acogedor.
+            </p>
+            <p>
+              Nuestra pasión es combinar ingredientes peruanos con técnicas
+              japonesas para crear experiencias inolvidables. Desde nuestros
+              <strong>wantanes</strong> hasta el
+              <strong>Mostrito Garden</strong>, cada bocado está hecho para
+              enamorarte.
+            </p>
+            <div class="feature">
+              <i class="fas fa-check-circle"></i> Consumo en el local
+            </div>
+            <div class="feature">
+              <i class="fas fa-check-circle"></i> Retiro en el negocio
+            </div>
+            <div class="feature">
+              <i class="fas fa-check-circle"></i> Rango de precios $$
+            </div>
+          </div>
+          <div class="about-image">
+            <img
+              src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600"
+              alt="Ambiente de Garden"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MENÚ DESTACADO ===== -->
+    <section class="menu" id="menu">
+      <div class="container">
+        <h2 class="section-title">Nuestros <span class="red">Platos</span></h2>
+        <p class="section-subtitle">Los favoritos de nuestra carta nikkei</p>
+        <div class="menu-grid">
+          <div class="menu-card">
+            <img
+              src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=400"
+              alt="Mostrito Garden"
+            />
+            <h3>Mostrito Garden</h3>
+            <p>
+              El antojo perfecto: pollo salteado con vegetales y toque oriental.
+            </p>
+            <span class="tag">⭐ Top</span>
+          </div>
+          <div class="menu-card">
+            <img
+              src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400"
+              alt="Lomo Saltado & Chaufa"
+            />
+            <h3>Lomo Saltado & Chaufa</h3>
+            <p>La fusión peruana definitiva: lomo saltado con arroz chaufa.</p>
+          </div>
+          <div class="menu-card">
+            <img
+              src="https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400"
+              alt="Yakitori Garden"
+            />
+            <h3>Yakitori Garden</h3>
+            <p>Pollo, verduras, cebolla, pimentón, tocino y culantro.</p>
+          </div>
+          <div class="menu-card">
+            <img
+              src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=400"
+              alt="Chicken Teriyaki"
+            />
+            <h3>Chicken Teriyaki</h3>
+            <p>Jugoso pollo con salsa teriyaki, irresistible.</p>
+          </div>
+          <div class="menu-card">
+            <img
+              src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400"
+              alt="Bisteck Apanado"
+            />
+            <h3>Bisteck Apanado</h3>
+            <p>Apanado a lo pobre, con huevo y papas.</p>
+          </div>
+          <div class="menu-card">
+            <img
+              src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400"
+              alt="Postres Garden"
+            />
+            <h3>Postres Garden</h3>
+            <p>Torta de chocolate, gelatina china y más.</p>
+            <span class="tag">Dulce</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIOS ===== -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <h2 class="section-title">
+          Lo que dicen <span class="red">nuestros comensales</span>
+        </h2>
+        <p class="section-subtitle">Reseñas reales de nuestros clientes</p>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p>“Sus wantanes son espectaculares.”</p>
+            <div class="author">
+              <i class="fas fa-star"></i> Carmen Rosa Miyashiro Gushiken
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p>
+              “Me encanta la gelatina china, saludos a todos los trabajadores de
+              mi querido Garden.”
+            </p>
+            <div class="author">
+              <i class="fas fa-star"></i> Maria Sanchez Cotrina
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p>
+              “Un espectáculo de sabores y texturas. Los postres son únicos.”
+            </p>
+            <div class="author">
+              <i class="fas fa-star"></i> Cliente frecuente
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALERÍA ===== -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <h2 class="section-title">Galería <span class="red">visual</span></h2>
+        <p class="section-subtitle">Un vistazo a nuestros platos y ambiente</p>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400"
+              alt="Plato 1"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400"
+              alt="Plato 2"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400"
+              alt="Plato 3"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400"
+              alt="Plato 4"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== UBICACIÓN Y HORARIO (MEJORADA) ===== -->
+    <section class="location" id="location">
+      <div class="container">
+        <h2 class="section-title">Visítanos</h2>
+        <p class="section-subtitle">Estamos en Jesús Maria, Lima</p>
+        <div class="location-grid">
+          <div class="location-info">
+            <h3>
+              <i class="fas fa-map-pin" style="color: var(--red)"></i> Dirección
+            </h3>
+            <p>
+              <i class="fas fa-location-dot"></i> Centro Comercial San Felipe,
+              Tda. 67 D Int. 78, Residencial San Felipe, Jesús Maria, Lima
+            </p>
+            <p>
+              <i class="fas fa-clock"></i>
+              <span style="color: var(--red); font-weight: 700"
+                >Abierto ahora</span
+              >
+              · Todos los días
+            </p>
+            <div class="horario">
+              <i class="fas fa-clock"></i> <span>Horario:</span> Lunes a Domingo
+              12:00 pm – 10:00 pm
+            </div>
+
+            <!-- Botón verde de WhatsApp con ícono grande -->
+            <a
+              href="https://wa.me/51946313269"
+              target="_blank"
+              class="btn-whatsapp"
+            >
+              <i class="fab fa-whatsapp"></i> Pide por WhatsApp
+            </a>
+
+            <!-- Botones rojos: Facebook, Instagram y TikTok (íconos blancos) -->
+            <div class="social-buttons">
+              <a
+                href="https://www.facebook.com/GardenRestaurantePeru"
+                target="_blank"
+                class="social-btn"
+              >
+                <i class="fab fa-facebook-f"></i> Facebook
+              </a>
+              <a href="#" class="social-btn">
+                <i class="fab fa-instagram"></i> Instagram
+              </a>
+              <a href="#" class="social-btn">
+                <i class="fab fa-tiktok"></i> TikTok
+              </a>
+            </div>
+          </div>
+          <div class="location-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.345629122473!2d-77.0497289!3d-12.0735464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8a8b9c2b0d3%3A0x2b4f3b6d8e9c7a5f!2sCentro%20Comercial%20San%20Felipe!5e0!3m2!1ses!2spe!4v1712345678901!5m2!1ses!2spe"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACTO ===== -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">Escríbenos</h2>
+        <p class="section-subtitle">
+          Déjanos tu mensaje y te responderemos pronto
+        </p>
+        <div class="contact-grid">
+          <form class="contact-form" id="contactForm">
+            <input type="text" placeholder="Nombre completo" required />
+            <input type="email" placeholder="Correo electrónico" required />
+            <input type="tel" placeholder="Teléfono" />
+            <textarea placeholder="¿Qué te gustaría saber?" required></textarea>
+            <button type="submit">
+              <i class="fas fa-paper-plane"></i> Enviar mensaje
+            </button>
+          </form>
+          <div class="contact-info">
+            <div class="item">
+              <i class="fas fa-phone-alt"></i>
+              <a href="tel:946313269">946 313 269</a>
+            </div>
+            <div class="item">
+              <i class="fab fa-whatsapp"></i>
+              <a href="https://wa.me/51946313269" target="_blank"
+                >+51 946 313 269</a
+              >
+            </div>
+            <div class="item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:gardenrestaurante@example.com"
+                >gardenrestaurante@example.com</a
+              >
+            </div>
+            <div class="card-cta">
+              <p>
+                <i class="fas fa-utensils" style="color: var(--red)"></i>
+                ¿Quieres ver nuestra carta completa?
+              </p>
+              <a
+                href="https://bit.ly/3AZioEk"
+                target="_blank"
+                class="btn-primary"
+                style="
+                  display: inline-block;
+                  padding: 10px 28px;
+                  font-size: 0.95rem;
+                "
+              >
+                <i class="fas fa-eye"></i> Descargar / Ver Carta
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <div class="container">
+        <div class="logo-footer">Garden <span>Restaurante</span></div>
+        <div class="social">
+          <a
+            href="https://www.facebook.com/GardenRestaurantePeru"
+            target="_blank"
+            aria-label="Facebook"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="#" aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a
+            href="https://wa.me/51946313269"
+            target="_blank"
+            aria-label="WhatsApp"
+            ><i class="fab fa-whatsapp"></i
+          ></a>
+        </div>
+        <div class="copy">
+          &copy; 2026 Restaurante Garden · Cocina Nikkei Casera · Jesús Maria,
+          Lima
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== SCRIPT ===== -->
+    <script>
+      // Menú hamburguesa
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("navLinks");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("open");
+      });
+
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("open");
+        });
+      });
+
+      // Formulario (simulación)
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("¡Gracias por contactarnos! En breve te responderemos. 📩");
+          this.reset();
+        });
+
+      // Actualizar año en el footer
+      document.querySelector(".copy").textContent =
+        `© ${new Date().getFullYear()} Restaurante Garden · Cocina Nikkei Casera · Jesús Maria, Lima`;
+    </script>
+  </body>
+</html>
