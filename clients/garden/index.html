@@ -527,7 +527,7 @@
         gap: 14px;
         background: #25d366;
         color: #fff;
-        padding: 14px 140px;
+        padding: 14px 32px;
         border-radius: 50px;
         font-weight: 700;
         font-size: 1.1rem;
@@ -553,7 +553,7 @@
       .social-buttons {
         display: flex;
         flex-wrap: wrap;
-        gap: 30px;
+        gap: 12px;
         margin-top: 20px;
       }
       .social-btn {
@@ -821,8 +821,24 @@
       }
 
       @media (max-width: 480px) {
+        section {
+          padding: 40px 0;
+        }
+        .hero {
+          padding: 40px 0 30px;
+        }
         .hero-text h1 {
           font-size: 2.2rem;
+        }
+        .hero-text p {
+          font-size: 1rem;
+        }
+        .section-title {
+          font-size: 1.8rem;
+        }
+        .section-subtitle {
+          font-size: 0.95rem;
+          margin-bottom: 30px;
         }
         .menu-grid {
           grid-template-columns: 1fr;
@@ -835,16 +851,72 @@
           flex-wrap: wrap;
           gap: 20px;
         }
+        .hero-stats .number {
+          font-size: 1.5rem;
+        }
         .social-buttons {
           flex-direction: column;
           align-items: stretch;
+          gap: 10px;
         }
         .social-btn {
           justify-content: center;
+          padding: 12px 16px;
         }
         .btn-whatsapp {
           width: 100%;
           justify-content: center;
+          padding: 14px 20px;
+        }
+        .location-info {
+          padding: 24px 16px;
+        }
+        .location-info h3 {
+          font-size: 1.4rem;
+        }
+        .location-info p {
+          font-size: 0.95rem;
+          gap: 10px;
+        }
+        .location-map {
+          min-height: 200px;
+        }
+        .location-map iframe {
+          min-height: 200px;
+        }
+        .about-image img {
+          height: 200px;
+        }
+        .contact-grid {
+          gap: 30px;
+        }
+        .contact-info .item {
+          padding: 14px 16px;
+          font-size: 0.95rem;
+        }
+        .card-cta {
+          padding: 18px;
+        }
+        footer .container {
+          flex-direction: column;
+          text-align: center;
+        }
+        footer .social a {
+          margin: 0 8px;
+        }
+        .btn-primary,
+        .btn-secondary {
+          padding: 12px 24px;
+          font-size: 0.9rem;
+          width: 100%;
+          justify-content: center;
+        }
+        .hero-buttons {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .hero-image img {
+          max-width: 100%;
         }
       }
     </style>
