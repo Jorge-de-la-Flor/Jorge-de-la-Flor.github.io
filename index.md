@@ -7,14 +7,14 @@ title: Jorge de la Flor — Software Architect & Protocol Developer
   <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="Jorge de la Flor" class="profile-avatar" onerror="this.style.display='none'">
   
   <h1 class="profile-name">Jorge de la Flor</h1>
-  <p class="profile-title" style="font-size: 1.1rem; font-weight: 400;">Software Architect & Protocol Developer</p>
+  <p class="profile-title" style="font-size: 1.1rem; font-weight: 400;">Software Architect & Systems Engineer</p>
   <p class="profile-title" style="font-weight: 300; color: var(--text-muted); font-size: 0.95rem;">
     Embedded Systems · Cyber-Physical Systems · Protocol Engineering
   </p>
   
   <!-- ESLOGAN -->
   <p style="font-size: 1.3rem; font-weight: 600; color: var(--accent-rust); margin: 0.5rem 0 0.2rem; letter-spacing: -0.02em;">
-    “Piensa en Python, potencia en Rust.”
+    “Designing the infrastructure that enables the next generation of software.”
   </p>
   
   <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">aka FrostCore</p>
