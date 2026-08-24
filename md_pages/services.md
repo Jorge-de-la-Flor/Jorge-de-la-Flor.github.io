@@ -125,7 +125,7 @@ Si estás construyendo un sistema que involucra **arquitectura, cloud, software 
 
 📩 **[{{ site.author.email }}](mailto:{{ site.author.email }})**
 
-También puedes consultar mis [proyectos]({{ '/projects/' | relative_url }}) para conocer ejemplos de sistemas que he construido.
+También puedes consultar mis [proyectos]({{ 'md_pages/projects/' | relative_url }}) para conocer ejemplos de sistemas que he construido.
 
 ---
 

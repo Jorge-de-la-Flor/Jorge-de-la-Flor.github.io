@@ -57,7 +57,7 @@ Mi trabajo incluye el diseño y construcción de **runtimes y sistemas distribui
 
 Una parte importante de este trabajo se centra en la **verificación de sistemas reales**, validando implementaciones contra entornos de producción, toolchains y hardware en lugar de depender únicamente de pruebas superficiales sobre representaciones intermedias.
 
-Los proyectos y sus detalles técnicos se encuentran documentados por separado en [Proyectos]({{ '/projects/' | relative_url }}).
+Los proyectos y sus detalles técnicos se encuentran documentados por separado en [Proyectos]({{ 'md_pages/projects/' | relative_url }}).
 
 ### Instructor Técnico y Mentor Open-Source — Latinoamérica
 
