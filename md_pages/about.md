@@ -13,10 +13,6 @@ Diseño sistemas que conectan distintas capas de la computación: desde infraest
 
 Trabajo principalmente con **Python y Rust**, complementados con C/C++, herramientas de sistemas y tecnologías de infraestructura cloud.
 
-Soy creador de **Apider**, **Pyperantio**, **OMNI-PY**, **Flow++** y **FrostCloud**, proyectos que exploran problemas de automatización, portabilidad, generación de código, modelado de sistemas e infraestructura.
-
-Los principios arquitectónicos que conectan parte de este trabajo están formalizados en el **Modelo Agnóstico (AMP)**, desarrollado en mi manuscrito técnico *The Agnostic Engineer: Architecture Beyond Infrastructure*.
-
 Combino una formación en **International Business** con experiencia práctica en ingeniería de software, sistemas y desarrollo de productos. Soy instructor técnico, mentor open-source y ponente en eventos de la comunidad tecnológica, incluyendo **Microsoft Build 2026**, **Azure User Group Latam** y **CSWeek 2026**.
 
 ---
@@ -35,7 +31,7 @@ Por encima de un lenguaje o framework concreto, busco construir sistemas con **l
 
 ## Qué hago
 
-Actualmente trabajo de forma independiente como **Arquitecto de Software de Sistemas y Cloud**, desarrollando proyectos de software, tooling y sistemas embebidos en la convergencia de:
+Actualmente trabajo de forma independiente como **Ingeniero de Software de Sistemas y Cloud**, desarrollando proyectos de software, tooling y sistemas embebidos en la convergencia de:
 
 - **Arquitectura de sistemas:** sistemas modulares, distribuidos, escalables y cloud-agnósticos.
 - **Sistemas distribuidos y cloud:** runtimes serverless, APIs, aislamiento multi-tenant, infraestructura de ejecución y CI/CD.
@@ -52,25 +48,19 @@ Actualmente trabajo de forma independiente como **Arquitecto de Software de Sist
 ## Experiencia profesional
 
 ### Independiente — Ingeniero de Software de Sistemas y Cloud
+
 *ago 2024 – Presente*
 
 Desarrollo proyectos propios de software, infraestructura, tooling y sistemas embebidos, combinando arquitectura de sistemas, ingeniería de lenguajes, cloud y computación de bajo nivel.
 
-- **Apider:** Runtime de automatización multi-tenant desplegado en Azure Functions y publicado en PyPI. Proporciona una interfaz Python unificada para integrar servicios y automatizaciones, incorporando aislamiento por contexto, protección de credenciales, integración con agentes de IA mediante MCP y mecanismos de facturación. El sistema cuenta con una suite end-to-end de **61 checks ejecutados contra producción**.
+Mi trabajo incluye el diseño y construcción de **runtimes y sistemas distribuidos, herramientas de generación de código, tooling de lenguajes, infraestructura en Rust y sistemas embebidos multi-target**.
 
-- **Pyperantio:** Motor propietario de generación de código para firmware embebido. Una API tipada en Python permite describir configuraciones de hardware y generar firmware para múltiples toolchains de microcontroladores. La validación se realiza sobre las restricciones del hardware antes de generar código. Los detalles internos de arquitectura y generación permanecen reservados como parte de la estrategia de propiedad intelectual.
+Una parte importante de este trabajo se centra en la **verificación de sistemas reales**, validando implementaciones contra entornos de producción, toolchains y hardware en lugar de depender únicamente de pruebas superficiales sobre representaciones intermedias.
 
-- **OMNI-PY:** Sistema de ingeniería de lenguajes orientado a la transformación bidireccional entre múltiples lenguajes. Utiliza Python como representación intermedia y Rust para componentes de análisis y verificación, con generación de código validada contra toolchains reales.
-
-- **Flow++:** Toolkit de modelado, análisis y optimización de pipelines. Permite identificar cuellos de botella, estimar throughput y crecimiento de colas, evaluar estabilidad y recomendar cambios orientados a alcanzar una capacidad objetivo, respaldado por simulación y análisis cuantitativo.
-
-- **FrostCloud:** Plano de control desarrollado íntegramente en Rust para cuentas, identidad, catálogo de servicios y activaciones. La arquitectura separa explícitamente el plano de control del camino de datos y utiliza fronteras por crate para mantener aisladas las responsabilidades del sistema.
-
-- **Plataforma de Sensado Distribuido:** Sistema ciberfísico basado en ESP32 y Raspberry Pi que integra sensores, filtrado de Kalman, máquinas de estados, UART, MQTT, persistencia y visualización en tiempo real.
-
-- **The Agnostic Engineer:** Manuscrito técnico en preparación que formaliza el concepto de **Agnosticismo por Transformación** como principio arquitectónico para diseñar sistemas capaces de sobrevivir a cambios de infraestructura, lenguaje y proveedor.
+Los proyectos y sus detalles técnicos se encuentran documentados por separado en [Proyectos]({{ '/projects/' | relative_url }}).
 
 ### Instructor Técnico y Mentor Open-Source — Latinoamérica
+
 *ene 2024 – Presente*
 
 Mentoría e instrucción técnica para desarrolladores y estudiantes de distintos países de Latinoamérica, con énfasis en Python, Rust y programación de sistemas.
@@ -78,6 +68,7 @@ Mentoría e instrucción técnica para desarrolladores y estudiantes de distinto
 He enseñado conceptos de gestión de memoria, desarrollo bare-metal, concurrencia, paralelismo y diseño con seguridad de tipos, conectando conceptos de alto nivel con su implementación a bajo nivel.
 
 ### UNEX DIESEL SAC — Especialista en Logística de Importación
+
 *ago 2023 – jul 2024*
 
 Coordiné operaciones de importación end-to-end con proveedores internacionales y entidades regulatorias, además de desarrollar iniciativas de automatización orientadas a reducir tiempos de documentación y carga operativa.
@@ -94,19 +85,17 @@ Coordiné operaciones de importación end-to-end con proveedores internacionales
 
 ---
 
-## Habilidades técnicas
+## Filosofía de ingeniería
 
-- **Arquitectura de sistemas:** sistemas distribuidos, diseño cloud-agnóstico, sistemas multi-tenant, separación de responsabilidades, APIs y CI/CD.
-- **Cloud y backend:** Azure Functions, serverless, Azure Table Storage · AWS EC2, Lambda, S3 e IAM · REST APIs · axum · SeaORM · PostgreSQL · SQLite · SQLAlchemy.
-- **Ingeniería de lenguajes:** Python `ast`, transformación de AST, lexing, parsing, transpiladores bidireccionales, inferencia de tipos, análisis estático y PyO3.
-- **Generación de código:** pipelines de transformación, generación multi-target, validación mediante compilación y ejecución contra toolchains reales.
-- **Sistemas embebidos:** ESP32, STM32, Arduino, RP2040 · UART, I2C, SPI, MQTT · embedded-hal · Rust bare-metal · generación de firmware multi-backend.
-- **Sistemas ciberfísicos:** sensores, actuadores, máquinas de estados, filtrado de Kalman, comunicación edge y sistemas distribuidos.
-- **Sistemas de agentes IA:** MCP, tool-use agéntico, JSON-RPC 2.0, integración de agentes y extracción estructurada.
-- **Seguridad y confiabilidad:** derivación de claves por tenant, HMAC-SHA256, cifrado Fernet, aislamiento ContextVar, sandboxing de procesos, protección anti-SSRF, hashing de tokens y verificación de invariantes.
-- **Modelado de sistemas:** teoría de colas, simulación en tiempo discreto, modelado mediante DAG, ley de Little y análisis de capacidad.
-- **Lenguajes:** Python · Rust · C/C++ · Java · Go · SQL · Bash.
-- **Idiomas:** Español (nativo) · Inglés (avanzado) · Chino (básico, HSK 2).
+Una parte importante de mi trabajo parte de una idea sencilla:
+
+> **Una arquitectura no debería estar innecesariamente limitada por la infraestructura sobre la que se ejecuta.**
+
+El **Modelo Agnóstico (AMP)** y el principio de **Agnosticismo por Transformación** exploran cómo separar las decisiones conceptuales de una arquitectura de las implementaciones concretas que finalmente la ejecutan.
+
+Esto se extiende más allá del cloud: también aparece en generación de código, sistemas multi-target, ingeniería de lenguajes y sistemas embebidos.
+
+Mi objetivo no es abstraer por abstraer, sino encontrar **límites que permitan transformar un sistema sin perder sus propiedades importantes**.
 
 ---
 
