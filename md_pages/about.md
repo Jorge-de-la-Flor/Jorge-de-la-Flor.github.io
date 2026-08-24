@@ -77,7 +77,7 @@ Mentoría e instrucción técnica para desarrolladores y estudiantes de distinto
 
 He enseñado conceptos de gestión de memoria, desarrollo bare-metal, concurrencia, paralelismo y diseño con seguridad de tipos, conectando conceptos de alto nivel con su implementación a bajo nivel.
 
-### UNEX DIESEL SAC — Especialista en Logística de Importación y Soporte Técnico
+### UNEX DIESEL SAC — Especialista en Logística de Importación
 *ago 2023 – jul 2024*
 
 Coordiné operaciones de importación end-to-end con proveedores internacionales y entidades regulatorias, además de desarrollar iniciativas de automatización orientadas a reducir tiempos de documentación y carga operativa.
