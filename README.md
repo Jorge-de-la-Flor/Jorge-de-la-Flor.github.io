@@ -1,6 +1,6 @@
 # jafa.dev — Jorge de la Flor
 
-Sitio web personal de Jorge de la Flor, Software Architect & Protocol Developer.
+Sitio web personal de Jorge de la Flor, Software & Cyber-Physical Systems Developer.
 
 ## Tecnologías
 
