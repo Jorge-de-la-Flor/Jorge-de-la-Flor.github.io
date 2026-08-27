@@ -147,7 +147,7 @@ Aquí encontrarás contenido sobre arquitectura de sistemas, software de sistema
 
         <h3>
 
-          <a href="{{ '/talks/csweek-2026/' | relative_url }}">
+          <a href="{{ 'md_pages/talks/csweek-2026/' | relative_url }}">
 
             Aislamiento y Límites de Confianza en Producción:
             Construyendo Sistemas a Prueba de Fallos
@@ -172,7 +172,7 @@ Aquí encontrarás contenido sobre arquitectura de sistemas, software de sistema
 
         <div class="talk-links">
 
-          <a href="{{ '/talks/csweek-2026/' | relative_url }}"
+          <a href="{{ 'md_pages/talks/csweek-2026/' | relative_url }}"
              class="cta-link">
 
             Ver charla →
@@ -198,7 +198,7 @@ Aquí encontrarás contenido sobre arquitectura de sistemas, software de sistema
 
         <h3>
 
-          <a href="{{ '/talks/microsoft-build-2026/' | relative_url }}">
+          <a href="{{ 'md_pages/talks/microsoft-build-2026/' | relative_url }}">
 
             Building a Multi-Tenant Python Runtime
             on Azure Functions
@@ -224,7 +224,7 @@ Aquí encontrarás contenido sobre arquitectura de sistemas, software de sistema
 
         <div class="talk-links">
 
-          <a href="{{ '/talks/microsoft-build-2026/' | relative_url }}"
+          <a href="{{ 'md_pages/talks/microsoft-build-2026/' | relative_url }}"
              class="cta-link">
 
             Ver charla →

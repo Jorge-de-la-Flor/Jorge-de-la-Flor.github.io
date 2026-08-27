@@ -6,23 +6,29 @@ description: "Diseñando sistemas que contienen el impacto de los fallos mediant
 
 # Aislamiento y Límites de Confianza en Producción
 
-## Diseñando sistemas que contienen el impacto de los fallos
+### Diseñando sistemas que contienen el impacto de los fallos
 
 **CS Week Perú 2026 · Lima, Perú · Agosto de 2026**
 
 ---
 
-## Sobre esta charla
+## Cuando algo falla, ¿qué puede afectar?
 
-¿Qué significa realmente que un sistema sea estable en producción?
+Diseñar sistemas confiables no significa asumir que los fallos pueden eliminarse por completo.
 
-Prevenir los fallos es la primera línea de defensa. Sin embargo, ningún sistema real puede asumir que todos sus componentes se comportarán correctamente en todo momento.
+Los componentes fallan. Las dependencias dejan de responder. Los procesos terminan. Los recursos se agotan. Los mensajes pueden retransmitirse.
 
-Esta charla parte de una pregunta diferente:
+La pregunta interesante, entonces, no es solamente:
 
-> **Cuando un componente falla, ¿qué puede afectar?**
+> **¿Cómo evitamos que falle?**
 
-A partir de esta pregunta, se presenta un enfoque de diseño basado en **límites de confianza, invariantes arquitectónicas y mecanismos de aislamiento** para reducir el *blast radius* de errores, comportamientos inesperados y fallos de ejecución.
+También debemos preguntarnos:
+
+> **¿Qué puede afectar cuando falle?**
+
+Esta fue la idea central de mi charla en **CS Week Perú 2026**.
+
+A partir de ella exploré una forma de diseñar sistemas utilizando **invariantes arquitectónicas, límites de confianza y mecanismos de aislamiento** para reducir el *blast radius* de errores y comportamientos inesperados.
 
 El objetivo no es construir sistemas que nunca fallen.
 
@@ -30,151 +36,150 @@ El objetivo no es construir sistemas que nunca fallen.
 
 ---
 
-## Temas principales
+## Los tests no cuentan toda la historia
 
-### 1. La estabilidad más allá de los unit tests
+Una suite de unit tests puede demostrar que una función se comporta correctamente bajo determinados escenarios.
 
-Los unit tests permiten verificar el comportamiento de unidades individuales bajo escenarios determinados.
+Pero un sistema en producción es algo más que la suma de sus funciones.
 
-Pero algunas propiedades pertenecen al sistema completo y solamente pueden evaluarse cuando observamos la interacción entre ejecuciones, componentes, contexto e infraestructura.
+Las ejecuciones pueden ocurrir simultáneamente. Los procesos pueden reutilizarse. Los componentes pueden compartir recursos. Los tenants pueden interactuar con la misma infraestructura.
 
-La charla explora la diferencia entre **propiedades locales** y **propiedades arquitectónicas**.
+Una función puede pasar todos sus tests y, aun así, el sistema puede violar una propiedad cuando varias ejecuciones interactúan.
+
+Por eso existe una diferencia importante entre una **propiedad local** y una **propiedad arquitectónica**.
+
+Una propiedad local puede comprobarse observando una unidad.
+
+Una propiedad arquitectónica requiere observar cómo se comporta el sistema completo bajo las condiciones que realmente importan.
+
+> **Algunas propiedades pertenecen al sistema completo, no a una unidad aislada.**
 
 ---
 
-### 2. Límites de confianza
+## De propiedades a invariantes
 
-Un **Trust Boundary** define una frontera explícita donde cambia lo que el sistema está dispuesto a asumir.
+Cuando diseñamos un sistema para producción, una pregunta útil es:
 
-Una frontera debe responder preguntas concretas:
+> **¿Qué debe permanecer verdadero incluso cuando las cosas no salen como esperamos?**
 
-- ¿Qué protegemos?
-- ¿Qué permitimos cruzar?
-- ¿Qué condiciones deben cumplirse?
-- ¿Qué ocurre si esas condiciones dejan de cumplirse?
+Eso nos lleva al concepto de **invariante arquitectónica**.
 
-La arquitectura se analiza a partir de tres elementos:
+Una invariante no describe necesariamente cómo funciona un componente.
 
-| Elemento | Pregunta |
+Describe algo que el sistema **no debería permitir que se rompa**.
+
+Por ejemplo:
+
+| Ámbito | Invariante |
 | --- | --- |
-| **Invariante** | ¿Qué propiedad queremos preservar? |
-| **Mecanismo** | ¿Qué control técnico la impone? |
-| **Evidencia** | ¿Cómo verificamos que se mantiene? |
+| Contexto | Una ejecución no debe contaminar el contexto lógico de otra |
+| Identidad | Una operación debe permanecer ligada al ámbito criptográfico esperado |
+| Ejecución | Un fallo debe permanecer contenido dentro del ámbito de ejecución definido |
 
-> **Diseñar una frontera no demuestra automáticamente que funciona.**
-
----
-
-### 3. Diseño basado en invariantes
-
-Una **invariante arquitectónica** define una propiedad que el sistema debe preservar bajo las condiciones establecidas por el diseño.
-
-En esta charla se analizan tres ámbitos:
-
-| Ámbito | Propiedad |
-| --- | --- |
-| **Contexto** | Una ejecución no debe contaminar el contexto lógico de otra |
-| **Identidad** | Una operación debe permanecer ligada al ámbito criptográfico esperado |
-| **Ejecución** | Un fallo debe permanecer contenido dentro del ámbito de ejecución definido |
-
-Tres propiedades.
-
-Tres fronteras.
-
-Un mismo objetivo:
-
-> **Limitar qué puede afectar un fallo o una ejecución fuera de lo esperado.**
+A partir de estas propiedades aparecen tres fronteras diferentes.
 
 ---
 
-## Las tres fronteras
+## Tres fronteras
 
-### Contexto — Aislamiento lógico
+### 1. Contexto — aislamiento lógico
 
-En runtimes asíncronos, múltiples ejecuciones pueden intercalarse dentro del mismo proceso.
+En un runtime asíncrono, múltiples ejecuciones pueden intercalarse dentro del mismo proceso.
 
 El proceso puede ser compartido.
 
 El contexto lógico no debería serlo.
 
-La charla analiza cómo mecanismos de contexto, como `ContextVar` en Python, pueden utilizarse para mantener información asociada a una ejecución sin recurrir a estado global compartido.
+Una forma de preservar esta propiedad es asociar el contexto a la ejecución utilizando primitivas específicas del runtime, como `ContextVar` en Python, en lugar de depender de estado global compartido.
 
-También se establece una distinción fundamental:
+Esto permite mantener información como el `tenant_id` asociada al contexto de una ejecución.
+
+Pero hay una distinción importante.
+
+`ContextVar` proporciona aislamiento lógico.
+
+No proporciona aislamiento físico de memoria.
+
+No crea un sandbox.
+
+No crea una frontera de proceso.
 
 > **Aislamiento lógico ≠ aislamiento físico.**
 
-`ContextVar` no constituye un sandbox, no proporciona aislamiento físico de memoria y no crea una frontera de proceso.
+Cuando necesitamos contener memoria, CPU, crashes u OOM, necesitamos una frontera diferente.
 
-Cuando necesitamos contener recursos, crashes u OOM, necesitamos una frontera adicional.
+<!-- AQUÍ VA EL GRÁFICO DE AISLAMIENTO DE CONTEXTO -->
 
----
+### 2. Identidad — aislamiento criptográfico
 
-### Identidad — Aislamiento criptográfico
-
-Otra frontera aparece al preguntarnos:
+La siguiente pregunta es diferente:
 
 > **¿A qué ámbito pertenece realmente una operación?**
 
-Un dominio criptográfico demasiado amplio puede incrementar innecesariamente el *blast radius* de un compromiso.
+Un dominio criptográfico demasiado amplio puede aumentar innecesariamente el *blast radius* de un compromiso.
 
-La charla aborda estrategias para limitar el material criptográfico al ámbito correspondiente y separar dominios de confianza mediante derivación de claves.
+Una estrategia consiste en derivar material criptográfico a partir de una raíz de confianza, limitando las claves derivadas al ámbito correspondiente.
 
-También se analiza una distinción importante entre:
+<!-- AQUÍ VA EL GRÁFICO DE DERIVACIÓN DE CLAVES -->
 
-- autenticidad;
-- integridad;
-- protección contra *replay*.
+La clave raíz debe permanecer protegida mediante un mecanismo apropiado de gestión de secretos o claves.
 
-Una firma HMAC puede demostrar autenticidad e integridad respecto de una clave, pero no impide por sí sola que un mensaje legítimo sea retransmitido.
+Pero la autenticidad tampoco implica automáticamente protección contra *replay*.
 
-Por ello, dependiendo del protocolo, pueden ser necesarios mecanismos adicionales como:
+Una firma HMAC permite verificar autenticidad e integridad respecto de la clave correspondiente.
+
+No impide por sí sola que un mensaje legítimo sea retransmitido.
+
+Dependiendo del protocolo, pueden ser necesarios mecanismos adicionales:
 
 - timestamps;
 - acceptance windows;
 - nonces;
 - registro de operaciones utilizadas.
 
+Cada uno protege una propiedad diferente.
+
 > **La frontera criptográfica debe definirse según las garantías que realmente necesita el protocolo.**
 
----
+### 3. Ejecución — contención física
 
-### Ejecución — Contención física
+Existe una tercera situación.
 
-Cuando el aislamiento lógico ya no es suficiente, necesitamos una frontera de ejecución más fuerte.
+¿Qué ocurre cuando el aislamiento lógico ya no es suficiente?
 
-Un proceso compartido puede contener múltiples ejecuciones y componentes. Un consumo excesivo de memoria, CPU o un fallo fatal puede afectar a otros componentes que compartan ese ámbito.
+Un proceso compartido puede contener múltiples ejecuciones y componentes.
 
-Esto introduce problemas como:
+Si una operación consume demasiada memoria, agota CPU o provoca un fallo fatal, otros componentes que comparten ese ámbito pueden verse afectados.
 
-#### Noisy Neighbor
+Aquí aparecen problemas como **Noisy Neighbor** y propagación de fallos.
 
-Un tenant o tarea puede consumir una cantidad desproporcionada de recursos y degradar la disponibilidad de otros tenants.
+Una respuesta posible consiste en introducir una frontera de ejecución más fuerte mediante procesos independientes, contenedores, límites de recursos y mecanismos de supervisión y recuperación.
 
-#### Propagación de fallos
+<!-- AQUÍ VA EL GRÁFICO DE SEPARACIÓN DE WORKERS -->
 
-Un fallo grave dentro de un componente puede afectar a otros componentes que comparten su proceso o ciclo de vida.
+Pero incluso una frontera de proceso tiene límites.
 
-La separación de procesos, contenedores, límites de recursos, supervisión y recuperación permite introducir fronteras más fuertes.
+Una cola puede ser compartida.
 
-Pero ninguna frontera es absoluta.
+Una base de datos puede ser compartida.
 
-Una cola compartida puede saturarse.
+Un host puede imponer una limitación común.
 
-Una base de datos compartida puede convertirse en un punto común de fallo.
-
-Un host puede imponer una limitación compartida.
+Una dependencia externa puede convertirse en un punto común de fallo.
 
 > **Una frontera no elimina el riesgo. Define cómo lo contenemos.**
 
 ---
 
-## Validación en entornos reales
+## El entorno real también forma parte de la arquitectura
 
-Una arquitectura no está completamente validada porque funcione correctamente en un entorno local.
+Una arquitectura no está completamente validada porque funcione en una laptop.
 
-Las propiedades deben evaluarse en el entorno donde realmente se ejecuta el sistema.
+Las garantías deben evaluarse en el entorno donde realmente se ejecuta el sistema.
 
-En esta charla se presenta la validación de estas propiedades sobre un despliegue real basado en **Azure Functions**, considerando factores como:
+En este caso, las propiedades se evaluaron sobre un despliegue real basado en **Azure Functions**.
+
+Eso permitió observar condiciones que no necesariamente aparecen durante una prueba puramente local:
 
 - concurrencia;
 - reutilización de procesos;
@@ -182,17 +187,17 @@ En esta charla se presenta la validación de estas propiedades sobre un desplieg
 - gestión de material criptográfico;
 - interacción con servicios externos;
 - comportamiento ante errores;
-- ejecución de componentes secundarios.
+- integración entre componentes.
 
 > **El entorno real de ejecución forma parte de la validación arquitectónica.**
 
 ---
 
-## De la arquitectura a la evidencia
+## Del diseño a la evidencia
 
-Una invariante teórica no constituye evidencia suficiente.
+Una invariante por sí sola no constituye evidencia.
 
-El proceso puede resumirse como:
+Podemos pensar en el proceso como una cadena:
 
 ```bash
 INVARIANTE
@@ -208,7 +213,7 @@ VALIDACIÓN
 EVIDENCIA
 ```
 
-Cada etapa responde una pregunta diferente:
+Cada etapa responde una pregunta diferente.
 
 - **Invariante:** ¿Qué propiedad queremos preservar?
 - **Mecanismo:** ¿Qué decisión arquitectónica debería preservarla?
@@ -217,26 +222,32 @@ Cada etapa responde una pregunta diferente:
 - **Validación:** ¿Qué escenarios utilizamos para ponerla a prueba?
 - **Evidencia:** ¿Qué resultados observables obtuvimos?
 
+La idea es importante porque evita confundir tres cosas distintas: **tener un diseño razonable, implementarlo correctamente y demostrar que se comporta como esperamos**.
+
 El objetivo no es demostrar que un sistema es perfecto.
 
-El objetivo es aumentar de forma verificable la confianza en que las propiedades definidas se mantienen bajo las condiciones evaluadas.
+El objetivo es aumentar, de forma verificable, nuestra confianza en que las propiedades definidas se mantienen bajo las condiciones que hemos decidido evaluar.
 
 ---
 
-## Evidencia
+## Evidencia en un sistema desplegado
 
-Como parte de la validación, se ejecutó una suite de integración contra un despliegue real de **Apider sobre Azure Functions**.
+En este caso, la validación no se realizó únicamente sobre funciones aisladas o mediante mocks.
 
-Las verificaciones atraviesan diferentes componentes y escenarios del sistema, incluyendo propiedades relacionadas con:
+**Apider** se encuentra desplegado sobre **Azure Functions**, y la suite utilizada para la validación realiza las operaciones contra ese entorno real.
 
-- servicios externos;
+Esto permite evaluar el comportamiento de diferentes componentes y escenarios dentro del mismo sistema desplegado.
+
+Entre las propiedades y situaciones evaluadas se encuentran:
+
+- interacción con servicios externos;
 - webhooks;
 - ejecución concurrente;
 - manejo de errores;
 - diferentes rutas de ejecución;
 - comportamiento del runtime;
 - integración entre componentes;
-- aislamiento.
+- propiedades relacionadas con el aislamiento.
 
 ### Resultado
 
@@ -244,9 +255,13 @@ Las verificaciones atraviesan diferentes componentes y escenarios del sistema, i
 
 Este resultado constituye evidencia observable sobre los escenarios evaluados.
 
-No significa que el sistema sea perfecto ni que se hayan demostrado todas las condiciones posibles de producción.
+Pero hay una distinción importante.
 
-Significa que las propiedades cubiertas por la suite se mantuvieron bajo las condiciones que fueron probadas.
+**61 de 61 no significa que el sistema sea perfecto.**
+
+Tampoco significa que se hayan demostrado todas las condiciones posibles de producción.
+
+Significa que, para los escenarios cubiertos por la suite, las propiedades evaluadas se mantuvieron bajo las condiciones en las que fueron probadas.
 
 > **Una suite de pruebas no demuestra la ausencia de todos los fallos. Demuestra qué ocurrió bajo los escenarios que fueron evaluados.**
 
@@ -258,7 +273,7 @@ La ingeniería basada en evidencia no elimina la incertidumbre.
 
 La hace explícita.
 
-Podemos pensar en diferentes niveles de confianza:
+Podemos pensar en el nivel de confianza como un proceso progresivo:
 
 ### Nivel 1 — Suposición
 
@@ -284,11 +299,21 @@ La diferencia entre estos niveles no es simplemente la cantidad de tests.
 
 Es el **alcance de las condiciones bajo las cuales estamos obteniendo evidencia**.
 
+Una prueba local responde una pregunta.
+
+Una prueba de integración responde otra.
+
+Una prueba contra el sistema desplegado responde una pregunta todavía más cercana a la realidad.
+
+La confianza aumenta cuando ampliamos las condiciones bajo las cuales una propiedad ha sido observada.
+
 ---
 
 ## Las fronteras tienen límites
 
-Ninguno de los mecanismos analizados constituye aislamiento absoluto.
+Hasta aquí hemos hablado de contexto, identidad y ejecución como fronteras de aislamiento.
+
+Pero ninguna de ellas constituye aislamiento absoluto.
 
 `ContextVar` no es un sandbox.
 
@@ -310,11 +335,19 @@ También pregunta:
 
 > **"¿Cuál es el límite de ese mecanismo?"**
 
+Esta pregunta es especialmente importante porque una frontera puede ser efectiva y, al mismo tiempo, tener un alcance perfectamente definido.
+
+No necesitamos que una frontera proteja contra todo.
+
+Necesitamos saber **qué protege, qué no protege y qué frontera adicional necesitamos cuando su alcance deja de ser suficiente**.
+
 ---
 
 ## Preguntas incómodas
 
 Toda frontera debería poder ser cuestionada.
+
+No solamente durante el diseño, sino también después de haber sido implementada.
 
 ### ¿Y si `ContextVar` no es suficiente?
 
@@ -338,7 +371,7 @@ Por eso, la protección de la clave raíz mediante mecanismos apropiados de gest
 
 La separación de procesos puede contener el fallo y proteger al componente coordinador.
 
-Pero todavía deben considerarse:
+Pero todavía debemos considerar:
 
 - reinicio;
 - backpressure;
@@ -354,14 +387,16 @@ Un worker aislado no significa que el sistema sea inmune a sus consecuencias.
 
 Las fronteras diseñadas dentro de una aplicación no necesariamente pueden contener fallos que ocurren fuera de ella.
 
-Esto obliga a distinguir entre:
+Esto obliga a distinguir entre diferentes niveles de aislamiento:
 
-- aislamiento de aplicación;
-- aislamiento de proceso;
-- aislamiento de infraestructura;
-- aislamiento de dominio de confianza.
+- **aislamiento de aplicación**;
+- **aislamiento de proceso**;
+- **aislamiento de infraestructura**;
+- **aislamiento de dominio de confianza**.
 
 Cada uno resuelve problemas diferentes.
+
+Y, en sistemas reales, varias de estas fronteras pueden coexistir.
 
 ---
 
@@ -414,7 +449,7 @@ Pero cada una puede reducir su radio de impacto.
 
 Un sistema real no puede asumir que todos sus componentes funcionarán perfectamente durante toda su vida.
 
-La pregunta arquitectónica cambia.
+Por eso, la pregunta arquitectónica cambia.
 
 No es solamente:
 
@@ -432,11 +467,17 @@ Ese cambio de perspectiva transforma la forma en que diseñamos sistemas.
 
 Pasamos de confiar únicamente en mecanismos aislados a definir propiedades explícitas, establecer fronteras y buscar evidencia de que esas propiedades sobreviven bajo condiciones reales.
 
+La confiabilidad deja de ser únicamente una característica que esperamos obtener del sistema.
+
+Se convierte en algo que podemos **diseñar, delimitar y verificar**.
+
 ---
 
 ## Materiales
 
-Los materiales de la presentación estarán disponibles aquí.
+Esta página también funciona como punto de referencia para los materiales de la charla.
+
+A medida que estén disponibles, se irán incorporando aquí.
 
 ### Slides
 
@@ -458,7 +499,7 @@ Los materiales de la presentación estarán disponibles aquí.
 
 ## Galería
 
-Aquí se recopilan fotografías y material visual de la presentación en CS Week Perú 2026.
+Registro visual de la presentación en **CS Week Perú 2026**.
 
 ### Fotografías
 
@@ -473,6 +514,8 @@ Aquí se recopilan fotografías y material visual de la presentación en CS Week
 ---
 
 ## Recursos
+
+La charla se apoya en documentación, proyectos y referencias relacionadas con los conceptos presentados.
 
 ### Artículos
 
@@ -514,10 +557,12 @@ Mis intereses se encuentran en la intersección entre software, sistemas y hardw
 
 ## Sobre la presentación
 
-**Evento:** CS Week Perú 2026  
-**Lugar:** Lima, Perú  
-**Fecha:** Agosto de 2026  
-**Tema:** Arquitectura de sistemas · Aislamiento · Confiabilidad · Sistemas distribuidos
+| | |
+|---|---|
+| **Evento** | CS Week Perú 2026 |
+| **Lugar** | Lima, Perú |
+| **Fecha** | Agosto de 2026 |
+| **Tema** | Arquitectura de sistemas · Aislamiento · Confiabilidad · Sistemas distribuidos |
 
 ---
 
@@ -528,6 +573,9 @@ Mis intereses se encuentran en la intersección entre software, sistemas y hardw
 > **CHOOSE THE MECHANISM.**
 >
 > **VERIFY THE RESULT.**
+
+**Jorge de la Flor**  
+Software & Cyber-Physical Systems Developer
 
 ---
 
